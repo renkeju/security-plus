@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh_CN">
   <head>
     <meta charset="utf-8" />
-    <title>&lt;no title&gt; &#8212; 《Security+ 学习手册》 alpha 文档</title>
+    <title>课题C：确定基本的认证和授权概念 &#8212; 《Security+ 学习手册》 alpha 文档</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
@@ -29,7 +29,135 @@
 
           <div class="body" role="main">
             
-  
+  <div class="section" id="c">
+<h1>课题C：确定基本的认证和授权概念<a class="headerlink" href="#c" title="永久链接至标题">¶</a></h1>
+<p>在前面的课题中，你已经认识了信息的安全控制，包括认证，这是现今在用的主要控制手段之一。虽然认证总是出于相同的目的，但有许多不同的方式可以实现这一目标。在本章课题中，你将认识基本的认证和授权概念。</p>
+<p>强认证是保护网络资源的第一道防线。但认证不是一种单一进程；其中包括了许多不同的方式和机制，其中一些之间还能相互结合形成更加复杂的机制。作为一名网络专家，熟悉基本的认证和授权概念能够帮助你选择，实施，并支持适合工作环境的相应机制。</p>
+<div class="section" id="id1">
+<h2>密码<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>结合使用用户名和密码是一种最基本且广泛使用的认证机制之一。在这种认证类型中，用户的证书会与存储在数据库中的证书进行比对。如果用户名和密码与数据库中的相匹配，用户就通过认证。如果没有，用户就会被拒绝访问。这种方式可能不是很安全，因为它不必识别出正确的用户。例如，有时用户的证书会通过网络以明文的方式传输，攻击者就能很容易地获取到用户名和密码。</p>
+</div>
+<div class="section" id="id2">
+<h2>口令<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>口令（Token）可以是物理的或虚拟的对象，如智能卡，身份徽章或存储了认证信息的数据包。口令可以存储个人身份识别号码（PIN），有关用户的信息或密码。唯一的口令值可以通过特殊的硬件设施或用于响应来自认证服务器质询的软件生成，也可以通过使用独立算法生成。</p>
+<div class="section" id="id3">
+<h3>智能卡<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+<p>智能卡（Smart card）是基于口令认证的一种常见例子。智能卡是一种包含一张嵌入式计算机芯片的塑料卡片，其中能够存储不同类型的电子信息。美国国防部（DoD）引入了一种叫做通用访问卡（Common Access Card/CAC）的智能卡，用作其军方人员、合同员工、非DoD政府雇员以及国民警卫队公务员们的身份标识。智能卡中的内容可以通过智能卡读卡器被读取。智能卡和CAC这种物理口令又是会被分类在个人身份验证卡（Personal Identity Verification cards）这种统一性术语名下。</p>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>生物识别<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>生物识别（Biometrics）是通过被测者物理特征来确定个人身份的一种认证机制。这种机制包括指纹扫描仪、视网膜扫描仪、手形扫描仪或声音识别和面部识别软件。由于生物识别方式的认证实施成本已经降低，因此它的接受范围也变得更广了。</p>
+</div>
+<div class="section" id="id5">
+<h2>定位<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p>随着越来越多的联网移动设备的出现，定位（geolocation）从另外的层面上提供了用于认证的方式。在某个允许的位置上尝试认证就能准入网络访问，而在某个不被允许的位置上进行认证，就会被拒绝网络访问。</p>
+<p>将Internet协议（IP）地址，无限射频识别（RFID），嵌入式硬件或软件编号，发票，WI-FI定位系统，设备的GPS坐标或其他信息与地理位置相结合，就能进行互联网和计算机的定位验证。</p>
+<p>通过查找地理位置数据库中的主机IP地址，并检索注册人的国家，地区，城市，名称和其他信息，就能进行地理定位。</p>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>注册人通常是ISP，因此你收到的信息会提供基于ISP主机的大致位置。如果这个ISP是一个服务于大型或不同地理区域的供应商，可能就无法知道主机的精确位置。</p>
+</div>
+<p>一旦确定实际的位置，就能与网络访问的准入（或限制）位置列表进行对比，也就能相应地开放资源的访问权限。相反的，如果网络攻击来源于某个特定的国家，在遭受攻击的时期，从这个国家的IP地址上发来的数据包就能被自动丢弃，同时继续接受其让地区的流量。相似的，在世界特定地区里经营业务的组织也可以配置他们的系统，总是拒绝来自他们利益范围之外的认证请求，这样就能降低潜在的风险。</p>
+<p>定位常见的实施包括：</p>
+<ul class="simple">
+<li><p>多站点的组织，如有好几个校区的大学，有好几个办公大楼的厂房的公司，可以将定位认证机制和准入位置列表结合，允许授权用户连接到特定校区或大楼的局域网。</p></li>
+<li><p>从更加细化的层面上看，一个组织可能拥有高层建筑中的多个楼层，根据你所在的楼层限制网络访问。假设你不在研发部楼层工作，但来这里参加一个会议，你可能就无法连接这里的网络，或者严格限制访问资源的权限。</p></li>
+</ul>
+<p>定位供应商</p>
+<ul class="simple">
+<li><p>MaxMind 公司的 GeoIP，www.maxmind.com</p></li>
+<li><p>IP2Location™，www.ip2location.com</p></li>
+<li><p>Neustar IP Intelligence，www.neustar.biz</p></li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h2>击键认证<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<p>击键认证（Keystroke authentication）是指在计算机或其他电子设备中键入信息时，根据按键被按压和释放时精确且详细的信息进行验证的认证类型。在键盘上打字时，每个用户都有特定的倾向、节奏和模式，这些信息可以被记录下来并与以后的击键方式进行比较。</p>
+<p>击键认证需要一个击键记录器，以及其他的测量标准，如按压和释放按键时，一个按键被释放和下一个按键被按压之间的时间间隔等。所有这些数据都会被注入一系列算法，为每个用户建立一个主要的击键模式。</p>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>有些资料中认为击键认证是生物识别的一种扩展。</p>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>多因素认证<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<p>多因斯认证（Multi-factor authentication）是指需要验证两种或多种认证因素的认证机制。可以任意结合使用你的身份，你的所有物，你所知信息，所在位置或不在位置，你的行为这些认证因素。</p>
+<p>同时需要物理身份卡和保密密码就是多因素认证的一个例子。标准银行借记卡就是其中一种常见的例子，但芯片借记卡可能就不属于其中，这要取决于是否需要手动输入PIN码。另一个例子就是用户访问他们的电子邮件或销售应用软件时，需要输入短信验证码。请记住，多因素认证需要使用的不同的因素，而不是特性对象或方法。因此，使用智能卡和VPN口令就不属于多因素认证，因此这两种方式都基于相同的因素：你拥有什么。</p>
+</div>
+<div class="section" id="id8">
+<h2>相互认证<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
+<p>相互认证（Mutual authentication）是指需要通讯中的每一方之间相互验证身份的安全机制。服务或资源验证客户端的凭证，客户端验证资源的凭证。相互认证可以预防客户端在无意之间将机密信息提交到不安全的服务器上。可以使用任何类型或组合形式的认证机制进行相互认证。</p>
+</div>
+<div class="section" id="id9">
+<h2>练习 1-3<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
+<p>场景：作为 Develetech Industries 公司的安全管理员，你想要和同事讨论不同的认证和授权方式，以确定最合适你的组织的方式。</p>
+<ol class="arabic">
+<li><p>Brian 在IT部门工作。为了访问他的笔记本电脑，他在一个特殊的读卡器中插入了他员工ID卡。这是一种：</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>用户名/密码认证</p></li>
+<li><p>生物识别</p></li>
+<li><p>基于口令的认证</p></li>
+<li><p>相互认证</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>为了进入服务器机房，Brian 将他的食指指纹放在一个指纹读取器上。这是一种：</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>密码认证</p></li>
+<li><p>基于口令的认证</p></li>
+<li><p>生物识别认证</p></li>
+<li><p>多因素认证</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>为了从自动取款机中取钱，Nancy插入一张卡并输入了4位数的PIN码。这一做法结合使用了哪些认证类型？（选出所有符合条件项）</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>基于口令</p></li>
+<li><p>密码</p></li>
+<li><p>生物识别</p></li>
+<li><p>多因素</p></li>
+<li><p>相互</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>哪个是对基于口令的认证的最佳描述？</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>它依赖于输入一个代码。</p></li>
+<li><p>它依赖于卡和PIN码。</p></li>
+<li><p>它依赖于用户的物理特征。</p></li>
+<li><p>它依赖于卡被插入到读卡器中。</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>哪一项是“你做了什么”认证因素的例子？</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>指纹或掌纹识别</p></li>
+<li><p>ID卡和PIN码</p></li>
+<li><p>击键模式识别</p></li>
+<li><p>地理位置</p></li>
+<li><p>用户名和密码</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>正确还是错误？相互认证能够防止客户端向不安全的服务器提交机密信息。</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>正确</p></li>
+<li><p>错误</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>多因素认证是如何提高安全性的？</p></li>
+</ol>
+</div>
+</div>
+
 
           </div>
           

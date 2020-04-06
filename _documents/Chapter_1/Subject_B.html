@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh_CN">
   <head>
     <meta charset="utf-8" />
-    <title>&lt;no title&gt; &#8212; 《Security+ 学习手册》 alpha 文档</title>
+    <title>课题B：确定基本安全控制 &#8212; 《Security+ 学习手册》 alpha 文档</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
@@ -29,7 +29,133 @@
 
           <div class="body" role="main">
             
-  
+  <div class="section" id="b">
+<h1>课题B：确定基本安全控制<a class="headerlink" href="#b" title="永久链接至标题">¶</a></h1>
+<p>现在你已经认识了信息安全的一些基本概念，你可以开始确定它们是如何共同协作来实现计算机安全的。在本章课题中，你将要认识基本的安全控制以及在计算机安全中的实施方法。</p>
+<p>理解信息安全的基本概念仅仅是探索这些因素如何整合计算机安全的第一步。通过认识基本的安全控制，以及其他安全专家们是如何在这一领域中使用它们，你就能更好地为你的工作环境选择并实施最合适的控制。</p>
+<div class="section" id="cia">
+<h2>CIA 三位一体<a class="headerlink" href="#cia" title="永久链接至标题">¶</a></h2>
+<p>信息安全致力于实现三种具体原则：机密性、完整性和可用性。这种性质被称为CIA三位一体（CIA thiad）。如果其中一个原则受到破坏，那么组织的安全性就会受到威胁。</p>
+<table class="colwidths-given docutils align-default" id="id11">
+<caption><span class="caption-text">CIA 三位一体由三个原则组成</span><a class="headerlink" href="#id11" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>原则</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>机密性（Confidentiality）</p></td>
+<td><p>这是保障信息和通讯私密性以及保护其不受未授权访问威胁的基本原则。机密信息包括商业秘密，职工信息，健康档案，纳税记录和军事机密。机密性通常通过加密，访问控制，信息隐藏等方式进行控制。</p></td>
+</tr>
+<tr class="row-odd"><td><p>完整性（Integrity）</p></td>
+<td><p>这是保障组织信息准确性，无错性，以及无未授权修改的一项基本原则。例如，如果一个学校系统的服务器发生了一次攻击，学生的测试成绩被篡改，那么成绩信息的完整性就被未授权修改破坏了。完整性通常是通过散列（hashing），数字签名，证书和变更控制来进行保障。</p></td>
+</tr>
+<tr class="row-even"><td><p>可用性（Availability）</p></td>
+<td><p>这是确保计算机系统持续性运行以及授权人员能按需访问数据的一项基本原则。只有用户能够获取计算机系统中的可用信息时，这些信息才能体现出其用处。考虑一下如果联邦航空管理机构的航空交通管制系统出现故障会发生什么。雷达图像可以被捕捉但却不能被传送到需要这些信息的人手中。可用性通常是通过冗余，容错和补丁的方式进行控制。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id1">
+<h2>不可否认性<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>不可否认性（Non-repudiation）确保了发起传输或创建数据的一方保持与数据的连接且不能否认发送或创建过该数据。你需要单独对消息发送者的身份进行验证，发送者要对消息及其数据负责。</p>
+<p>不可否认性是实现可追则性（accountability）的一种方法，可追责性是指确定特定活动或事件（如登陆）的负责人的过程。</p>
+</div>
+<div class="section" id="id2">
+<h2>身份识别<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>在安全术语中，身份识别（identification）是指对特定实体的性质声明所有权的过程。进行身份识别的投入方法和努力方式会根据组织所需的安全程度和保护等级有所变化。</p>
+<p>身份识别通常包括个人电子邮件地址或用户名等相关资源。可能还包括如名字，姓氏，岗位角色等其他识别信息。</p>
+</div>
+<div class="section" id="id3">
+<h2>认证<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>认证（Authentication）是指验证特定实体或个人身份及其唯一证书的方法。认证的核心工作就是验证特定个体是否拥有进入系统或安全站点的正确证书。认证证书应当进行保密以便能够阻止未经授权的个人获取机密信息。</p>
+<div class="section" id="id4">
+<h3>认证因素<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<p>大多数认证机制是基于一种或多种认证因素，这些因素包括：</p>
+<ul class="simple">
+<li><p>你本身具有的东西，包括物理特征，如指纹或视网膜图案。</p></li>
+<li><p>你拥有的资源，如口令或准入卡。</p></li>
+<li><p>你了解的信息，如密码。</p></li>
+<li><p>你所处的位置或不在的位置，如许可IP地址或GPS地址。</p></li>
+<li><p>你所做的行为，如已建立的击键模式或追踪Windows 8或10图片密码。</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>授权<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p>在安全术语中，授权（authorization）是指确定特定实体拥有哪些权力和权限的过程。授权就像安保人员在专属聚会上检查宾客名单，或在进入电影院时检查你的票据。</p>
+<p>用户的身份被识别和认证之后，系统就能确定用户对不同资源拥有的权力和权限。</p>
+<div class="section" id="id6">
+<h3>访问控制<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<p>访问控制（Access control）是指为不同资源，对象或数据确定并分配权限的过程。</p>
+<p>访问控制说明授权是如何被管理。</p>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>计费和审计<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<p>在安全术语中，计费（accounting）是指跟踪并记录系统活动和资源访问的过程。审计（Auditing）是计费的一部分，安全专家会审核被记录下来的日志。</p>
+</div>
+<div class="section" id="id8">
+<h2>最小特权原则<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
+<p>最小特权（least privilege）原则规定用户和软件只能被赋予执行任务所必须的最低访问级别。这种最低访问级别包括对设施，计算硬件，软件和信息的访问。当一名用户或系统被赋予访问权限时，这种权限仍然应当保持在执行必要任务所需的最低层次。</p>
+<div class="section" id="id9">
+<h3>特权包围<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
+<p>术语特权包围（privilege bracketing）是指使用认证和授权机制提供用户和组访问控制的集中式或分散式管理。在特权管理中，应当包含一个审计部分，用来跟踪特权使用和特权扩大。通过为用户提供浏览不同服务器或站点等资源的一次性认证，单点登陆（Single sign-on/OSS）实现了特权管理功能。</p>
+</div>
+</div>
+<div class="section" id="id10">
+<h2>练习 1-2<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h2>
+<p>场景：作为一名新的安全管理员，你想要确定一些可以在 Develetech Industrics 公司里实施的信息安全控制。</p>
+<ol class="arabic">
+<li><p>计算机安全的三个最基本目标是什么？</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>机密性</p></li>
+<li><p>审计</p></li>
+<li><p>完整性</p></li>
+<li><p>特权管理</p></li>
+<li><p>可用性</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>一个生物识别手印扫描器被用作了授权进入设施的系统部分。一旦身份通过验证，系统会检查并确认用户允许离开大厅进入设施，电子门锁就会被释放。这种情形中使用了哪些安全控制？（选出所有符合条件项）</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>认证</p></li>
+<li><p>授权</p></li>
+<li><p>访问控制</p></li>
+<li><p>审计</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>一天结束时，安全人员可以查看记录了进出大楼的人员身份的电子日志文件，这属于哪种类型的安全控制？</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>认证</p></li>
+<li><p>授权</p></li>
+<li><p>访问控制</p></li>
+<li><p>审计</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>一家大型跨国公司的管理员可以从中央管理控制台分配对象的访问权限，追踪用户的资源访问权限。提供单一用户名和密码后，整个组织的用户就能获得任意系统的访问权限。这属于哪种类型的安全控制？</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>审计</p></li>
+<li><p>安全标签</p></li>
+<li><p>特权管理</p></li>
+<li><p>机密性</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+</div>
+</div>
+
 
           </div>
           
