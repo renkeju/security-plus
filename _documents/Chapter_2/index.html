@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh_CN">
   <head>
     <meta charset="utf-8" />
-    <title>&lt;no title&gt; &#8212; 《Security+ 学习手册》 alpha 文档</title>
+    <title>第二章：分析风险 &#8212; 《Security+ 学习手册》 alpha 文档</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript" src="../../_static/translations.js"></script>
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="搜索" href="../../search.html" />
-    <link rel="next" title="&lt;no title&gt;" href="../Chapter_3/index.html" />
+    <link rel="next" title="第三章：确定安全威胁" href="../Chapter_3/index.html" />
     <link rel="prev" title="第一章： 确定安全基础" href="../Chapter_1/index.html" />
 <link rel="stylesheet" type="text/css" href="../../_static/handsontable.full.min.css">
 <script src="../../_static/handsontable.full.min.js"></script>
@@ -31,7 +31,594 @@
 
           <div class="body" role="main">
             
-  
+  <div class="section" id="id1">
+<h1>第二章：分析风险<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<ul>
+<li><p>课程简介</p>
+<blockquote>
+<div><p>组织实施安全控制的一个主要原因就是希望能够降低信息被篡改，丢失或盗取的机率。确定时什么形成了威胁以及威胁发生的可能性时风险分析的主要内容。在本章课程中，你就要学习分析风险。</p>
+<p>风险分析在维护组织环境的安全性方面有着举足轻重的地位。通过评估和确定可能引起网络组件、硬件和员工破坏的具体风险，就能消减潜在风险并确立合适的校正措施来防止对人员或系统造成的可能损坏。</p>
+</div></blockquote>
+</li>
+<li><p>课程目标</p>
+<blockquote>
+<div><p>在本章课程中，你将：</p>
+<ul class="simple">
+<li><p>评估组织中的风险</p></li>
+<li><p>分析风险造成的业务影响</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<div class="section" id="a">
+<h2>课题A：分析组织风险<a class="headerlink" href="#a" title="永久链接至标题">¶</a></h2>
+<p>在计划周全的安全架构中，其中一部分内容就是知道什么资产需要进行维护，以及保护的等级。这一过程包括确定哪些部分允许出现错误，在本章课题中，你将评估组织机构中的风险。</p>
+<p>如何才能知道需要保护组织免受哪些风险？是什么造成了风险？你需要找出什么能帮助你确定系统或网络中存在哪些风险。如果你可以预见并分析其中的这些风险，那么就能避免以后可能出现的一些主要问题。风险分析可以帮助你实现这一目标。</p>
+<div class="section" id="id2">
+<h3>风险管理<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
+<p>在信息管理领域中，风险会以许多不同的形式展现出来。如果不能正确地管理风险，就可能引起重要资产的泄露、篡改、丢失、破坏或干扰。风险管理（Risk management）是一种周期性过程，包括四个阶段：</p>
+<ul class="simple">
+<li><p>确定并评估系统中存在的风险</p></li>
+<li><p>分析风险对系统产生潜在影响</p></li>
+<li><p>规划如何响应风险的策略</p></li>
+<li><p>缓解风险对未来安全造成的不良影响</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>请记住，漏洞是指安全策略中的缺陷或弱点；威胁是指可能会利用漏洞的实体；风险是指如果威胁确实利用漏洞，可能造成的损失、危害或破坏。</p>
+</div>
+</div>
+<div class="section" id="id3">
+<h3>风险分析的组成<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+<p>风险是指威胁利用漏洞引起某种损害的可能性。因此，当你进行分析，确定风险是否存在时，不仅要确定潜在的威胁，还要确定系统中是否存在这些威胁可以利用的漏洞。一旦确认风险存在，根据风险可能引起的损害及其发生概率就能确定该风险的严重程度。</p>
+<div class="section" id="id4">
+<h4>评估漏洞的威胁<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h4>
+<p>一些有关评估漏洞的威胁的案例可能包括：</p>
+<ul class="simple">
+<li><p>如果一家企业位于铁路轨道附近，一辆列车脱轨导致泄露了有毒液体，那么在清理过程中，企业可能就不得不停工数天或数周。</p></li>
+<li><p>如果重要位置上的生产工人表示了他们罢工的意愿，他们可能会事先威胁破坏设备，扩大他们后续行动的影响。</p></li>
+<li><p>重要的供应商可能无法为组织主要产品的生产提供原材料。</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id5">
+<h3>风险分析的阶段<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<p>确定如何保护计算机网络，计算机安装和信息时，风险分析（risk analysis）这一安全过程能够评估可能影响整个组织的风险危害。</p>
+<table class="colwidths-given docutils align-default" id="id28">
+<caption><span class="caption-text">风险分析过程的六个阶段</span><a class="headerlink" href="#id28" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>风险分析流程的阶段</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><ol class="arabic simple">
+<li><p>资产确定</p></li>
+</ol>
+</td>
+<td><p>确定需要保护的资产并确定资产的价值。</p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="2">
+<li><p>漏洞确定</p></li>
+</ol>
+</td>
+<td><p>确定漏洞，使分析师能确认资产保护过程中什么地方存在问题。确定了缺陷的位置也就显示了最容易受漏洞影响的关键区域。漏洞扫描时一种用于确定系统内缺陷的方法。但这种方式可能会产生错误警报，引起关注，即使系统中并没有实际的错误或缺陷。</p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="3">
+<li><p>威胁评估</p></li>
+</ol>
+</td>
+<td><p>一旦了解到漏洞所在，就能确定可能会利用这些漏洞的威胁。</p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="4">
+<li><p>可能性量化</p></li>
+</ol>
+</td>
+<td><p>量化威胁利用漏洞的可能性或概率。</p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="5">
+<li><p>影响分析</p></li>
+</ol>
+</td>
+<td><p>一旦确定了可能性，这些潜在威胁可能造成的影响就需要评估。包括从损坏中恢复的影响，以及实施预防措施带来的影响。</p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="6">
+<li><p>应对措施的确定</p></li>
+</ol>
+</td>
+<td><p>确定并开发应对措施消除或降低风险。应对措施必须在经济上有效可行，并提供符合预期的保护强度。换句话说，应对措施的成本必须小于威胁利用漏洞造成的预计损失。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id6">
+<h3>威胁类型的分类<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<p>根据安全威胁的来源，通常被分为自然、人为或系统威胁。当你执行风险分析和影响时，知道其来源将会很有帮助。下面列举了每种威胁的例子。</p>
+<ul>
+<li><p>自然</p>
+<blockquote>
+<div><p>自然威胁与天气或其余自然活动造成的其他不可控事件有关。不同的自然灾害类型有：</p>
+<ul class="simple">
+<li><p>地震</p></li>
+<li><p>野火</p></li>
+<li><p>洪灾</p></li>
+<li><p>暴风雪</p></li>
+<li><p>海啸</p></li>
+<li><p>飓风</p></li>
+<li><p>龙卷风</p></li>
+<li><p>滑坡</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>人为</p>
+<blockquote>
+<div><p>人为威胁是指由个人或集体的人为活动造成的其余事件。人为威胁事件可能是有意或无意引起的。</p>
+<p>有意的人为威胁包括：</p>
+<ul class="simple">
+<li><p>纵火</p></li>
+<li><p>恐怖袭击</p></li>
+<li><p>政治动荡</p></li>
+<li><p>强行闯入</p></li>
+<li><p>设备和/或数据被盗</p></li>
+<li><p>设备损坏</p></li>
+<li><p>文件损坏</p></li>
+<li><p>信息泄漏</p></li>
+</ul>
+<p>无意的人为威胁包括：</p>
+<ul class="simple">
+<li><p>用户计算错误</p></li>
+<li><p>社交网络和云计算</p></li>
+<li><p>过多员工生病或患上流行病</p></li>
+<li><p>信息泄露</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>系统</p>
+<blockquote>
+<div><p>系统威胁与网络、服务、应用程序或设备中发现的任何缺陷或漏洞有关。</p>
+<p>系统威胁包括：</p>
+<ul class="simple">
+<li><p>不安全的移动设备</p></li>
+<li><p>不稳定的虚拟环境</p></li>
+<li><p>不安全的网络设备</p></li>
+<li><p>电子邮件漏洞，如病毒和垃圾邮件</p></li>
+<li><p>账户管理的漏洞，如未指定权限</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="id7">
+<h3>风险分析的方式<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
+<table class="colwidths-given docutils align-default" id="id29">
+<caption><span class="caption-text">可用于风险分析的一些方式。</span><a class="headerlink" href="#id29" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>方式</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>定性</p></td>
+<td><p>定性分析方法通过描述和文字的方式衡量风险的数量和影响力。例如，根据分析影响力使用的标准，可以将等级分为高、中或低。定性分析通常会根据场景不同而变化。定性风险分析的一个缺点源于其有时比较主观和不可测试的方法论。</p></td>
+</tr>
+<tr class="row-odd"><td><p>定量</p></td>
+<td><p>定量分析完全根据数值来进行。使用历史记录、经验、行业最佳实践和记录、统计理论、测试以及实验等方法来对数据进行分析。在风险难以被量化的情况下，这种方法论可能就会显得力不从心。</p></td>
+</tr>
+<tr class="row-even"><td><p>半定量</p></td>
+<td><p>半定量分析方法使用与数值相关的描述来进行。它不是完全定性也不是完全定量。这种方法论尝试在前两种风险分析类型之间找到一个中间位置。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id8">
+<h3>风险计算<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
+<p>风险计算侧重于研究财务和运营损失的影响，并在组织中寻找威胁利用的指标。风险计算可以被视作一种公式，用来考虑每种资产价值，计算每种威胁发生的可能性，并衡量缓解系统漏洞的可能成本。组织可以使用这种流程来确定每种已知风险的单一损失预期（single loss expectancty/SLE）或年度损失预期（annual loss expectancy/ALE）。SLE的值代表特定不利事件的财务损失。ALE的值是通过SLE乘以它的年发生率（annual rate of occurrence/ARO）来计算，以确定组织在一年内可能承担的风险总成本。</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ALE = SLE * ARO
+</pre></div>
+</div>
+<div class="section" id="id9">
+<h4>计算风险<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h4>
+<p>一个公司可能计算出，非军事区（DMZ）中某个系统每天都有几乎90%的可能性会遭受一个端口扫描攻击。但是，虽然这个威胁等级很高，公司也不会认为系统会因为扫描攻击而受到高度的损坏风险。加固系统使之彻底防止扫描攻击的成本远远高出由这种风险造成的潜在损失。</p>
+<p>从另一个方面看，公司可能确定了一项高危风险，即服务器机房可能会因为自然灾害彻底丧失功能，对组织来说，这种损失将是灾难性的。虽然自然灾害威胁的发生概率极低，但整体影响力却如此巨大，以至于公司维护了一个昂贵的交替站点，在发生类似紧急事件时可以转移业务。</p>
+</div>
+<div class="section" id="id10">
+<h4>漏洞表<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h4>
+<p>一个简单的漏洞表通常能够成为完成漏洞评估的一种战略性工具。下表列举了于不同漏洞相关的详细信息。</p>
+<table class="colwidths-given docutils align-default" id="id30">
+<caption><span class="caption-text">不同漏洞相关的详细信息</span><a class="headerlink" href="#id30" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>漏洞</p></th>
+<th class="head"><p>确定来源</p></th>
+<th class="head"><p>风险发生概率（1代表低，5代表高）</p></th>
+<th class="head"><p>影响力估计（美元）</p></th>
+<th class="head"><p>缓解措施</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>洪灾危害</p></td>
+<td><p>实际的工厂</p></td>
+<td><p>5</p></td>
+<td><p>$950,000</p></td>
+<td><p>物理上的调整和洪灾保险</p></td>
+</tr>
+<tr class="row-odd"><td><p>电力故障</p></td>
+<td><p>实际的工厂</p></td>
+<td><p>2</p></td>
+<td><p>$100,000</p></td>
+<td><p>发电机，不间断电源供应（UPS）</p></td>
+</tr>
+<tr class="row-even"><td><p>流感传染病</p></td>
+<td><p>员工</p></td>
+<td><p>4</p></td>
+<td><p>$200,000</p></td>
+<td><p>流感疫苗</p></td>
+</tr>
+</tbody>
+</table>
+<p>使用表格可以让规划人员确定威胁或漏洞的发生概率，记录可能的影响，按优先顺序排列相应的缓解措施。缓解措施可以降低被利用漏洞产生的不良影响。电力故障是一种相对较高的风险，其相应的有效缓解措施就是进行一笔一次性支出购买备用发电机。</p>
+<p>如果这个表格中还有额外的两列，评估就会更加有用，如下表的例子所示。</p>
+<table class="colwidths-given docutils align-default" id="id31">
+<caption><span class="caption-text">额外的漏洞信息</span><a class="headerlink" href="#id31" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 50%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>漏洞</p></th>
+<th class="head"><p>缓解的成本， “漏洞影响后的缓解”</p></th>
+<th class="head"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>电力故障</p></td>
+<td><p>用$500购买发电机</p></td>
+<td><p>$0</p></td>
+</tr>
+</tbody>
+</table>
+<p>通过添加这些额外的列，业务连续性规划人员就能评估漏洞，提出缓解措施，并评估执行缓解方案之后的其余风险造成的漏洞。</p>
+<p>如表中列出的风险信息记录也被叫做风险登记簿（risk register）。除了以表格形式呈现，通常还能用散点图描绘风险登记簿，其中影响力和可能性分别是散点图的轴线，其中的标绘点展示了于分布风险特性有关的更多信息。</p>
+</div>
+</div>
+<div class="section" id="id11">
+<h3>风险响应的技巧<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h3>
+<p>一旦确定了一项风险，就能制定响应策略来确定合适的应对措施。甚至可以结合多种策略来完成一次响应。四种常见的响应技术如下表描述：</p>
+<table class="colwidths-given docutils align-default" id="id32">
+<caption><span class="caption-text">四种常见的响应技术</span><a class="headerlink" href="#id32" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>响应技巧</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>接受</p></td>
+<td><p>这表示如果风险真实发生，承认并接受风险及其带来的后果。但接受并不代表让系统完全地暴露在漏洞之下，而是意识到涉及的风险不能完全避免，或是缓解或避免的成本过高。</p></td>
+</tr>
+<tr class="row-odd"><td><p>转移</p></td>
+<td><p>将风险的责任分配给其他机构，或第三方，如保险公司。</p></td>
+</tr>
+<tr class="row-even"><td><p>避免</p></td>
+<td><p>通过消除风险的来源和彻底消除风险。这种技术可能只需要结束出于风险之中的操作或实体，如关闭经常成为攻击目标的服务器。</p></td>
+</tr>
+<tr class="row-odd"><td><p>缓解</p></td>
+<td><p>这种技巧能防御可能的攻击并在潜在风险产生重大影响时实施。缓解措施可能以入侵检测系统（IDS）等主动防御措施或备份处于风险中的数据等警示措施的形式出现。</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>即使应用了缓解措施，大多数情形仍然存在剩余风险。很少有应对措施能将风险降到0。</p>
+</div>
+</div>
+<div class="section" id="id12">
+<h3>风险缓解和控制类型<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h3>
+<p>风险可以通过实施合理的安全控制进行缓解。</p>
+<table class="colwidths-given docutils align-default" id="id33">
+<caption><span class="caption-text">主要的控制类型</span><a class="headerlink" href="#id33" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>控制类型</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>技术控制（Technical control）</p></td>
+<td><p>应用软硬件装置监控和防止计算机系统与服务中的威胁和攻击。例如，安装并配置网络防火墙就是一种技术控制。</p></td>
+</tr>
+<tr class="row-odd"><td><p>管理控制（Management control）</p></td>
+<td><p>应用相应流程监控组织安全策略的服从情况。这些控制专门用于控制特定区域的操作效率，并监控安全策略的服从度。例如，年度或定期安全扫描和审计能够检查对安全策略的服从程度。</p></td>
+</tr>
+<tr class="row-even"><td><p>操作控制（Operational Control）</p></td>
+<td><p>用于保护日常业务操作，功能和活动所有方面的安全措施。例如，入口处的门锁和保安仅允许授权员工进入大楼。</p></td>
+</tr>
+<tr class="row-odd"><td><p>损失控制（Loss control）</p></td>
+<td><p>也叫损害控制（damage control），这是用于保护关键资产不受侵害的安全措施。包括降低损失发生概率，以及降低发生损失时的严重程度。例如，灭火器和洒水器系统可以降低发生火灾时财产被破坏的程度。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id13">
+<h3>变更管理<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h3>
+<p>变更管理（Change management）是一种批准并执行变更的系统性方法，以便确保信息技术服务达到最佳的安全性、稳定性和可用性。当一个组织变更它的硬件、软件、基础设施或文档时，就会面临引入意外事件的风险。因此，对一个组织来说，合理评估风险、量化培训、支持、维护和实施的成本，合理权衡提议变更带来的复杂性和利益u都是重要的工作。通过维护一个有存档的变更管理流程，组织就能避免因草率变更带来可能的反作用。</p>
+<p>例如，Jane发现一个新的服务数据包被发布，用于修正服务器中操作系统的许多安全漏洞。需要使用该服务包的服务器正在运行一个自定义的内部应用程序，不允许出现重大故障停机。公司策略规定必须为所有服务包批准一个变更管理表单。从审批流程中返回该表单，确保服务包在部署到生产服务器之前，必须在实验系统中进行测试。Jane在实验室中应用了这个服务包并发现它会导致自定义的内部应用程序出现故障。在服务包被应用到生产环境之前，应用程序必须被发送回软件开发商进行修正和重新测试。</p>
+</div>
+<div class="section" id="id14">
+<h3>分析风险的准则<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h3>
+<p>当你分析风险时，可以考虑这些准则：</p>
+<ul class="simple">
+<li><p>清晰地定义组织对安全性的期望。</p></li>
+<li><p>确定需要进行保护的资产，并确定它们的价值。</p></li>
+<li><p>寻找可能存在的漏洞，如果这些漏洞被利用，可能对组织产生的副作用。</p></li>
+<li><p>确定组织资产的的潜在威胁。</p></li>
+<li><p>确定威胁利用漏洞的可能性或概率。</p></li>
+<li><p>确定潜在威胁的影响，无论是从故障系统中恢复还是实施可降低或消除风险的安全控制。</p></li>
+<li><p>确定最适合组织的风险分析方式。在定量和半定量风险分析的方式中，为每种威胁计算SLE和ARO，然后计算ALE。</p></li>
+<li><p>确定可能的应对措施，确保这些措施有成本效益并且能够按预期执行。</p></li>
+<li><p>清晰记录分析过程中的所有发现和所有决策。</p></li>
+</ul>
+</div>
+<div class="section" id="id15">
+<h3>练习 2-1<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h3>
+<p>场景：最近，Develetech公司一直担心位于总部大楼一楼的服务器机房的安全性。机房中具备高度业务价值的资产包括存储了敏感员工身份数据的人力资源服务器，以及客户财务数据服务器。机房位于主大厅旁边，不包含窗户，并且可以通过数字键盘进行访问控制。你已经确定了需要保护的资产，现在你被要求对服务器机房的物理安全进行全面风险分析。</p>
+<ol class="arabic simple">
+<li><p>服务器机房周围i有哪些明显的漏洞，你还会调查哪些其他方面的内容？</p></li>
+<li><p>根据计算机机房中的已知漏洞，存在哪些潜在威胁？</p></li>
+<li><p>哪些因素会影响这些威胁成功的可能性？</p></li>
+<li><p>如果成功地进行了未授权访问，你认为会造成哪些潜在影响？</p></li>
+<li><p>在这种情况下，可能会使用哪些风险缓解策略来降低服务器机房物理方位周围的风险？</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="b">
+<h2>课题B：分析风险的商业影响<a class="headerlink" href="#b" title="永久链接至标题">¶</a></h2>
+<p>在上一个课题中，你通过确定需要进行保护的资产，确定潜在漏洞和相关威胁及其被利用的可能性分析了组织风险。风险分析还包括对潜在威胁造成的影响进行评估，使你能够准确地知道组织中的那些威胁会造成什么样的影响。确定并分析风险如何影响组织的能力可以帮助你选择最有效的应对措施来缓解那些风险。在本章课题中，你将分析风险的业务影响。</p>
+<div class="section" id="id16">
+<h3>业务影响分析<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h3>
+<p>业务影响分析（business impact analysis/BLA）是一种系统性活动，用于确定组织风险及其对持续的、任务关键型的业务与流程产生的影响。BIA包括对漏洞的评估，对风险及其影响的评测。BLA还要包含业务的所有阶段，以确保所有的必要功能和关键系统得到确认，所有的相关风险得到处理。</p>
+<p>当确定一项风险时，组织就能确定风险发生的概率，然后就能确定对组织造成可能损害的数量。例如，一座横跨本地河流的道路桥梁被洪灾冲毁，员工们五天内都无法到达公司工厂，组织就要对人力和生产损失的预计成本进行评估。</p>
+<p>在很多情形下，执行一次BLA并记录结果是创建业务连续性计划（BCP）中的重要一环，BCP在课程的后面部分会有更深入的讲解。</p>
+</div>
+<div class="section" id="id17">
+<h3>影响的场景<a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h3>
+<p>风险的几种方式对组织造成影响。你需要了解哪些场景可以适用你的组织情况。</p>
+<p>人为风险和系统风险可能会损害组织名誉，例如：</p>
+<ul class="simple">
+<li><p>恢复中断服务或受损文件的影响时间过长。</p></li>
+<li><p>信息泄漏频繁，或某些问题重复出现。</p></li>
+<li><p>安全泄漏的敏感程度过高。</p></li>
+</ul>
+<p>组织名誉不仅会受到不同风险的影响，还与组织如果应对和相应风险有关。包括以下例子：</p>
+<ul class="simple">
+<li><p>自然灾害过程中的物价哄抬。</p></li>
+<li><p>处理故意或非故意的信息泄露的相应时间。</p></li>
+</ul>
+</div>
+<div class="section" id="id18">
+<h3>隐私评估<a class="headerlink" href="#id18" title="永久链接至标题">¶</a></h3>
+<p>组织使用两种基本隐私评估来进行业务影响分析（BLA）：隐私影响评估（private impact assessment/PIA）和隐私阈值分析（private threshold analysis）或隐私阈值评估（private threshold assessment/PTA）。</p>
+<table class="colwidths-given docutils align-default" id="id34">
+<caption><span class="caption-text">隐私评估</span><a class="headerlink" href="#id34" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>隐私评估的类型</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>PIA</p></td>
+<td><p>隐私影响评估这种工具能够确定并分析程序或系统生命周期中针对隐私的风险。其中声明了哪些个人可识别信息（personally identifiable information/PII）会被收集，并解释了其维护，保护以及共享方式。</p></td>
+</tr>
+<tr class="row-odd"><td><p>PTA</p></td>
+<td><p>隐私阈值分析或评估是一种用于确定什么时候需要PIA的文档。PTA通常包括描述系统的信息，收集或使用了哪些PII，以及PII的来源。</p></td>
+</tr>
+</tbody>
+</table>
+<p>在美国，需要在线收集个人信息的联邦机构对PIA和PTA做出了强制性要求。在其他机构中，这项规定的实施取决于组织是否应当执行PIA和PTA的不同情况。</p>
+<div class="section" id="sorn">
+<h4>SORN<a class="headerlink" href="#sorn" title="永久链接至标题">¶</a></h4>
+<p>另一种于隐私评估相关的文件是记录系统通知（system of records notice/SORN）。记录系统（system of record）是指使用个人姓名或身份识别号码、符号，或其他识别方式的任何信息集。SORN是一种由联邦记录处登记授权的，用于记录系统的发行物。</p>
+</div>
+</div>
+<div class="section" id="id19">
+<h3>关键系统和功能<a class="headerlink" href="#id19" title="永久链接至标题">¶</a></h3>
+<p>组织的关键系统和功能是指当发生缺失或严重退化时能够防止组织在既定的最低预期水平上运行的系统和功能。虽说所有的系统和功能都是组织运行所必须的，但是它们之间的重要程度各不相同。对数据中心来说，控制质量/HVAC系统的重要性要高于HVAC在办公大楼中的重要性，因为当温度过高时，服务器场可能会出现故障。</p>
+<p>确定系统或功能相对重要性的一种方法就是制定一些定量数据用于比较。BIA中包含的常用指标包括：</p>
+<ul>
+<li><p>生命</p>
+<blockquote>
+<div><p>自然灾害和故意的人为攻击可能会严重到威胁雇员和客户们的生命安全。包括以下例子：</p>
+<ul class="simple">
+<li><p>极端气象事件</p></li>
+<li><p>地震事件</p></li>
+<li><p>纵火或其他火灾</p></li>
+<li><p>恐怖袭击</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>财产</p>
+<blockquote>
+<div><p>对大楼和其他财产的物理破坏可能是由自然灾害和故意人为攻击引起的，如：</p>
+<ul class="simple">
+<li><p>极端气象事件</p></li>
+<li><p>地震事件</p></li>
+<li><p>纵火</p></li>
+<li><p>恐怖袭击</p></li>
+<li><p>强行闯入</p></li>
+<li><p>设备损坏</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>安全</p>
+<blockquote>
+<div><p>雇员和客户的人身安全可能是由自然灾害，故意人为攻击和无意人为风险造成的，如：</p>
+<ul class="simple">
+<li><p>极端气象事件</p></li>
+<li><p>地震事件</p></li>
+<li><p>纵火</p></li>
+<li><p>恐怖袭击</p></li>
+<li><p>过多员工生病或感染流行病</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>财务</p>
+<blockquote>
+<div><p>金钱损失可能是由自然灾害，故意人为攻击，无意人为风险和系统风险引起的，如：</p>
+<ul class="simple">
+<li><p>极端气象事件</p></li>
+<li><p>地震事件</p></li>
+<li><p>纵火</p></li>
+<li><p>恐怖袭击</p></li>
+<li><p>强行闯入</p></li>
+<li><p>盗窃</p></li>
+<li><p>设备损坏</p></li>
+<li><p>文件损坏</p></li>
+<li><p>故意或意外的信息泄漏</p></li>
+<li><p>用户错误</p></li>
+<li><p>社交网络和云计算</p></li>
+<li><p>过多员工生病或感染流行病</p></li>
+<li><p>不安全的移动和联网设备</p></li>
+<li><p>不稳定的虚拟环境</p></li>
+<li><p>电子邮件和账户管理漏洞</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>最大可承受停机事件（MTD）</p></li>
+<li><p>平均故障时间（MTTF）</p></li>
+<li><p>平均修理/更换时间（MTTR）</p></li>
+<li><p>平均故障时间间隔（MTBF）</p></li>
+<li><p>恢复时间目标（RTO）</p></li>
+<li><p>恢复点目标（RPO）</p></li>
+</ul>
+</div>
+<div class="section" id="id20">
+<h3>最大可承受停机时间<a class="headerlink" href="#id20" title="永久链接至标题">¶</a></h3>
+<p>最大可承受停机时间（Maximum tolerable downtime/MTD）是指在不引起无法恢复的业务故障的情况下，可以承受的最长业务中断时间。每种业务流程都有自己的MTD，例如，关键功能可以承受几分种到几个小时，紧急功能可以承受24小时，常用功能可以承受7天等等。MTD因公司和事件而异。</p>
+<div class="section" id="mtd">
+<h4>MTD<a class="headerlink" href="#mtd" title="永久链接至标题">¶</a></h4>
+<p>MTD 限制了企业恢复运营所需的恢复时间。比如，专门从事医疗设备的组织可能可以在没有制造商品供应的情况下生存三个月，因为它们有大量库存。三个月后，组织就会出现物资短缺的情况，并且无法生产其他产品，从而导致失败。在这种情况下，MTD为三个月。</p>
+</div>
+</div>
+<div class="section" id="id21">
+<h3>恢复点目标<a class="headerlink" href="#id21" title="永久链接至标题">¶</a></h3>
+<p>恢复点目标（recovery point objective/PRO）是指组织能够承受的丢失数据不可恢复的最长时间。RPO通常用小时表示，在大多数IT场景中，RPO决定了备份的频率。比如，假设组织的RPO是10个小时，那就应当至少每10小时执行一次备份。上次备份与事故之间的时间间隔不会超过10个小时，因此这个时间里的数据丢失在组织的可承受范围之内。</p>
+<p>继续前面的例子，假设最后一次备份是在星期天下午执行的，下周二出现了故障，那么恢复点就是星期天下午。最新的备份被恢复，并且进程开始恢复从星期天下午到星期二故障点之间的所有活动。但是，RPO被设置为10小时，因此，更多数据可能会丢失，而不是被认为可以接受。</p>
+</div>
+<div class="section" id="id22">
+<h3>恢复时间目标<a class="headerlink" href="#id22" title="永久链接至标题">¶</a></h3>
+<p>恢复时间目标（recovery time objective/RTO）是指事件发生后，恢复正常业务操作和活动时间长度。它包括回到RPO，从当前状态中恢复系统并重新开始运行的必要时间。RTO必须在MTD之前达成。</p>
+</div>
+<div class="section" id="id23">
+<h3>平均故障时间<a class="headerlink" href="#id23" title="永久链接至标题">¶</a></h3>
+<p>平均故障时间（Mean time to failure/MTTF）是指设备或组件预计运行的平均时间。通常用于描述那些不可修复的设备或组件的可靠性，MTTF的计算方法为用总运行小时数除以故障次数。MTTF通常以千小时表示。</p>
+</div>
+<div class="section" id="id24">
+<h3>平均修复时间<a class="headerlink" href="#id24" title="永久链接至标题">¶</a></h3>
+<p>平均修复时间（Mean time to repair/MTTR）是指设备或组件从事件或故障中恢复所需的平均事件。如果某个组件与特定的恢复工作相关，该组件的MTTR会小于RTO。还句话说，RTO包含了MTTR，将其作为其中重要组成部分来表示将整个业务恢复到正常状态所需的事件。MTTR通常以小时表示。</p>
+</div>
+<div class="section" id="id25">
+<h3>平均故障间隔时间<a class="headerlink" href="#id25" title="永久链接至标题">¶</a></h3>
+<p>平均故障间隔时间（Mean time between failures/MTBF）评估了设备或组件中发生故障的预计时间间隔。这个指标基本上是用来衡量设备或组件的可靠程度的。对大多数设备和组件来说，MTBF通常会达到数千小时或数万小时。根据系统的相应MTBF，你可能需要考虑并计划冗余措施。</p>
+<p>将MTTF和MTTR相加也可以计算出MTBF。</p>
+</div>
+<div class="section" id="id26">
+<h3>执行业务影响分析的准则<a class="headerlink" href="#id26" title="永久链接至标题">¶</a></h3>
+<p>当你执行 BIA，考虑以下准则：</p>
+<ul class="simple">
+<li><p>确定任务必要型的功能和每种功能中的关键型系统。这些是你需要评估其影响力的系统。</p></li>
+<li><p>确定会使你的业务操作面临风险的重大场景。</p></li>
+<li><p>计算 MTD、RPO、RTO、MTTF、MTTR和MTBF。</p></li>
+<li><p>必要时，执行隐私阈值评估和隐私影响评估。</p></li>
+<li><p>确定单点故障，并在可能的情况下建立冗余或备用系统和解决方案。</p></li>
+</ul>
+</div>
+<div class="section" id="id27">
+<h3>练习 2-2<a class="headerlink" href="#id27" title="永久链接至标题">¶</a></h3>
+<p>场景：Develetech 最大的收入来源是它的在线店铺。这个店铺由遍布全球的众多服务器进行托管，并为超过100个国家的数百万客户提供服务。周一上午9:00，在日常维护期间，管理员通过控制服务台发布命令，擦除3台服务器的硬盘驱动器，以便可以使用新的系统镜像对它们进行更新。然而管理员键入了错误的命令，实际上擦除了服务于商店的整个服务器集群。这让全球所有客户都措手不及。</p>
+<p>有关该事件的其他重要事实包括：</p>
+<ul class="simple">
+<li><p>店面服务器的最后一次备份在周日晚上 9:00 执行。</p></li>
+<li><p>组织之前已经确认，超过6小时的交易数据丢失可能会使执行过程严重复杂化，并导致成千上万的愤怒客户要求退款。</p></li>
+<li><p>所有服务器都需要完全重新启动，在重新投入生产之前需要从备份中恢复。审查损坏的灾难人员得出结论，这个过程每台服务器平均需要8个小时。</p></li>
+<li><p>多台服务器可以同时进行恢复，但由于人员和网络带宽限制，一些服务器无法立即进行恢复过程。</p></li>
+<li><p>总体而言，Develetech认为它能在2天内完全恢复店铺。</p></li>
+<li><p>之前的评估显示，Develetech不能在没有店铺作为收入来源的情况下支撑3天以上。</p></li>
+</ul>
+<p>给定这些信息，你需要使用不同的指标来执行BIA。</p>
+<ol class="arabic">
+<li><p>Develetech 在本次事件中的恢复点目标（RPO）是多少？</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>3小时</p></li>
+<li><p>6小时</p></li>
+<li><p>9小时</p></li>
+<li><p>12小时</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Develetech 是否满足了 RPO？为什么或为什么没有？如果有的话，你会建议做出那些改变？</p></li>
+<li><p>每个受到影响的服务器的平均修复时间（MTTR）是多少？</p></li>
+<li><p>在本次事件中 Develetech 的恢复时间目标（RTO）是多少？</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>6小时</p></li>
+<li><p>8小时</p></li>
+<li><p>2天</p></li>
+<li><p>3天</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>假设有100个服务器，管理员只能一次性恢复20个，然后才能去恢复后20个。这种行为是否与组织的 RTO 相会冲突？为什么或为什么没有？</p></li>
+<li><p>在本次事件中 Develetech 的最大可承受停机时间（MTD）是多少？</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>2天</p></li>
+<li><p>3天</p></li>
+<li><p>4天</p></li>
+<li><p>5天</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>假设 Develetech 没有满足它的 RTO，并且在店铺重新全面运营之前超出了MTD。这会对企业产生什么样的影响？</p></li>
+</ol>
+<ul>
+<li><p>总结</p>
+<blockquote>
+<div><p>在本章课程中，你分析了风险及其对企业的潜在影响。当风险被确认并得到合理的管理时，就能大幅降低对组织造成的可能损害。你有责任为你的组织分析风险，合理地评估并确定漏洞，以便应用最有效的缓解策略。借助这些技能，你就能进行全面的风险分析并应用自定义的安全措施，不仅实现了访问控制，还能降低风险。</p>
+<p>你的组织面临哪些类型的风险，你会使用哪些方法来分析这些风险？</p>
+<p>如果你正在为你的组织执行BIA，你认为哪些类型的系统和功能对于业务操作来说是比不可少的？为什么？</p>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
 
           </div>
           
@@ -52,8 +639,41 @@
 
 
 <h3>导航</h3>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../Chapter_1/index.html">第一章： 确定安全基础</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">第二章：分析风险</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#a">课题A：分析组织风险</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">风险管理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">风险分析的组成</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">风险分析的阶段</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">威胁类型的分类</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">风险分析的方式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">风险计算</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">风险响应的技巧</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">风险缓解和控制类型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">变更管理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">分析风险的准则</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">练习 2-1</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#b">课题B：分析风险的商业影响</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id16">业务影响分析</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">影响的场景</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id18">隐私评估</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id19">关键系统和功能</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id20">最大可承受停机时间</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id21">恢复点目标</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id22">恢复时间目标</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id23">平均故障时间</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id24">平均修复时间</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id25">平均故障间隔时间</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id26">执行业务影响分析的准则</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id27">练习 2-2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Chapter_3/index.html">第三章：确定安全威胁</a></li>
 </ul>
 
 <div class="relations">
@@ -61,7 +681,7 @@
 <ul>
   <li><a href="../../index.html">Documentation overview</a><ul>
       <li>Previous: <a href="../Chapter_1/index.html" title="上一章">第一章： 确定安全基础</a></li>
-      <li>Next: <a href="../Chapter_3/index.html" title="下一章">&lt;no title&gt;</a></li>
+      <li>Next: <a href="../Chapter_3/index.html" title="下一章">第三章：确定安全威胁</a></li>
   </ul></li>
 </ul>
 </div>

@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh_CN">
   <head>
     <meta charset="utf-8" />
-    <title>&lt;no title&gt; &#8212; 《Security+ 学习手册》 alpha 文档</title>
+    <title>课题B：分析风险的商业影响 &#8212; 《Security+ 学习手册》 alpha 文档</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
@@ -29,7 +29,223 @@
 
           <div class="body" role="main">
             
-  
+  <div class="section" id="b">
+<h1>课题B：分析风险的商业影响<a class="headerlink" href="#b" title="永久链接至标题">¶</a></h1>
+<p>在上一个课题中，你通过确定需要进行保护的资产，确定潜在漏洞和相关威胁及其被利用的可能性分析了组织风险。风险分析还包括对潜在威胁造成的影响进行评估，使你能够准确地知道组织中的那些威胁会造成什么样的影响。确定并分析风险如何影响组织的能力可以帮助你选择最有效的应对措施来缓解那些风险。在本章课题中，你将分析风险的业务影响。</p>
+<div class="section" id="id1">
+<h2>业务影响分析<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>业务影响分析（business impact analysis/BLA）是一种系统性活动，用于确定组织风险及其对持续的、任务关键型的业务与流程产生的影响。BIA包括对漏洞的评估，对风险及其影响的评测。BLA还要包含业务的所有阶段，以确保所有的必要功能和关键系统得到确认，所有的相关风险得到处理。</p>
+<p>当确定一项风险时，组织就能确定风险发生的概率，然后就能确定对组织造成可能损害的数量。例如，一座横跨本地河流的道路桥梁被洪灾冲毁，员工们五天内都无法到达公司工厂，组织就要对人力和生产损失的预计成本进行评估。</p>
+<p>在很多情形下，执行一次BLA并记录结果是创建业务连续性计划（BCP）中的重要一环，BCP在课程的后面部分会有更深入的讲解。</p>
+</div>
+<div class="section" id="id2">
+<h2>影响的场景<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>风险的几种方式对组织造成影响。你需要了解哪些场景可以适用你的组织情况。</p>
+<p>人为风险和系统风险可能会损害组织名誉，例如：</p>
+<ul class="simple">
+<li><p>恢复中断服务或受损文件的影响时间过长。</p></li>
+<li><p>信息泄漏频繁，或某些问题重复出现。</p></li>
+<li><p>安全泄漏的敏感程度过高。</p></li>
+</ul>
+<p>组织名誉不仅会受到不同风险的影响，还与组织如果应对和相应风险有关。包括以下例子：</p>
+<ul class="simple">
+<li><p>自然灾害过程中的物价哄抬。</p></li>
+<li><p>处理故意或非故意的信息泄露的相应时间。</p></li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h2>隐私评估<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>组织使用两种基本隐私评估来进行业务影响分析（BLA）：隐私影响评估（private impact assessment/PIA）和隐私阈值分析（private threshold analysis）或隐私阈值评估（private threshold assessment/PTA）。</p>
+<table class="colwidths-given docutils align-default" id="id13">
+<caption><span class="caption-text">隐私评估</span><a class="headerlink" href="#id13" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>隐私评估的类型</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>PIA</p></td>
+<td><p>隐私影响评估这种工具能够确定并分析程序或系统生命周期中针对隐私的风险。其中声明了哪些个人可识别信息（personally identifiable information/PII）会被收集，并解释了其维护，保护以及共享方式。</p></td>
+</tr>
+<tr class="row-odd"><td><p>PTA</p></td>
+<td><p>隐私阈值分析或评估是一种用于确定什么时候需要PIA的文档。PTA通常包括描述系统的信息，收集或使用了哪些PII，以及PII的来源。</p></td>
+</tr>
+</tbody>
+</table>
+<p>在美国，需要在线收集个人信息的联邦机构对PIA和PTA做出了强制性要求。在其他机构中，这项规定的实施取决于组织是否应当执行PIA和PTA的不同情况。</p>
+<div class="section" id="sorn">
+<h3>SORN<a class="headerlink" href="#sorn" title="永久链接至标题">¶</a></h3>
+<p>另一种于隐私评估相关的文件是记录系统通知（system of records notice/SORN）。记录系统（system of record）是指使用个人姓名或身份识别号码、符号，或其他识别方式的任何信息集。SORN是一种由联邦记录处登记授权的，用于记录系统的发行物。</p>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>关键系统和功能<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>组织的关键系统和功能是指当发生缺失或严重退化时能够防止组织在既定的最低预期水平上运行的系统和功能。虽说所有的系统和功能都是组织运行所必须的，但是它们之间的重要程度各不相同。对数据中心来说，控制质量/HVAC系统的重要性要高于HVAC在办公大楼中的重要性，因为当温度过高时，服务器场可能会出现故障。</p>
+<p>确定系统或功能相对重要性的一种方法就是制定一些定量数据用于比较。BIA中包含的常用指标包括：</p>
+<ul>
+<li><p>生命</p>
+<blockquote>
+<div><p>自然灾害和故意的人为攻击可能会严重到威胁雇员和客户们的生命安全。包括以下例子：</p>
+<ul class="simple">
+<li><p>极端气象事件</p></li>
+<li><p>地震事件</p></li>
+<li><p>纵火或其他火灾</p></li>
+<li><p>恐怖袭击</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>财产</p>
+<blockquote>
+<div><p>对大楼和其他财产的物理破坏可能是由自然灾害和故意人为攻击引起的，如：</p>
+<ul class="simple">
+<li><p>极端气象事件</p></li>
+<li><p>地震事件</p></li>
+<li><p>纵火</p></li>
+<li><p>恐怖袭击</p></li>
+<li><p>强行闯入</p></li>
+<li><p>设备损坏</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>安全</p>
+<blockquote>
+<div><p>雇员和客户的人身安全可能是由自然灾害，故意人为攻击和无意人为风险造成的，如：</p>
+<ul class="simple">
+<li><p>极端气象事件</p></li>
+<li><p>地震事件</p></li>
+<li><p>纵火</p></li>
+<li><p>恐怖袭击</p></li>
+<li><p>过多员工生病或感染流行病</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>财务</p>
+<blockquote>
+<div><p>金钱损失可能是由自然灾害，故意人为攻击，无意人为风险和系统风险引起的，如：</p>
+<ul class="simple">
+<li><p>极端气象事件</p></li>
+<li><p>地震事件</p></li>
+<li><p>纵火</p></li>
+<li><p>恐怖袭击</p></li>
+<li><p>强行闯入</p></li>
+<li><p>盗窃</p></li>
+<li><p>设备损坏</p></li>
+<li><p>文件损坏</p></li>
+<li><p>故意或意外的信息泄漏</p></li>
+<li><p>用户错误</p></li>
+<li><p>社交网络和云计算</p></li>
+<li><p>过多员工生病或感染流行病</p></li>
+<li><p>不安全的移动和联网设备</p></li>
+<li><p>不稳定的虚拟环境</p></li>
+<li><p>电子邮件和账户管理漏洞</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>最大可承受停机事件（MTD）</p></li>
+<li><p>平均故障时间（MTTF）</p></li>
+<li><p>平均修理/更换时间（MTTR）</p></li>
+<li><p>平均故障时间间隔（MTBF）</p></li>
+<li><p>恢复时间目标（RTO）</p></li>
+<li><p>恢复点目标（RPO）</p></li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h2>最大可承受停机时间<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p>最大可承受停机时间（Maximum tolerable downtime/MTD）是指在不引起无法恢复的业务故障的情况下，可以承受的最长业务中断时间。每种业务流程都有自己的MTD，例如，关键功能可以承受几分种到几个小时，紧急功能可以承受24小时，常用功能可以承受7天等等。MTD因公司和事件而异。</p>
+<div class="section" id="mtd">
+<h3>MTD<a class="headerlink" href="#mtd" title="永久链接至标题">¶</a></h3>
+<p>MTD 限制了企业恢复运营所需的恢复时间。比如，专门从事医疗设备的组织可能可以在没有制造商品供应的情况下生存三个月，因为它们有大量库存。三个月后，组织就会出现物资短缺的情况，并且无法生产其他产品，从而导致失败。在这种情况下，MTD为三个月。</p>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>恢复点目标<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<p>恢复点目标（recovery point objective/PRO）是指组织能够承受的丢失数据不可恢复的最长时间。RPO通常用小时表示，在大多数IT场景中，RPO决定了备份的频率。比如，假设组织的RPO是10个小时，那就应当至少每10小时执行一次备份。上次备份与事故之间的时间间隔不会超过10个小时，因此这个时间里的数据丢失在组织的可承受范围之内。</p>
+<p>继续前面的例子，假设最后一次备份是在星期天下午执行的，下周二出现了故障，那么恢复点就是星期天下午。最新的备份被恢复，并且进程开始恢复从星期天下午到星期二故障点之间的所有活动。但是，RPO被设置为10小时，因此，更多数据可能会丢失，而不是被认为可以接受。</p>
+</div>
+<div class="section" id="id7">
+<h2>恢复时间目标<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<p>恢复时间目标（recovery time objective/RTO）是指事件发生后，恢复正常业务操作和活动时间长度。它包括回到RPO，从当前状态中恢复系统并重新开始运行的必要时间。RTO必须在MTD之前达成。</p>
+</div>
+<div class="section" id="id8">
+<h2>平均故障时间<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
+<p>平均故障时间（Mean time to failure/MTTF）是指设备或组件预计运行的平均时间。通常用于描述那些不可修复的设备或组件的可靠性，MTTF的计算方法为用总运行小时数除以故障次数。MTTF通常以千小时表示。</p>
+</div>
+<div class="section" id="id9">
+<h2>平均修复时间<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
+<p>平均修复时间（Mean time to repair/MTTR）是指设备或组件从事件或故障中恢复所需的平均事件。如果某个组件与特定的恢复工作相关，该组件的MTTR会小于RTO。还句话说，RTO包含了MTTR，将其作为其中重要组成部分来表示将整个业务恢复到正常状态所需的事件。MTTR通常以小时表示。</p>
+</div>
+<div class="section" id="id10">
+<h2>平均故障间隔时间<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h2>
+<p>平均故障间隔时间（Mean time between failures/MTBF）评估了设备或组件中发生故障的预计时间间隔。这个指标基本上是用来衡量设备或组件的可靠程度的。对大多数设备和组件来说，MTBF通常会达到数千小时或数万小时。根据系统的相应MTBF，你可能需要考虑并计划冗余措施。</p>
+<p>将MTTF和MTTR相加也可以计算出MTBF。</p>
+</div>
+<div class="section" id="id11">
+<h2>执行业务影响分析的准则<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h2>
+<p>当你执行 BIA，考虑以下准则：</p>
+<ul class="simple">
+<li><p>确定任务必要型的功能和每种功能中的关键型系统。这些是你需要评估其影响力的系统。</p></li>
+<li><p>确定会使你的业务操作面临风险的重大场景。</p></li>
+<li><p>计算 MTD、RPO、RTO、MTTF、MTTR和MTBF。</p></li>
+<li><p>必要时，执行隐私阈值评估和隐私影响评估。</p></li>
+<li><p>确定单点故障，并在可能的情况下建立冗余或备用系统和解决方案。</p></li>
+</ul>
+</div>
+<div class="section" id="id12">
+<h2>练习 2-2<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h2>
+<p>场景：Develetech 最大的收入来源是它的在线店铺。这个店铺由遍布全球的众多服务器进行托管，并为超过100个国家的数百万客户提供服务。周一上午9:00，在日常维护期间，管理员通过控制服务台发布命令，擦除3台服务器的硬盘驱动器，以便可以使用新的系统镜像对它们进行更新。然而管理员键入了错误的命令，实际上擦除了服务于商店的整个服务器集群。这让全球所有客户都措手不及。</p>
+<p>有关该事件的其他重要事实包括：</p>
+<ul class="simple">
+<li><p>店面服务器的最后一次备份在周日晚上 9:00 执行。</p></li>
+<li><p>组织之前已经确认，超过6小时的交易数据丢失可能会使执行过程严重复杂化，并导致成千上万的愤怒客户要求退款。</p></li>
+<li><p>所有服务器都需要完全重新启动，在重新投入生产之前需要从备份中恢复。审查损坏的灾难人员得出结论，这个过程每台服务器平均需要8个小时。</p></li>
+<li><p>多台服务器可以同时进行恢复，但由于人员和网络带宽限制，一些服务器无法立即进行恢复过程。</p></li>
+<li><p>总体而言，Develetech认为它能在2天内完全恢复店铺。</p></li>
+<li><p>之前的评估显示，Develetech不能在没有店铺作为收入来源的情况下支撑3天以上。</p></li>
+</ul>
+<p>给定这些信息，你需要使用不同的指标来执行BIA。</p>
+<ol class="arabic">
+<li><p>Develetech 在本次事件中的恢复点目标（RPO）是多少？</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>3小时</p></li>
+<li><p>6小时</p></li>
+<li><p>9小时</p></li>
+<li><p>12小时</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Develetech 是否满足了 RPO？为什么或为什么没有？如果有的话，你会建议做出那些改变？</p></li>
+<li><p>每个受到影响的服务器的平均修复时间（MTTR）是多少？</p></li>
+<li><p>在本次事件中 Develetech 的恢复时间目标（RTO）是多少？</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>6小时</p></li>
+<li><p>8小时</p></li>
+<li><p>2天</p></li>
+<li><p>3天</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>假设有100个服务器，管理员只能一次性恢复20个，然后才能去恢复后20个。这种行为是否与组织的 RTO 相会冲突？为什么或为什么没有？</p></li>
+<li><p>在本次事件中 Develetech 的最大可承受停机时间（MTD）是多少？</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>2天</p></li>
+<li><p>3天</p></li>
+<li><p>4天</p></li>
+<li><p>5天</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>假设 Develetech 没有满足它的 RTO，并且在店铺重新全面运营之前超出了MTD。这会对企业产生什么样的影响？</p></li>
+</ol>
+</div>
+</div>
+
 
           </div>
           
@@ -52,6 +268,8 @@
 <h3>导航</h3>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../Chapter_1/index.html">第一章： 确定安全基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">第二章：分析风险</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chapter_3/index.html">第三章：确定安全威胁</a></li>
 </ul>
 
 <div class="relations">

@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh_CN">
   <head>
     <meta charset="utf-8" />
-    <title>&lt;no title&gt; &#8212; 《Security+ 学习手册》 alpha 文档</title>
+    <title>课题A：确定攻击者的类型 &#8212; 《Security+ 学习手册》 alpha 文档</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
@@ -29,7 +29,103 @@
 
           <div class="body" role="main">
             
-  
+  <div class="section" id="a">
+<h1>课题A：确定攻击者的类型<a class="headerlink" href="#a" title="永久链接至标题">¶</a></h1>
+<p>在你深入研究特定类型的攻击时，你需要观察组织可能面临的威胁特征。尤其需要确认攻击者的不同目的，掌握的能力和资源。这提供了一种能帮助你提高对不同种类攻击认知的亟需的环境。</p>
+<div class="section" id="id1">
+<h2>黑客和攻击者<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>黑客（Hacker）和攻击者（attacker）这种相关术语是指有能力通过未经授权或未经允许的方式获得计算机系统访问权限的个体。一开始，黑客是一个中性词，指代擅长计算机编程和计算机系统管理的用户。入侵系统的高超技术和创造力的一种标志，但逐渐就与非法和恶意系统入侵联系在了一起。攻击者则总是指代恶意系统入侵者，或表示在其他方面伤害用户或计算环境的人。</p>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>术语破解者（cracker）是指破解加密代码，破坏软件副本的保护措施，或专攻破解系统的个人。Craker这个术语有时用于代指黑客或攻击者。</p>
+</div>
+<div class="section" id="id2">
+<h3>白帽和黑帽<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
+<p>白帽（white hat）黑客发现并暴露应用程序和操作系统中的安全缺陷以便制造商能在这些缺陷广泛传播之前进行修复。这种活动是经制造商同意的。白帽黑客通常从专业的角度出发，为安全机构或系统制造商工作。有时这种行为被称作文明入侵。</p>
+<p>黑帽（black hat）黑客为经济利益或某些恶意目的发现并暴露安全漏洞。这种活动是未经组织授权或同意的。虽然黒帽黑客可能不会像攻击者一样直接入侵系统，但是广泛地公开安全缺陷可能会对组织造成经济或其他方面地损害。</p>
+<p>某些认为自己是白帽黑客地人也会发现并公开安全问题，但未对组织进行告知并得到许可。他们向制造商，政府或立法机构报告安全缺陷，并认为自己地行为是处于公共利益。这些黑客通常被叫做灰帽（grey hat），因为它们道德上的态度含混不明。例如，假如一位灰帽黑客尝试在未经允许地情况下访问一台计算机，那他就进行了一项非法行为，即使这位灰帽黑客没有从中获利。在这种情况下，灰帽和黑帽地唯一区别就是他们的意图。对于这种安全问题地未授权揭露是否能够真正地服务公众，还是仅仅为攻击提供了便利还存在一些争议。</p>
+<p>白帽和黑帽这个名字来源于老式西部电影中的人物：好人总是戴白色帽子，而坏人则戴黑色帽子。</p>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>威胁执行者<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>威胁执行者（threat actor）是指需要对影响或可能影响组织安全地事件负部分或全部责任的实体。威胁执行者也被叫做恶意执行者（malicious actor）。威胁执行者有一些不同的类型。</p>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>有很多种方法可以用来划分威胁执行者，有时，一种类型和另一种类型之间没有严格的区别。重要的是要意识到威胁有许多不同的来源，攻击的动机和目的可能极具主观性，对于理性观察者而言，不一定合理或合乎逻辑。</p>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>威胁执行者的属性<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>威胁执行者可能有不同的属性，认识其中一些不同类型能够帮助你检测并抵御攻击。</p>
+<ul>
+<li><p>脚本小子</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>内部的还是外部？主要来源于外部</p></li>
+<li><p>复杂程度：脚本小子使用简单的方式来进行他们的攻击，如互联网上可用的病毒代码样本或自动攻击工具。这些工具常常被叫做脚本小子工具，安全专家们经常会使用这种工具来进行测试。</p></li>
+<li><p>资金/资源：最少</p></li>
+<li><p>意图/动机：脚本小子的攻击可能没有特定的目标或合理的目的，仅仅只是为了获取关注或提高技术能力。</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>黑客行为主义者</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>内部还是外部？主要来源于外部</p></li>
+<li><p>复杂程度：各不相同</p></li>
+<li><p>资源/资金：各不相同</p></li>
+<li><p>意图/动机： 黑客行为主义者的动机是想要引起社会变革，可能会通过破坏服务来获得媒体关注，通过替换公共网站中的信息来宣扬一条消息。黑客行为主义者可能还会想要在那些被认为没有社会责任感或无所作为的组织中引起破坏。</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>有组织的犯罪</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>内部还是外部？外部。</p></li>
+<li><p>复杂程度：高度复杂性。</p></li>
+<li><p>资源/资金：需要充分资助。</p></li>
+<li><p>意图/动机：金钱利益。以个人可识别信息（PII）和其他可以卖钱的数据为常见目标。</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>民族国家</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>内部还是外部？外部</p></li>
+<li><p>复杂程度：高度复杂性</p></li>
+<li><p>资源/资金：需要充分资助</p></li>
+<li><p>意图/动机：政府资助的行为通常是处于政治，军事，技术或经济议事等目的。</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>内部人员</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>内部还是外部？内部</p></li>
+<li><p>复杂程度：各不相同</p></li>
+<li><p>资源/资金：各不相同</p></li>
+<li><p>意图/动机：内部的攻击者可能是出于对组织的某种仇恨，这种情况下，它们的目的可能就是仅仅想要通过损害或破坏系统来进行报复。或者，他们可能是出于经济利益，而想要获取机密信息并买卖给竞争者或第三方。最后，这种攻击也可能是因为某个无意行为导致的结果。</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>竞争对手</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>内部还是外部？外部</p></li>
+<li><p>复杂程度：相对较高。</p></li>
+<li><p>资源/资金：相对较高。</p></li>
+<li><p>意图/动机：竞争对手出于金钱目的，通过商业间谍活动来取得竞争优势。</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h2>开源情报<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+</div>
+</div>
+
 
           </div>
           
@@ -52,6 +148,8 @@
 <h3>导航</h3>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../Chapter_1/index.html">第一章： 确定安全基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chapter_2/index.html">第二章：分析风险</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">第三章：确定安全威胁</a></li>
 </ul>
 
 <div class="relations">
