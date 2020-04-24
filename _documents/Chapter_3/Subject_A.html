@@ -50,6 +50,38 @@
 <div class="section" id="id3">
 <h2>威胁执行者<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
 <p>威胁执行者（threat actor）是指需要对影响或可能影响组织安全地事件负部分或全部责任的实体。威胁执行者也被叫做恶意执行者（malicious actor）。威胁执行者有一些不同的类型。</p>
+<table class="colwidths-given docutils align-default" id="id7">
+<caption><span class="caption-text">威胁执行者</span><a class="headerlink" href="#id7" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>威胁执行者的类型</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>脚本小子（Script kiddie）</p></td>
+<td><p>新手或经验不足的黑客，技术知识有限，需要依赖自动工具进行攻击。</p></td>
+</tr>
+<tr class="row-odd"><td><p>电子活动家（黑客行为主义者 hacktivist）</p></td>
+<td><p>这种黑客为实现政治或社会变革而获取计算机系统的未授权访问并在其中引起破坏。</p></td>
+</tr>
+<tr class="row-even"><td><p>有组织的犯罪</p></td>
+<td><p>计划进行犯罪活动的个人小组，最常见的目的是获取金钱利益。</p></td>
+</tr>
+<tr class="row-odd"><td><p>民族国家</p></td>
+<td><p>政府情报机构经常使用不同类型的威胁实现它们的政治和军事目的。</p></td>
+</tr>
+<tr class="row-even"><td><p>内部人员（Insider）</p></td>
+<td><p>内部人员威胁源自目标哦组织内部。内部人员包括现在和过去的员工，承包商，工作伙伴，以及任何能够访问专利或机密信息的实体。</p></td>
+</tr>
+<tr class="row-odd"><td><p>竞争对手</p></td>
+<td><p>获取了商业竞争对手敏感信息访问权限的组织。</p></td>
+</tr>
+</tbody>
+</table>
 <div class="admonition note">
 <p class="admonition-title">注解</p>
 <p>有很多种方法可以用来划分威胁执行者，有时，一种类型和另一种类型之间没有严格的区别。重要的是要意识到威胁有许多不同的来源，攻击的动机和目的可能极具主观性，对于理性观察者而言，不一定合理或合乎逻辑。</p>
@@ -123,6 +155,63 @@
 </div>
 <div class="section" id="id5">
 <h2>开源情报<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p>开源情报（Open-source inteligence/OSINT）是指通过合法手段从公开可用的来源收集到的信息。这些来源包括但不限于：</p>
+<ul class="simple">
+<li><p>传统媒体，如报纸、电视、收音机和杂志等。</p></li>
+<li><p>社交网络站点，如 Facebook、Twitter、Instagram 和 YouTube 等。</p></li>
+<li><p>公共信息，如财政预算、法律文件、政府报告等。</p></li>
+<li><p>专业和学术交流。</p></li>
+<li><p>地理空间方面的内容，如地图、环境数据以及空间数据库（spatial database）</p></li>
+<li><p>深网（Deep web）信息，或无法通过传统搜索引擎索引到的内容，如动态内容，基于网页的电子邮件和在线银行交易。</p></li>
+</ul>
+<p>由于这些来源中有海量的数据，对OSINT从业者来说，确定信息的相关性和准确性是一项挑战。许多利用OSINT的实体都属于政府机构，情报机构和军事机构，但一些私企对此也有涉猎。</p>
+</div>
+<div class="section" id="id6">
+<h2>练习 3-1<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<p>场景：和任何其他企业一样，Develetech也是攻击的目标。当你开始寻找特定类型的攻击时，你需要对攻击者本身进行描述。理解攻击者的目的，技术水平和来源能帮助安全团队更容易地预测或缓解对 Develetech 资产的威胁。</p>
+<ol class="arabic">
+<li><p>最近，一名匿名黑客通过破解管理员的证书访问了Develetech的网络。然后这名黑客秘密的联系了组织的CISO并承认了入侵行为。除了承认，黑客还告诉CISO管理员的密码只有五个字符，并且是一个常见的字典单词。黑客建议安全团队应用更强大的密码限制来避免未来出现这种类型的攻击。这个场景中描述的黑客属于哪种类型？</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>白帽</p></li>
+<li><p>黑帽</p></li>
+<li><p>灰帽</p></li>
+<li><p>蓝帽</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>下面那一项描述了脚本小子的特征？</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>经验不足的攻击者，使用其他人开发的攻击工具</p></li>
+<li><p>年轻冲动的攻击者，创建自己的脚本来进行攻击</p></li>
+<li><p>主要动机是实现社会或政治变革的攻击者</p></li>
+<li><p>主要动机是经济收益的攻击者</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>下列哪种威胁执行者主要受到经济利益的驱使？（选择两项）</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>黑客行为主义者</p></li>
+<li><p>名族国家</p></li>
+<li><p>有组织的犯罪</p></li>
+<li><p>竞争对手</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>下列哪种威胁执行者的主要动机是希望实现社会变革？</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>内部人员</p></li>
+<li><p>黑客行为主义者</p></li>
+<li><p>竞争对手</p></li>
+<li><p>有组织的犯罪</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>几乎每位Develetech员工都使用某种社交网络，无论是个人还是专业的。攻击者可能会如何使用 Facebook、Twitter、Instagram、Linkedln 等站点上的可用开源情报来帮助他们进行攻击？</p></li>
+</ol>
 </div>
 </div>
 

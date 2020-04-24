@@ -76,6 +76,38 @@
 <div class="section" id="id4">
 <h3>威胁执行者<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
 <p>威胁执行者（threat actor）是指需要对影响或可能影响组织安全地事件负部分或全部责任的实体。威胁执行者也被叫做恶意执行者（malicious actor）。威胁执行者有一些不同的类型。</p>
+<table class="colwidths-given docutils align-default" id="id33">
+<caption><span class="caption-text">威胁执行者</span><a class="headerlink" href="#id33" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>威胁执行者的类型</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>脚本小子（Script kiddie）</p></td>
+<td><p>新手或经验不足的黑客，技术知识有限，需要依赖自动工具进行攻击。</p></td>
+</tr>
+<tr class="row-odd"><td><p>电子活动家（黑客行为主义者 hacktivist）</p></td>
+<td><p>这种黑客为实现政治或社会变革而获取计算机系统的未授权访问并在其中引起破坏。</p></td>
+</tr>
+<tr class="row-even"><td><p>有组织的犯罪</p></td>
+<td><p>计划进行犯罪活动的个人小组，最常见的目的是获取金钱利益。</p></td>
+</tr>
+<tr class="row-odd"><td><p>民族国家</p></td>
+<td><p>政府情报机构经常使用不同类型的威胁实现它们的政治和军事目的。</p></td>
+</tr>
+<tr class="row-even"><td><p>内部人员（Insider）</p></td>
+<td><p>内部人员威胁源自目标哦组织内部。内部人员包括现在和过去的员工，承包商，工作伙伴，以及任何能够访问专利或机密信息的实体。</p></td>
+</tr>
+<tr class="row-odd"><td><p>竞争对手</p></td>
+<td><p>获取了商业竞争对手敏感信息访问权限的组织。</p></td>
+</tr>
+</tbody>
+</table>
 <div class="admonition note">
 <p class="admonition-title">注解</p>
 <p>有很多种方法可以用来划分威胁执行者，有时，一种类型和另一种类型之间没有严格的区别。重要的是要意识到威胁有许多不同的来源，攻击的动机和目的可能极具主观性，对于理性观察者而言，不一定合理或合乎逻辑。</p>
@@ -149,6 +181,276 @@
 </div>
 <div class="section" id="id6">
 <h3>开源情报<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<p>开源情报（Open-source inteligence/OSINT）是指通过合法手段从公开可用的来源收集到的信息。这些来源包括但不限于：</p>
+<ul class="simple">
+<li><p>传统媒体，如报纸、电视、收音机和杂志等。</p></li>
+<li><p>社交网络站点，如 Facebook、Twitter、Instagram 和 YouTube 等。</p></li>
+<li><p>公共信息，如财政预算、法律文件、政府报告等。</p></li>
+<li><p>专业和学术交流。</p></li>
+<li><p>地理空间方面的内容，如地图、环境数据以及空间数据库（spatial database）</p></li>
+<li><p>深网（Deep web）信息，或无法通过传统搜索引擎索引到的内容，如动态内容，基于网页的电子邮件和在线银行交易。</p></li>
+</ul>
+<p>由于这些来源中有海量的数据，对OSINT从业者来说，确定信息的相关性和准确性是一项挑战。许多利用OSINT的实体都属于政府机构，情报机构和军事机构，但一些私企对此也有涉猎。</p>
+</div>
+<div class="section" id="id7">
+<h3>练习 3-1<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
+<p>场景：和任何其他企业一样，Develetech也是攻击的目标。当你开始寻找特定类型的攻击时，你需要对攻击者本身进行描述。理解攻击者的目的，技术水平和来源能帮助安全团队更容易地预测或缓解对 Develetech 资产的威胁。</p>
+<ol class="arabic">
+<li><p>最近，一名匿名黑客通过破解管理员的证书访问了Develetech的网络。然后这名黑客秘密的联系了组织的CISO并承认了入侵行为。除了承认，黑客还告诉CISO管理员的密码只有五个字符，并且是一个常见的字典单词。黑客建议安全团队应用更强大的密码限制来避免未来出现这种类型的攻击。这个场景中描述的黑客属于哪种类型？</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>白帽</p></li>
+<li><p>黑帽</p></li>
+<li><p>灰帽</p></li>
+<li><p>蓝帽</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>下面那一项描述了脚本小子的特征？</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>经验不足的攻击者，使用其他人开发的攻击工具</p></li>
+<li><p>年轻冲动的攻击者，创建自己的脚本来进行攻击</p></li>
+<li><p>主要动机是实现社会或政治变革的攻击者</p></li>
+<li><p>主要动机是经济收益的攻击者</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>下列哪种威胁执行者主要受到经济利益的驱使？（选择两项）</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>黑客行为主义者</p></li>
+<li><p>名族国家</p></li>
+<li><p>有组织的犯罪</p></li>
+<li><p>竞争对手</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>下列哪种威胁执行者的主要动机是希望实现社会变革？</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>内部人员</p></li>
+<li><p>黑客行为主义者</p></li>
+<li><p>竞争对手</p></li>
+<li><p>有组织的犯罪</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>几乎每位Develetech员工都使用某种社交网络，无论是个人还是专业的。攻击者可能会如何使用 Facebook、Twitter、Instagram、Linkedln 等站点上的可用开源情报来帮助他们进行攻击？</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="b">
+<h2>课题B：确定社交工程攻击<a class="headerlink" href="#b" title="永久链接至标题">¶</a></h2>
+<p>当你研究针对信息系统的攻击时，想的最多的可能是如何保护这些系统中的技术组成。但是，人——也就是系统用户——与技术组成一样，也是信息系统中的重要部分：人员也存在他们自己的漏洞，他们可能会成为系统中第一个被特定威胁攻克的部分。在本章课题中，你将要去确定社交工程攻击——针对技术环境中人为因素的攻击。</p>
+<p>对于技术向的人员来说，很容易就会忘记信息系统中最重要的部分之一是使用那些系统的人员。计算机和技术不是凭空存在，只有用户使用并与之互动才能发挥其效果。攻击者们知道这一点，因此，也知道系统中的人员可能可以成为攻击的最佳目标。如果你想在发生此类攻击时保护你的基础设施、系统和数据，就需要能够识别这种攻击。</p>
+<div class="section" id="id8">
+<h3>社交工程<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
+<p>社交工程（social engineering）攻击是指使用欺骗或诡计手段说服毫无防备的用户提供敏感信息或违反安全原则的攻击类型。社交工程通常是进行另一种攻击的前兆。由于这中攻击取决与人的因素而不是技术，因此它们的征兆会比较模糊却难以确定。社交工程攻击可以通过许多不同的方式执行：通过人员、电子邮件或电话。</p>
+<p>社交工程攻击通常会利用那些没有技术性知识储备的用户，但是，当攻击者伪装成需要帮助的用户时，可能就会把矛头对准技术支持人员。</p>
+<p>常见的社交工程攻击的场景包括：</p>
+<ul class="simple">
+<li><p>攻击者创建了一个会提示网络用户输入用户名和密码的可执行程序文件（例如，以.vbs或.exe为扩展名的文件），用户输入的内容会被记录下来。然后攻击者将可执行文件电邮给用户，告诉用户必须双击文件并重新登录网络，来解决组织早上遇到的一些登录问题。一旦用户照做，攻击者就能获得他们的网络证书的访问权限。</p></li>
+<li><p>攻击者联系帮助台，假装一位远程销售代表，在设置远程访问方面需要挟制。通过一系列电话，攻击者就能获取远程访问服务器和登录证书的名称/地址，以及用于远程访问的电话号码，用于访问组织内部的私有电话和语音邮箱系统的号码。</p></li>
+<li><p>攻击者发送一个可执行文件，将其伪装成电子祝福卡（电子卡），或操作系统或特定应用程序的补丁。毫无防备的用户运行这个文件，致使安装了垃圾邮件软件或键盘记录程序，或将计算机编程一个远程“僵尸”，使黑客能加以利用。</p></li>
+</ul>
+</div>
+<div class="section" id="id9">
+<h3>有效性<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
+<p>社交工程攻击时信息安全领域最常见也最成功的恶意技术。因为它利用基本的人际信任，社交工程被证明能够有效操纵人们做出原本不会做出的举动。社交工程攻击者通过几种基本原则利用信任和其他常见的人类思维过程和行文。</p>
+<table class="colwidths-given docutils align-default" id="id34">
+<caption><span class="caption-text">有效性</span><a class="headerlink" href="#id34" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>原则</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>权威</p></td>
+<td><p>社交工程攻击者可能会以一个权威形象出现，如以为经理或IT管理员。如果表面看上去足够令人信服，受害者可能就会放下防备。</p></td>
+</tr>
+<tr class="row-odd"><td><p>恐吓</p></td>
+<td><p>扮演权威人物的社交工程攻击者常用的手段。以用户的工作或经济状况为威胁能够容易地迫使用户服从攻击者的要求。</p></td>
+</tr>
+<tr class="row-even"><td><p>从众</p></td>
+<td><p>社交工程攻击者可能会领用人类对团体的归属感以及对群体智慧的服从度。例如，攻击者可能会通过公布大量虚假评论以及对站点的褒奖证书来欺骗用户相信一个恶意网站实际上是合法的。受害者相信许多不同的人都已经证实该站点是可被接受的，以此作为站点合法和其中内容可信的证据。</p></td>
+</tr>
+<tr class="row-odd"><td><p>稀缺性</p></td>
+<td><p>获得某种供不应求的东西有时是一种吸引人的想法。社交工程攻击者会利用人类这种心理趋势，为特定行为提供一些具有感知价值的东西作为奖励。</p></td>
+</tr>
+<tr class="row-even"><td><p>熟悉感</p></td>
+<td><p>社交工程攻击者可能会以用户的某个熟人的身份出现，如朋友或家庭成员。因为用户已经信任了这些熟人，社交工程攻击者就能顺利地达成他们的目标。</p></td>
+</tr>
+<tr class="row-odd"><td><p>紧急实践</p></td>
+<td><p>如果攻击者能使用户相信他们必须立即登录并修复账户或即使发生一些坏事，用户可能就会因恐慌而无法进行理性思考。</p></td>
+</tr>
+</tbody>
+</table>
+<p>看起来好像每次出现新的技术进步，就有更多敏感信息可能会落入不法分子之手。不管是允许用户远程和即时访问资产信息的银行账号，还是允许用户查看机密信息的组织内部网络，通过欺骗合适的人群，技术型骗子几乎可以破坏每种系统。另外，这些攻击者可能还会引起隐私、财产和金融等方面的巨大破坏。</p>
+<p>安全专家难以克服的一种特殊障碍就是如何加强人员因素的安全性。在软件和硬件中实施安全措施相对比较直接；你只要实施一个控制机制来阻拦不想要的访问，或实施防御机制来阻止想要破坏系统的攻击。但是，由于社交工程攻击以间接和欺骗的方式进行，只要有一位粗心的或缺乏技术经验的用户就会危害到整个业务操作。因为很少有组织会为员工储备相关知识来合理认识社交工程攻击，因此寄期望与人类弱点的攻击者们对每种信息系统来说都是一种危害。</p>
+</div>
+<div class="section" id="id10">
+<h3>冒名<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
+<p>冒名（Impersonation）是一种基于人员的攻击，指攻击者冒用他人身份。一个常见场景就是攻击者打电话给以为员工，假装成是来自帮助台的电话。攻击者告诉这位员工他正在改编订单录入的数据库，他需要这位员工的用户名和密码来确保能够进入新的系统。</p>
+<p>冒名在身份无法轻易确认的情况下有着较高的成功率。如果上个例子中的员工不认识真正的帮助台工作人员或不知道帮助台电话，他们可能就不那么愿意质疑这个请求。</p>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>冒名可能也会成为其他类型社交工程攻击的一个方面。</p>
+</div>
+</div>
+<div class="section" id="id11">
+<h3>网络钓鱼和相关攻击<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h3>
+<p>网络钓鱼（Phishing）是一种基于电子邮件社交工程攻击的常见类型。在网络钓鱼攻击中，攻击者会发送一封看起来是来自知名银行或其他金融机构的电子邮件，声称收件人需要想发件人提供一个账号、社保账号、或其他私人信息来对帐户进行安全验证。讽刺的是，网络钓鱼攻击常常声称这种账户验证时出于安全目的的必要形式。</p>
+<p>对个人来说，永远不要向信息请求方提供个人财务信息，不管是电子邮件还是电话。合法的金融机构永远不会向他们的客户提出这种要求。</p>
+<p>由于多年以来都取得了相对的成功，网络钓鱼已经有了许多不同的演变。</p>
+<ul>
+<li><p>当攻击者选定特定个人或机构作为目标时，这种社交工程技术叫做**鱼叉式网络钓鱼**（spear phishing）。</p></li>
+<li><p>捕鲸（Whaling）是选择拥有巨额财富的个人或组织为目标的一种鱼叉式网络钓鱼形式。在财富500强公司或金融机构的个人，被认为有着丰厚薪水的这类人是捕鲸式网络钓鱼的选择目标。</p>
+<blockquote>
+<div><p>捕鲸式网络钓鱼是一种风险更大的社交工程，因为相较普通用户或小公司而言，捕鲸式钓鱼的目标有着更加稳健的安全性，他们被抓获的后果也将更加严重。但是，对攻击者来说，只要能够利用其中最弱的环节就能获得更丰富的回报。</p>
+</div></blockquote>
+</li>
+<li><p>一种和网络钓鱼类似的攻击，叫做网域嫁接（pharming），是指将一个网站的请求进行重定向，通常是将一个电子商务站点定向到一个看起来类似，但是虚假的网站。</p></li>
+<li><p>语音钓鱼（Vishing）是一种基于人员的攻击，其目标是从受害者哪里获取个人、财务或机密信息，通过使用电话系统和基于IP的语音消息服务【互联网协议电话/Voice over Internet Protocol】等服务作为通讯媒介。也被写作voice phishing。</p>
+<blockquote>
+<div><p>由于人们更加倾向于那些可以与之进行实际通话的人，所以语音钓鱼相比网络钓鱼更加有效。另外，用户可能太过习惯与使用传统通讯方式，而不知道由于互联网的开放特性，使用VoIP更容易地伪装身份。</p>
+</div></blockquote>
+</li>
+<li><p>短信钓鱼（Smishing）是网络钓鱼的一种变形，是指使用 SMS 短消息来尝试从目标个人那里获取个人信息。</p></li>
+</ul>
+<div class="section" id="id12">
+<h4>垃圾邮件和垃圾短信<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h4>
+<p>一些网络钓鱼攻击还包括使用垃圾邮件（spam）和垃圾短信（spim）。</p>
+<p>垃圾邮件是一种基于电子邮件的攻击，用户的收件箱会被产品广告和快速致富推销的邮件塞满，这些邮件有时可能会传播病毒或恶意软件（malware）。垃圾邮件可能还会通过Facebook和Twitter等社交网络站点中的内容进行传播。垃圾短信和垃圾邮件是一种类似的攻击，只是它是通过即时消息（instant messaging/IM）而不是电子邮件进行。</p>
+<p>随着电子邮件客户端中的垃圾邮件过滤器以及即时消息服务中来及短信拦截的普遍使用，这些技术的有效性已经不如从前。但是，每天仍然有大批量的未经请求消息被发送，使得垃圾邮件和垃圾短信任然能够欺骗到一些缺乏经验的用户。</p>
+</div>
+</div>
+<div class="section" id="id13">
+<h3>诈骗<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h3>
+<p>诈骗（hoax）是一种基于电子邮件，即使消息或网页的攻击，目的是想要欺骗用户执行不必要或不希望的行为，如删除用于移除病毒的重要系统文件。也可能是想要欺骗用户为某个有趣的提议而放弃重要信息或金钱。</p>
+<p>和许多社交工程技术一样，诈骗的成功率很大程度上取决于目标在计算机技术方面的经验多少。电子邮件告诉一位用户需要删除计算机上的一个病毒文件，如果用户知道这个文件的用途或者知道防病毒软件才是检测并移除感染文件的首选方法，那么这种方法就不会有效。</p>
+</div>
+<div class="section" id="id14">
+<h3>物理利用<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h3>
+<p>某些社交攻击使得攻击者能够获得限制区域或信息的物理访问权限。最常见的类型如下表所示。</p>
+<table class="colwidths-given docutils align-default" id="id35">
+<caption><span class="caption-text">物理攻击</span><a class="headerlink" href="#id35" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>物理利用</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>肩窥（Shoulder surfing）</p></td>
+<td><p>这种攻击时指越过某人的肩膀窥探到他或她输入的密码信息或PIN密码。现在有了手机摄像头，这种行为很容易就能做到。</p></td>
+</tr>
+<tr class="row-odd"><td><p>垃圾搜索（Dumpster diving）</p></td>
+<td><p>这种攻击时指通过检查垃圾箱中的内容取回重要信息。在每年的前几个星期中，用户可能会丢弃写了密码的旧日历，此时进行这种行为将变得尤其有效。</p></td>
+</tr>
+<tr class="row-even"><td><p>跟随进入（Tailgaring）</p></td>
+<td><p>这是一种基于人员的攻击，攻击者会在员工不知情或不允许的情况下跟随合法员工进入安全屋。阻止这种攻击的唯一方法就是安全良好的访问控制机制并教育员工不要放行未经授权的人员。</p></td>
+</tr>
+<tr class="row-odd"><td><p>捎带（Piggy backing）</p></td>
+<td><p>和跟随进入的方式类似，捎带是指攻击者在员工允许的情况下进如安全区。例如，攻击者可能冒用了清洁人员的名义，请一位员工帮他拦着们，好让他把清洁车或拖把桶带进去。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id15">
+<h3>水坑式攻击<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h3>
+<p>在水坑式攻击（watering hole attack）中，攻击者选择特定团体或组织为目标，找出他们经常访问的网站，然后再这些网站中注入恶意代码。过了一会儿，团体或组织中至少会有一名成员被感染，这可能会导致整个团体受到胁迫，或向攻击者提供了与目标关联的网络或其他资源的访问权限。</p>
+<p>水坑式攻击往往集中于合法和流行网站，使之变得难以检测。另外，他们还倾向于以高度安全的组织作为目标，如政府机构。防御水坑攻击的一种最佳方式就是对用户加以培训，提高他们的安全意识。</p>
+</div>
+<div class="section" id="id16">
+<h3>练习 3-2<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h3>
+<p>场景：你收到了用户的报告，报告中投诉了有人入侵了他们的Google账号。这些用户声称“入侵”发生再他们登录Google的时候。你决定对这一状况进行调查并确定问题。</p>
+<ol class="arabic">
+<li><p>模拟在服务器上建立的攻击。</p>
+<blockquote>
+<div><p>a) 导航到 <a href="#id17"><span class="problematic" id="id18">``</span></a>C:093027DataIdentifying ``
+b)
+c)
+d)</p>
+</div></blockquote>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="c">
+<h2>课题C：确定恶意软件<a class="headerlink" href="#c" title="永久链接至标题">¶</a></h2>
+<p>确定恶意软件面临的最普遍的威胁就是恶意代码。作为一名安全专家，可能会经历系统被一些不需要的软件影响的情况，即使作为普通计算机用户，这种情况也屡见不鲜。通过认识不同类型的的恶意软件，了解它们的运行方式，你就能更好地消除它们带来地影响，或在一开始就防止它们感染你的系统。</p>
+<div class="section" id="id19">
+<h3>恶意代码<a class="headerlink" href="#id19" title="永久链接至标题">¶</a></h3>
+<p>恶意代码（Malicious code）是指不受欢迎或未经授权的软件，也叫恶意软件，它们被放置在目标系统中破坏操作系统或将系统资源重定向以实现攻击者的利益。过去，很多恶意代码攻击旨在破坏或中断操作系统或应用程序的功能，或强迫目标系统破坏其他系统。现在，恶意代码攻击更多地会隐藏在目标系统中，利用其中的可用资源来为攻击者牟利。</p>
+<p>恶意代码可能的用途还包括在其他系统上发送拒绝服务攻击；存储违禁或非法数据；为身份盗用，经济利益或敲诈勒索等目的挪用个人或商业信息；或显示未经请求的广告。</p>
+<p>恶意软件有许多存在方式，有一些方式中，恶意软件有着普遍的某种特征。其中一个常见特征就是建立后门访问。就像它的名字听起来那样，后门访问时一种技术漏洞，提供了对计算机及其资源的未经授权访问。类似的，根程序病毒包（rootkit）是指想要在最低层级对系统进行全部或部分控制的代码。根程序病毒包常常会进行自我隐藏，不被监控或检测到，并修改底层系统文件将它们自己整合到系统中。根程序病毒包也可用于非恶意目的，如虚拟化；但是，大多数跟程序病毒的感染在控制目标系统之后还是会安装后门或其他恶意代码。</p>
+<div class="section" id="id20">
+<h4>恶意代码攻击的证据<a class="headerlink" href="#id20" title="永久链接至标题">¶</a></h4>
+<p>恶意代码经常会和社交工程结合起来，说服用户某个恶意软件来自可信任或良性的来源。通常情况下，你会看到被损坏的应用程序，数据文件和系统文件中恶意代码造成的后果；未经请求的弹出广告；伪装的病毒扫描或软件更新通知；下降的系统性能或增加网络流量。任意一种情况都能导致应用程序和操作系统的故障。</p>
+</div>
+</div>
+<div class="section" id="id21">
+<h3>病毒<a class="headerlink" href="#id21" title="永久链接至标题">¶</a></h3>
+<p>病毒（virus）是指可以将自己附加在其他文件中，通过自我复制过程从一台计算机传播到另一台中的恶意代码段。这种自我复制只有在进行了激发病毒传播的人为操作之后才会进行，如打开一个被感染的电子邮件附件。当被附着的文件被打开，病毒中的代码就会执行。病毒经常会引起进一步攻击，将数据发回给攻击者，甚至可能会破坏或销毁数据。由于这种自我复制的特性，病毒很难从系统中彻底移除，每年都会造成数十亿美元的损失。</p>
+<div class="section" id="id22">
+<h4>病毒类型<a class="headerlink" href="#id22" title="永久链接至标题">¶</a></h4>
+<p>为了使它们更难被检测到，攻击者开始加密病毒，这样病毒就能用被加密的复制版本感染文件。加密密钥和解密模块可能会包含在病毒中并以明文形式存储。杀毒扫描器需要通过解密模块间接检测病毒。多态恶意软件（Polymorphic malvare）使用相同的病毒加密，只有解密模块会在病毒每次感染文件时进行改变。对杀毒软件来说，检测一个处于持续变化中的感染时非常困难的。</p>
+<p>铠装病毒（armored viuse）最典型的特征就是它们会掩盖自己不被杀毒软件和安全专家们发现。为了骗过杀毒软件，铠装病毒能隐藏它们在系统中的真正位置，并使用杀毒软件相信它们在别的地方。这样就能防止杀毒软件准确地检测并移除感染。类似地，铠装病毒通常还包含混淆代码，使安全研究员难以对它们进行合理地评估并进行反向工程。</p>
+</div>
+</div>
+<div class="section" id="id23">
+<h3>蠕虫<a class="headerlink" href="#id23" title="永久链接至标题">¶</a></h3>
+<p>在计算领域中，蠕虫（worm）是一种恶意软件，和病毒一样，能在感染系统之前进行自我复制。但是和病毒不同地是，它不需要人的行为就能进行复制，也不需要附着在其他程序和文件中。病毒往往会干扰特定机器的功能，而蠕虫通常会干扰网络功能。蠕虫不需要携带任何恶意的有效负荷——它的主要功能就是传播。传播到足够多的系统中就会损坏网络带宽。携带有效负荷的蠕虫通常会把计算机变成一个远程僵尸，使攻击者能够用它来发动其他攻击。</p>
+</div>
+<div class="section" id="id24">
+<h3>广告软件<a class="headerlink" href="#id24" title="永久链接至标题">¶</a></h3>
+<p>广告软件（Adware）是指会自动显示或下载未经请求广告的软件。广告软件经常以浏览器弹出窗口的形式出现在用户的计算机中。虽然不是所有的广告软件都带有明显的恶意，但是许多广告软件程序都与间谍软件和其他恶意软件有关。另外，它还会降低计算机性能，使用户不堪其扰，从而降低用户的生产效率。</p>
+</div>
+<div class="section" id="id25">
+<h3>间谍软件<a class="headerlink" href="#id25" title="永久链接至标题">¶</a></h3>
+<p>间谍软件（Spyware）是一种被密码安装的恶意软件，目的是为了跟踪并报告目标系统的使用情况，并收集攻击者希望获取的其他数据。被收集的数据可能包括网页浏览记录，个人信息，银行和其他金融信息，用户名和密码等。虽然间谍软件可以通过社交工程的策略感染计算机，但其中一些还会利用原本合法的软件。</p>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>广告软件和间谍软件被设计为几乎不影响性能，使它们变得更难检测到。</p>
+<p>但是，暴露在这种恶意软件之下的受害者通常会受到多次感染，最终这种影响就会变得特别明显。</p>
+</div>
+</div>
+<div class="section" id="id26">
+<h3>特洛伊木马<a class="headerlink" href="#id26" title="永久链接至标题">¶</a></h3>
+<p>特洛伊木马（Trojan horse），经常被简称为木马，是一种隐藏恶意软件，会对系统造成破坏或为攻击者提供监控和/或控制系统的平台。于病毒不同，木马不会进行自我复制，也不会附着在其他文件中。而是经常保持隐匿，更加不容易被检测到。木马这种恶意内容会隐藏在平时无害的数据包中，如用户下载一个可以按预期运行的游戏或屏幕保护程序，但其中却包含了一个恶意代码的有效负荷。</p>
+</div>
+<div class="section" id="id27">
+<h3>键盘记录器<a class="headerlink" href="#id27" title="永久链接至标题">¶</a></h3>
+<p>键盘记录器（keylogger）是一种用于识别并记录用户进行的每次击键行动的硬件设备或软件应用程序。键盘记录可以获取密码和其他敏感数据。如果用户通过击键因素来进行身份验证，那么键盘记录器可能还会导致用户身份的泄露。互联网上有许多可用的键盘记录器软件。另外，KeyGhost和KeyGrabber等硬件也是用来进行键盘记录的。</p>
+<p>有一种方法能够消减键盘记录带来的影响，那就是在击键信号被发送到系统单元之前对它们进行加密。可用的击键加密软件也有多种类型。</p>
+</div>
+<div class="section" id="id28">
+<h3>远程访问木马<a class="headerlink" href="#id28" title="永久链接至标题">¶</a></h3>
+<p>远程访问木马（remote access Trojan/RAT）是一种专用的特洛伊木马，其专门的目标是为攻击者提供目标计算机的未授权访问或控制。基本上，RAT会模仿合法远程控制的功能，但它们是专门用于进行秘密安装和操作的。攻击者可以将RAT隐藏在游戏和其他应用程序中，毫无防备的用户会下载或运行它们（认为这些游戏或应用程序时没有威胁的），或者打开来自恶意来源的电子邮件附件激活木马。</p>
+</div>
+<div class="section" id="id29">
+<h3>逻辑炸弹<a class="headerlink" href="#id29" title="永久链接至标题">¶</a></h3>
+<p>逻辑炸弹（logic bomb）是在目标计算机中保持休眠状态直到被某个特定事件激活的一种代码段，如特定的日期或时间。一旦代码被激活，逻辑炸弹就会引爆，执行其中被编程的任何内容。通常包括清除并破坏目标系统中的数据。</p>
+</div>
+<div class="section" id="id30">
+<h3>僵尸网络<a class="headerlink" href="#id30" title="永久链接至标题">¶</a></h3>
+<p>僵尸网络（botnet）是指被一种叫机器人程序（bot）的控制程序感染的一组计算机，它能使攻击者集中利用这些计算机来发动攻击。通常情况下，黑帽黑客使用僵尸网络协同拒绝服务攻击，发送垃圾邮件，摄取个人信息或密码。使用这些被感染机器的用户叫做僵尸zombies或无人机（drones）通常不会意识到他们的计算机被用作了邪恶目的。</p>
+</div>
+<div class="section" id="id31">
+<h3>勒索软件<a class="headerlink" href="#id31" title="永久链接至标题">¶</a></h3>
+<p>勒索软件（Ransomware）使一种日益流行的恶意软件，攻击者用恶意代码感染受害者的计算机，限制受害者对他们的计算机及其中数据的访问。然后攻击者就会进行勒索，通常是通过在线支付方式，如PayPal，绿点卡（Green Dot MoneyPak），或比特币（bitcoin），否则就会持续限制访问或销毁他们锁定的信息。为了阻止对计算机的访问，攻击者可能会执行锁屏保护程序，并要求为密码付费。当勒索软件利用加密的强大功能时，对那些未备份的数据来说极具破坏性，这使得受害者更有可能为解密他们的文件而支付勒索费用。在这种情况下，勒索软件可能也会被称为加密恶意软件（crypto-malware）。</p>
+</div>
+<div class="section" id="id32">
+<h3>高级持续性攻击<a class="headerlink" href="#id32" title="永久链接至标题">¶</a></h3>
+<p>高级持续性攻击（advanced persistent threat/APT）使用多个攻击向量来获取敏感资源的未授权访问，然后在长时间段内保留访问权限。APT是一种大范围的重复威胁，通常通过特洛伊木马等恶意软件，针对私人组织或国家为商业或政治目的而发动攻击。APT一个最为明显的特征就是能够掩盖自己的踪迹，以便能在长时间内保持不被发现。</p>
 </div>
 </div>
 </div>
@@ -182,6 +484,33 @@
 <li class="toctree-l3"><a class="reference internal" href="#id4">威胁执行者</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id5">威胁执行者的属性</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id6">开源情报</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">练习 3-1</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#b">课题B：确定社交工程攻击</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id8">社交工程</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">有效性</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">冒名</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">网络钓鱼和相关攻击</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">诈骗</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">物理利用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">水坑式攻击</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">练习 3-2</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#c">课题C：确定恶意软件</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id19">恶意代码</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id21">病毒</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id23">蠕虫</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id24">广告软件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id25">间谍软件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id26">特洛伊木马</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id27">键盘记录器</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id28">远程访问木马</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id29">逻辑炸弹</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id30">僵尸网络</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id31">勒索软件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id32">高级持续性攻击</a></li>
 </ul>
 </li>
 </ul>
