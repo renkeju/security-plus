@@ -1,0 +1,160 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <title>课题E：确定基于网络的攻击 &#8212; 《Security+ 学习手册》 alpha 文档</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../_static/translations.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+<link rel="stylesheet" type="text/css" href="../../_static/handsontable.full.min.css">
+<script src="../../_static/handsontable.full.min.js"></script>
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="e">
+<h1>课题E：确定基于网络的攻击<a class="headerlink" href="#e" title="永久链接至标题">¶</a></h1>
+<p>你已经认识了基于软件的安全威胁。现在需要致力于学习基于网络的威胁，以便能够了解它们是如何借助网络技术获得或打破信息的访问权限的。</p>
+<p>网络是现今企业的命脉，不管是公司的局域网（LAN）还是连接电子商务的互联网。现在大多数企业依赖它们的网络进行所有的业务操作。网络使人们可以有序地保持互联，在大多数企业依赖他们地网络进行所有的业务操作。网络使人们可以有序地保持互联，并允许企业尽可能快速且安全地访问并共享信息。基于网络的威胁你可能会损害日常商业互动，不利于保持信息的私密性和安全性。本章课题将帮助你确定你的网络需要抵御的网络攻击。</p>
+<div class="section" id="tcp-ip">
+<h2>TCP/IP基础<a class="headerlink" href="#tcp-ip" title="永久链接至标题">¶</a></h2>
+<p>传输控制协议/Internet协议[Transmission Control Protocol/Internet Protocol(TCP/IP)]是一种现在使用的标准网络协议，了解TCP/IP基础知识是理解如何发动网络攻击的良好开始。TCP/IP是一种包含了多个协议的分层套件。通过在网络数据包中的数据添加表头信息，发送主机上特定层级上的协议就能和接收主机上相应层上的协议进行通讯。</p>
+<p>TCP/IP网络上的每个主机会收到一个数字地址以及一个描述性名称。名称在域内以分层的方式进行组织，通过域名系统[Domain Name System(DNS)]服务映射到相应主机。</p>
+<p>两个主机之间的TCP连接通过完成三次握手（three-way handshake）进行建立。一台主机向需要与之进行通讯的另一台主机发送一个SYN数据包，接受主机发送回一个SYN、ACK数据包，最后由初始主机发送一个ACK数据包来完成本次连接。</p>
+<div class="section" id="id1">
+<h3>TCP/IP分层<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h3>
+<table class="colwidths-given docutils align-default" id="id3">
+<caption><span class="caption-text">TCP/IP分层结构</span><a class="headerlink" href="#id3" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 29%" />
+<col style="width: 57%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>层级</p></th>
+<th class="head"><p>描述</p></th>
+<th class="head"><p>主要协议和用例</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>网络接口/数据链路</p></td>
+<td><p>通过网络适配卡和网络媒介，使网络软件能在物理网络上传输数据。</p></td>
+<td><p>各种非以太网和无线规范，并非专门用于TCP/IP。</p></td>
+</tr>
+<tr class="row-odd"><td><p>互联网</p></td>
+<td><p>提供寻址，命名和路由</p></td>
+<td><p>Internet协议（IP）：管理互联网上的数字主机地址。地址分配通常通过一种被称为动态主机配置协议（DHCP）的单独服务自动完成。</p></td>
+</tr>
+<tr class="row-even"><td><p>传输</p></td>
+<td><p>提供连接与通讯服务</p></td>
+<td><p>传输控制协议（TCP）：一种面向连接的，确保传输的协议。这表示这种协议不仅发送数据，还会等待确认（ACK），并尽可能地修复错误。</p></td>
+</tr>
+<tr class="row-odd"><td><p>应用</p></td>
+<td><p>提供了能使独立系统上的客户端应用程序访问网络软件的功能。</p></td>
+<td><p>网络基本输入/输出系统（NetBIOS）：一种简单的，基于广播的命名服务。套接字：操作系统中的一种软件，将应用程序和一个网络协议连接起来，以便应用程序可以以操作系统中请求网络服务。文件传输协议（FTP）：通过一个TCP网络，实现了用户工作站和远程主机之间的文件传输。超文件传输协议（HTTP）和安全超文本传输协议（HTTPS）：实现了web内容的传输。简单邮件传输协议（SMTP）：实现了电子邮件消息的交换。安全的Shell（SSH）：实现了远程主机的安全连接。</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt>模型层级的其他可选名称有时也指国防部（DoD）名称，其中包括：</dt><dd><ul class="simple">
+<li><p>网络接口层</p></li>
+<li><p>网际层</p></li>
+<li><p>主机到主机层</p></li>
+<li><p>处理层</p></li>
+</ul>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>欺骗攻击<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>电子欺骗（Spooting）是一种</p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="../../_static/logosecurityplus.svg" alt="Logo"/>
+            </a></p>
+<h1 class="logo"><a href="../../index.html">《Security+ 学习手册》</a></h1>
+
+
+
+
+
+
+
+
+<h3>导航</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Chapter_1/index.html">第一章： 确定安全基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chapter_2/index.html">第二章：分析风险</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">第三章：确定安全威胁</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="转向" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, renkeju.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
