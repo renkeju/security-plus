@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <title>课题F：确定无线威胁 &#8212; 《Security+ 学习手册》 alpha 文档</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../_static/translations.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+<link rel="stylesheet" type="text/css" href="../../_static/handsontable.full.min.css">
+<script src="../../_static/handsontable.full.min.js"></script>
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="f">
+<h1>课题F：确定无线威胁<a class="headerlink" href="#f" title="永久链接至标题">¶</a></h1>
+<p>在上一章课题中，你已经确定了可能会影响信息系统的几种基于网络的攻击。现在你需要集中精力学习可能引起内部系统损害的无线威胁和漏洞。无线网络无处不在，因此防止设备中的无线漏洞时保护敏感数据不受未授权访问的关键。</p>
+<p>现在，无线网络迅速成为了企业中的常态。大多数组织既有有线网络，也有供员工在移动中访问设施的无线网络。理解潜在的威胁和漏洞能使你成功地保护组织信息系统基础架构中地无线部分。</p>
+<div class="section" id="id1">
+<h2>欺骗访问点<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>欺骗访问点（rogue access point）是指企业或私有网络中的未授权无线访问点。欺骗访问点可能会对组织地数据造成极其严重地损害。它们不会被轻易检测到，并且可以通过合适的设备使未授权用户访问私有网络。欺骗访问点可以实现中间人攻击并访问私密信息。组织应当实施安装IDS等技术手段，持续监控系统，进行自我保护，避免受到此类攻击。</p>
+</div>
+<div class="section" id="id2">
+<h2>双面恶魔<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>在无线网络环境中，双面恶魔（evil twin）访问点会欺骗用户相信无线网络中的这个访问点是合法的。虽然企业和私有网络中都能安装双面恶魔访问点，但通常都是在公共Wi-Fi热点中发现它们，用户不会像在公司网络中一样直接自动连接这些热点，而是会从列表中选择可用玩咯。恶意用户可以使用具备网络共享功能的智能手机等基本设备设置一个类似的访问点。双面恶魔可能比欺骗访问点更加危险，因为用户会误以为这个无线信号是真实可靠的，将有效访问点和一个使用相同或类似名称的访问点区分开来是十分困难的。</p>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>合法WAP和双面恶魔的SSID不需要完全相同，它们通常是相似的，但不完全匹配。</p>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>干扰<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>在无线网络中，干扰（jamming）也叫冲突（interference），是指无线电波扰乱802.11无线信号的一种攻击。经常发生在家庭环境中，因为里面有许多运行在无线网络相近带宽中的电子设备，如微波炉。发生这种情况时，会导致 802.11 信号在传输之前等待，这个等待时间有时时不确定的。攻击者可以使用无线电收发器干扰传输，注入干扰数据包，中断网络之间的正常流量。</p>
+</div>
+<div class="section" id="id4">
+<h2>蓝牙劫持<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>蓝牙劫持（Bluejacking）是指攻击者从智能手机、移动手机、平板电脑、笔记本电脑等设备向其他启用蓝牙（Bluetooth）功能的设备中发送不想要的蓝牙信号的方式。由于蓝牙的传输距离相对较短，因此蓝牙劫持往往在近距离范围内。随着现在可用技术的提高发展，攻击者可以发送未经请求的消息、图片和视频。这种信号可能会导致许多不同的威胁。它们会导致设备故障，甚至传播病毒，如特洛伊木马。用户应当拒绝匿名接触，并将移动设备配置成不可发现的模式。</p>
+<div class="section" id="id5">
+<h3>蓝牙设备等级<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<p>从蓝牙技术的开创开始，它从低功率，极近距离传输的特征逐渐演化为三种不同的设备等级。</p>
+<table class="colwidths-given docutils align-default" id="id7">
+<caption><span class="caption-text">蓝牙设备等级</span><a class="headerlink" href="#id7" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>蓝牙设备的等级</p></th>
+<th class="head"><p>传输功率</p></th>
+<th class="head"><p>预计传输范围</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>3类</p></td>
+<td><p>1毫瓦(mW)</p></td>
+<td><p>长达10米（32.8英尺）</p></td>
+</tr>
+<tr class="row-odd"><td><p>2类</p></td>
+<td><p>2.5mW</p></td>
+<td><p>长达10米（32.8英尺）</p></td>
+</tr>
+<tr class="row-even"><td><p>1类</p></td>
+<td><p>100(mW)</p></td>
+<td><p>长达100米（328英尺）</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>蓝牙监听<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<p>蓝牙窃听（Bluesnarfing）是指攻击者在328英尺的蓝牙传输限制范围之内，获取使用蓝牙连接的无线设备中未授权信息的访问权限。与蓝牙劫持不同，通过蓝牙窃听访问智能手机、平板电脑、移动手机、笔记本电脑等无线设备可能会导致私密信息被利用，包括电子邮件信息、联系人信息、日历条目、图片、视频以及存储在设备中的任何数据。</p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="../../_static/logosecurityplus.svg" alt="Logo"/>
+            </a></p>
+<h1 class="logo"><a href="../../index.html">《Security+ 学习手册》</a></h1>
+
+
+
+
+
+
+
+
+<h3>导航</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Chapter_1/index.html">第一章： 确定安全基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chapter_2/index.html">第二章：分析风险</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">第三章：确定安全威胁</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="转向" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, renkeju.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
