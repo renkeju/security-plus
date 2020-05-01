@@ -17,7 +17,7 @@
     * 确定恶意软件的不同类型。
     * 确定不同基于软件的攻击。
     * 确定不同基于网络的攻击。
-    * 确定对无限基础架构造成的不同威胁。
+    * 确定对无线基础架构造成的不同威胁。
     * 确定不同的物理攻击。
 
 .. include:: /_documents/Chapter_3/Subject_A.rst
@@ -27,3 +27,12 @@
 .. include:: /_documents/Chapter_3/Subject_E.rst
 .. include:: /_documents/Chapter_3/Subject_F.rst
 .. include:: /_documents/Chapter_3/Subject_G.rst
+
+* 总结
+
+    在本章课程中，你确定了将会面临的主要安全威胁：社交工程威胁、恶意软件、基于软件的攻击、网络攻击、无线攻击和物理安全攻击。理解你面临的威胁类型时学习如何保护网络和响应入侵的关键性开始。
+
+    你所处的环境中最需要关注哪些类型的攻击？
+
+    你认为哪些攻击最难抵御？
+
