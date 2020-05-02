@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh_CN">
   <head>
     <meta charset="utf-8" />
-    <title>&lt;no title&gt; &#8212; 《Security+ 学习手册》 alpha 文档</title>
+    <title>课题C：实施渗透测试 &#8212; 《Security+ 学习手册》 alpha 文档</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
@@ -29,7 +29,184 @@
 
           <div class="body" role="main">
             
-  
+  <div class="section" id="c">
+<h1>课题C：实施渗透测试<a class="headerlink" href="#c" title="永久链接至标题">¶</a></h1>
+<p>虽然典型的漏洞评估在确定组织中缺陷方面是一种强大有效的流程，但这并不是你可以使用的唯一工具。在揭示漏洞方面，你还可以使用一种叫做渗透测试的方式进行更加积极的探索。</p>
+<div class="section" id="id1">
+<h2>渗透测试<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>渗透测试（penetration/pen test）使用积极的安全工具，通过在系统中模拟发动攻击来评估安全性。渗透测试会验证威胁是否存在，然后，积极测试并绕过安全控制。如果得到授权，渗透测试还能利用系统中的漏洞。相对漏洞扫描，渗透测试没有那么常用并具有更强的入侵性，漏洞扫描更专注于被动测试安全控制和配置。虽然从渗透测试中获得的信息更加细致，但是也存在一些风险，企业可能因为安全泄露遭受彻底的中断。这就是为什么组织通常严格限制渗透测试的使用并需要授权。</p>
+</div>
+<div class="section" id="id2">
+<h2>渗透测试的技巧<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>渗透测试员可以运用不同的技术来反映攻击者在真实场景中会做些什么。毕竟渗透测试的目的就是模拟真实的攻击。下表中的技术不仅是渗透测试员可能采取的行动：通常还是整个利用过程中的阶段。</p>
+<table class="colwidths-given docutils align-default" id="id7">
+<caption><span class="caption-text">渗透测试</span><a class="headerlink" href="#id7" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>技巧</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><ol class="arabic simple">
+<li><p>侦察（Reconnaissance）</p></li>
+</ol>
+</td>
+<td><p>渗透测试的第一阶段是侦察，在这一阶段中，测试员会尝试尽量大可能收集有关目标的信息。这使他们能够根据测试的背景尽可能快速、简便且有效地发动模拟攻击。侦察可以使主动的（如扫描网络上的端口确定潜在的攻击矢量），也可以使被动的（如收集组织中关键人员的公开可用信息，针对他们发动社交工程）</p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="2">
+<li><p>初步利用</p></li>
+</ol>
+</td>
+<td><p>当测试员通过侦察过程收集到所有信息后，他们就会开始利用他们的目标。这一过程可能包括获得整个网络的访问权限，获得网络上特定主机的访问权限，获得内部账户证书，以及更多。</p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="3">
+<li><p>权限扩大</p></li>
+</ol>
+</td>
+<td><p>正如你所见，攻击者会尝试获取更多权限，以便获得对被利用系统的更大控制权。相同的，渗透测试员会尝试观察是否能提高他们的特权等级，以获得比初步利用阶段中所取得的更高权限，造成更多损害。</p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="4">
+<li><p>跳板（Pivoting）</p></li>
+</ol>
+</td>
+<td><p>当渗透测试员想要转移时，他们破坏一个中央主机（中枢），使他们能够分散到其他主机中，于是这些主机就会变得不可访问。例如，如果他们能打开一个主机上的命令shell，就能在其中输入命令查看连接在这台主机上的其他网络子网。这种方法使测试员可以移动到不同的网段上，而不是一直待在已经连接到主机的网段中。</p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="5">
+<li><p>维持（Persistence）</p></li>
+</ol>
+</td>
+<td><p>维持使最终阶段，意味着初步利用阶段已经结束，测试员现在更愿意保持对网络的访问。在真实的攻击中，攻击者会想要保持访问，以便能够组织不知情的状况下长期维持地利用组织。因此，测试员会评估他们在网络中获得隐蔽立足点地难易程度。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id3">
+<h2>盒测试方式<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>执行渗透测试时，组织必须检验不同地测试方法并确定事先给测试员提供哪些信息。下表描述了三种主要地渗透测试方法。</p>
+<table class="colwidths-given docutils align-default" id="id8">
+<caption><span class="caption-text">渗透测试方法</span><a class="headerlink" href="#id8" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>测试类型</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>黑盒测试（Black box test）</p></td>
+<td><p>这种方案不会向测试员提供有关被测试系统结构的具体信息。测试员可能知道系统是做什么的，但是不知道是如何做的。这种测试需要测试员执行侦察阶段。黑盒测试在模拟外部威胁的行为方面非常有用。</p></td>
+</tr>
+<tr class="row-odd"><td><p>灰盒测试（Grey box test）</p></td>
+<td><p>在这种方案中，测试员对内部架构和系统，或被测试系统的其他初步信息有部分了解。这种测试对测试员来说需要进行部分侦察。灰盒测试在模拟无特权的内部人员威胁时非常有用。</p></td>
+</tr>
+<tr class="row-even"><td><p>白盒测试（White box test）</p></td>
+<td><p>在这种方案中，测试员在执行测试之前就已经了解系统的各个方面，知道系统的功能和设计。这种测试有时是作为黑盒测试的后续测试，来对黑盒测试中发现的缺陷进行充分评估。在这种测试中，测试员会跳过侦察阶段。白盒测试在模拟有特权的内部人员威胁时非常有用。</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>在选择盒测试方式时，就是成本和时间的考量。黑盒测试需要最长的时间，因此也有着最高的成本。白盒测试需要最少的时间和金钱来完成。</p>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>渗透测试工具<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>在渗透测试中，安全人员会使用许多在漏洞评估中使用过的相同工具。另外，还有更多主要用于更积极的渗透测试场景中的一些工具。</p>
+<table class="colwidths-given docutils align-default" id="id9">
+<caption><span class="caption-text">渗透测试工具</span><a class="headerlink" href="#id9" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>工具类型</p></th>
+<th class="head"><p>应用</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>利用框架</p></td>
+<td><p>创建并部署代码来利用系统</p></td>
+</tr>
+<tr class="row-odd"><td><p>数据清除工具</p></td>
+<td><p>安全地从存储媒介中擦除数据</p></td>
+</tr>
+<tr class="row-even"><td><p>信息隐藏工具</p></td>
+<td><p>将数据隐藏在其他数据中避免被检测到</p></td>
+</tr>
+<tr class="row-odd"><td><p>社交工程工具</p></td>
+<td><p>测试用户对社交工程策略的敏感程度</p></td>
+</tr>
+<tr class="row-even"><td><p>压力测试器</p></td>
+<td><p>测试系统对计算开销和网络带宽增长的响应能力</p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="id5">
+<h3>命令行工具<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<p>虽然有许多强大的第三方GUI工具可以在渗透测试和其他安全评估中使用，但你仍然不能低估基本的命令行工具的作用。</p>
+<table class="colwidths-given docutils align-default" id="id10">
+<caption><span class="caption-text">命令行工具</span><a class="headerlink" href="#id10" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>工具</p></th>
+<th class="head"><p>应用</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ping</p></td>
+<td><p>查看主机是否正在响应基本的网络请求</p></td>
+</tr>
+<tr class="row-odd"><td><p>tracert/traceroute</p></td>
+<td><p>查看数据包通过网络的路径和延迟</p></td>
+</tr>
+<tr class="row-even"><td><p>netstat</p></td>
+<td><p>查看主机上的当前网络连接信息</p></td>
+</tr>
+<tr class="row-odd"><td><p>tcpdump</p></td>
+<td><p>分析网络数据包和协议</p></td>
+</tr>
+<tr class="row-even"><td><p>arp</p></td>
+<td><p>查看主机上的地址解析协议（ARP）条目</p></td>
+</tr>
+<tr class="row-odd"><td><p>nslookup/dig</p></td>
+<td><p>查询DNS服务器</p></td>
+</tr>
+<tr class="row-even"><td><p>ifconfig/ipconfig/ip</p></td>
+<td><p>查看主机上的网络接口信息</p></td>
+</tr>
+<tr class="row-odd"><td><p>nmap</p></td>
+<td><p>扫描端口和指纹（fingerprint）系统</p></td>
+</tr>
+<tr class="row-even"><td><p>netcat</p></td>
+<td><p>监控和修改网络流量</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>实施渗透测试的标准<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<p>当实施渗透测试时：</p>
+<ul class="simple">
+<li><p>考虑除了执行漏洞评估还执行渗透测试的优势，或渗透测试能取代漏洞评估的原因。</p></li>
+<li><p>了解执行渗透测试时涉及的风险。</p></li>
+<li><p>考虑在模拟攻击中的不同阶段实施渗透测试技术</p></li>
+<li><p>考虑使用不同的盒测试方法来执行渗透测试</p></li>
+<li><p>理解每种盒测试方法对侦察阶段的不同需求</p></li>
+<li><p>熟悉在系统的主动利用过程中使用的不同工具</p></li>
+</ul>
+</div>
+</div>
+
 
           </div>
           
@@ -54,6 +231,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../Chapter_1/index.html">第一章： 确定安全基础</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Chapter_2/index.html">第二章：分析风险</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Chapter_3/index.html">第三章：确定安全威胁</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">第四章：执行安全评估</a></li>
 </ul>
 
 <div class="relations">
