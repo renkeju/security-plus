@@ -14,3 +14,14 @@
     * 实施漏洞评估流程
     * 实施渗透测试流程
 
+.. include:: /_documents/Chapter_4/Subject_A.rst
+.. include:: /_documents/Chapter_4/Subject_B.rst
+.. include:: /_documents/Chapter_4/Subject_C.rst
+
+* 总结
+
+    在本章课程中，你执行了不同的安全评估，并且能确定攻击者会毫不犹豫地将其作为利用对象地资产漏洞。通过确定这些弱点，你就能更好地解决它们，并帮你阻止攻击者在阻止中找到立足之地。
+
+    你使用过或计划使用哪种漏洞评估工具来评估组织的安全性？
+
+    你认为在你的组织中执行渗透测试是否有价值？为什么有或没有？

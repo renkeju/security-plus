@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh_CN">
   <head>
     <meta charset="utf-8" />
-    <title>&lt;no title&gt; &#8212; 《Security+ 学习手册》 alpha 文档</title>
+    <title>课题A：实现主机的安全性 &#8212; 《Security+ 学习手册》 alpha 文档</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
@@ -29,7 +29,284 @@
 
           <div class="body" role="main">
             
-  
+  <div class="section" id="a">
+<h1>课题A：实现主机的安全性<a class="headerlink" href="#a" title="永久链接至标题">¶</a></h1>
+<p>你最初的重点是保护组织中的主机及其运行的操作系统/平台，这会为你的系统安全创建基础。</p>
+<div class="section" id="id1">
+<h2>加固<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>加固（Hardening）是任何安全技术中的统用术语，这一过程会修改系统的默认配置来尝试关闭漏洞，从整体上保护系统不受攻击。通常来说，实施加固是为了与明确安全策略中的安全要求保持一致。根据系统类型和想要实现的安全等级，可以采用许多不同的加固技术。加固一个系统时，牢记它的设计用途，因为加固系统可能还会限制系统的访问权限和功能。在特殊情况中，加固需求必须与访问要求和用途互相平衡。</p>
+</div>
+<div class="section" id="id2">
+<h2>操作系统的安全性<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>每种操作系统都有其独特的漏洞，为潜在的攻击者提供了利用机会。不同供应商开发的系统也有不同的缺陷，不同用途的系统也是如此。只要确定了一个漏洞，供应商就能尝试更正。同时，攻击者也可能对其加以利用。我们不可能为每种操作系统列出一个全面的漏洞清单，因此，你必须实时跟进供应商网站上发布的系统安全信息及其他安全参考信息。</p>
+<p>你可能会被要求保护的一些不同操作系统包括：</p>
+<ul class="simple">
+<li><p>网络操作系统</p></li>
+<li><p>服务器操作系统</p></li>
+<li><p>工作站操作系统</p></li>
+<li><p>电器操作系统</p></li>
+<li><p>信息显示台操作系统</p></li>
+<li><p>移动操作系统</p></li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h2>操作系统的加固技巧<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>有一些在大多数操作系统中都可用的不同安全技术可以帮助你加固操作系统。这些技术包括：</p>
+<ul class="simple">
+<li><p>与最低权限原则类似，确保操作系统符合最少功能原则，这表示系统不能提供超出其目的范围之外的其他功能。例如，一个域控制器通常不能用作其他目的，如文件服务器。</p></li>
+<li><p>通过系统基于主机的防火墙禁用任何不必要的网络端口。</p></li>
+<li><p>禁用运行在系统上的任何不必要服务，减少它的攻击面。</p></li>
+<li><p>充分利用供应商或行业认可的组织所提供的任何安全配置来加强系统的防御能力。</p></li>
+<li><p>禁用系统上的任何默认账号，使攻击者无法通过这些账户获取访问权限。</p></li>
+<li><p>强制要求用户更改掉分配给他们的默认密码。</p></li>
+<li><p>执行补丁管理服务，以便能够更高效地管理所有软件和服务地自动更新和补丁。</p></li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h2>可信计算基础<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>可信计算基础（trusted computing base/TCB）是指计算机系统中用于负责确保安全策略得到实施，系统安全性得到保障地硬件、固件和软件组成部分。这表示如果TCB内部出现缺陷，就可能危及整个系统的安全属性。TCP通过处理器环或特权在硬件中进行实施，通过驱动和资源保护在固件中进行实施，以及在操作系统中对来自应用程序的资源与服务进行隔离。</p>
+</div>
+<div class="section" id="os">
+<h2>可信OS<a class="headerlink" href="#os" title="永久链接至标题">¶</a></h2>
+<p>满足TCB安全要求的操作系统通常是指可信操作系统（trusted operating system/TOS）。在TOS中，安全专家会根据通用标准（Common Criteria/CC）来检查操作系统是否满足特定标准。CC是由一群政府部分共同开发出来的标准集合，为产品创建安全保障的基线。当使用一个可信操作系统时，就能对组织拥有“安全”产品的声明进行评估和判断。然后任何被测对象就会给予从1到7的评估保障等级（Evaluation Assurance/EAL）评级，该评级说明了系统提供的安全功能的级别。</p>
+</div>
+<div class="section" id="id5">
+<h2>硬件和固件安全<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p>一些组件包含了TCB中的硬件和固件元素。这些组件如下表所示：</p>
+<table class="colwidths-given docutils align-default" id="id20">
+<caption><span class="caption-text">TCB硬件和固件</span><a class="headerlink" href="#id20" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>组件</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>BIOS/UEFI</p></td>
+<td><p>基本输入/输出系统（BIOS）和统一可扩展固件接口[Unified Extensible Firmware Interface(UEFI)]都是固件接口，为操作系统启动初始化硬件。UEFI是此功能更现代更安全的实现方式，并且在很多新系统中替代了BIOS。</p></td>
+</tr>
+<tr class="row-odd"><td><p>信任根和HSM</p></td>
+<td><p>信任根（root of trust）是指通过使用能保持数据机密性和防止被篡改的加密机制，实施硬件平台的可信计算架构的技术。硬件安全模块[hardware security module(HSM)]是一种能够提供信任根功能的物理设备。</p></td>
+</tr>
+<tr class="row-even"><td><p>TPM</p></td>
+<td><p>可信平台模块[Trusted Platform Module(TPM)]是一种安全的加密处理器，用于生成加密密钥，在TCB的多个方面都有使用。</p></td>
+</tr>
+<tr class="row-odd"><td><p>安全启动和远程认证</p></td>
+<td><p>安全启动（Secure boot）是一种UEFI功能，在启动操作过程中阻止不想要的进程执行。UEFI采用启动加载程序的加密散列来确保其完整性。TPM为这个启动散列签订一个报告，然后发送到第三方进行验证，这一过程就叫远程认证（remote attestation）。</p></td>
+</tr>
+<tr class="row-even"><td><p>FDE/SED</p></td>
+<td><p>基于硬件的全磁盘加密[full disk encryption(FDE)]，用在被称为自我加密驱动[self-encryption drive(SED)]的设备中，使存储设备能在硬件层面上进行加密，避免依赖软件解决方案。这种加密对用户来说是不可见的，并且如果攻击针对的是由应用程序或操作系统提供的加密，那么这种方式也不会受到很大的影响。</p></td>
+</tr>
+<tr class="row-odd"><td><p>EMI保护</p></td>
+<td><p>所有的电器都会产生电磁干扰[electromagnetic interference(EMI)]未授权用户如果能接收到这些电磁辐射，就可能获得其中的敏感数据。</p></td>
+</tr>
+<tr class="row-even"><td><p>EMP保护</p></td>
+<td><p>攻击者可以使用电磁脉冲[electromagnetic pulese(EMP)]来破坏硬件，引起故障。一些TCP平台包括了针对电磁脉冲攻击的保护措施。</p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="id6">
+<h3>供应链安全<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<p>供应链（supply chain）是指供应，制造，分配，最终向消费者发布商品和服务的端到端过程。产品或服务必须沿着这个链进行，直到能被它的目标客户所消费。由于产品需要很强的安全性，包括计算机硬件组件的安全性，因此如果一个风险要素在供应链前期产生了危害，就可能破坏客户的最终产品。因此，硬件生产商必须重视在供应链的每一个环节实施强而有力的安全机制，并为这些机制执行常规的供应链评估。</p>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>安全基线<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<p>正如你所见，安全基线是一组应用到组织中特定主机上的安全和配置设置。主机基线是可以与网络中其他主机进行比对的基线。在保护多个相似系统的过程中，执行基线标准是提高效率的一种关键步骤。不必凭空加密每个系统，你可以从基线开始着手并将其作为安全模板。</p>
+<p>由于每种基线配置都是针对特定类型的系统，因此，你需要对桌面客户端，文件和打印服务器，域名系统（DNS）服务器，应用程序服务器，目录服务服务器和其他类型的系统定义相应的基线。根据使用的操作系统，你可能还要为那些相同类型的系统定义不同的基线。</p>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>基线还可以指特定时间点的系统状态快照。</p>
+</div>
+</div>
+<div class="section" id="id8">
+<h2>软件更新<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
+<p>软件生产商通常会发布不同类型的系统更新，其中可能包括软件在安全方面的变更。安装合适的更新通常意味着易受攻击的服务器与加固服务器之间还存在差距。</p>
+<table class="colwidths-given docutils align-default" id="id21">
+<caption><span class="caption-text">软件更新</span><a class="headerlink" href="#id21" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>更新类型</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>补丁（Patch）</p></td>
+<td><p>补充代码的小单元，用于解决软件数据包或操作系统中的问题或功能缺陷。</p></td>
+</tr>
+<tr class="row-odd"><td><p>热修复（Hotfix）</p></td>
+<td><p>紧急发布的补丁，用于解决特定的安全缺陷。</p></td>
+</tr>
+<tr class="row-even"><td><p>汇总（Rollup）</p></td>
+<td><p>以前发布的补丁与热修复集合，通常应用在系统的一个组件商，如网络浏览器或一项特定服务。</p></td>
+</tr>
+<tr class="row-odd"><td><p>服务包（Service pack）</p></td>
+<td><p>一种更大的系统更新汇编集合，可能包括功能的提高，新性能，通常还包含该服务包发布时已发布的所有补丁，更新和热修复。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id9">
+<h2>应用程序黑名单与白名单<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
+<p>应用程序黑名单（Application blacklisting）是指阻止那些被组织视为不想要的程序运行的实践，不论是出于安全问题还是其他任何原因。实施黑名单，你需要列举出被拒绝进行系统访问的应用程序，然后阻止它们在目标系统上安装或运行。黑名单在许多防恶意工具，入侵检测系统（IDS）和入侵防御系统（IPS）中都用应用。</p>
+<p>相反的，在应用程序白名单（application whitelisting）中，你可以维护一个允许应用程序列表，只有这些应用程序才能在目标系统上安装或运行。白名单是隐式拒绝原则的优秀案例。</p>
+<p>黑名单和白名单都有各自的优缺点：</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>黑名单确实能够让你阻止特定的应用程序在系统上运行，缺点就是它只能阻止被确定为不想要的的应用程序，因此，新的或未知的应用程序可能会被赋予访问权限，即使它们存在安全风险。</p></li>
+<li><p>白名单比黑名单提供了一种更加彻底的解决方案，尤其在可能包含漏洞的新的或未知的应用程序方面，但是创建并维护白名单所需的管理开销可能会被禁止。</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id10">
+<h2>日志<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h2>
+<p>在计算机术语中，日志（logging）是指使用操作系统或应用程序记录计算机活动的数据。最终的日志文件会在已知位置以文本文件的形式存储。日志文件中可用信息的详细程度可能简单到只显示重大错误，也可能详细到记录每次击键，鼠标移动和网络数据包。</p>
+<p>启用日志功能时要小心谨慎——系统中的详细日志记录，甚至简单的记录都可能迅速消耗高容量存储服务器中的存储空间。由于格式和细节的多样化，审计日志文件中被记录下来的活动可能会很困难，但这种努力的值得的，因为审核可能揭露大量疑似攻击的行为。日志文件本身就可能成为攻击的目标；因此，处于安全考虑，推荐你限制重要日志的访问权限并对其备份。</p>
+</div>
+<div class="section" id="id11">
+<h2>审计<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h2>
+<p>计算机安全审计（security auditing）是指对系统安全中的优缺点执行有序技术评估的过程，确保系统符合要求。虽然和安全评估类似，但是安全审计通常将重点放在确定系统是否满足一系列标准。这些标准通常来自法律，行业规则和标准，也可以来源于组织的策略。因此，大多数审计都由第三方执行。例如，外部审计员可能会审核在线商家是否执行了PCI DSS中定义的适当级别的安全控制。</p>
+<p>计算机安全审计通常会涉及审核日志文件（手动或通过软件进行），但可能还会包含测试密码强度，扫描主机防火墙寻找开放端口，审核用户和群组的许可权限，以及更多。由于审计员是从外部视角来验证系统的安全规范，因此他们的审计同样有利于整个加固过程。</p>
+</div>
+<div class="section" id="id12">
+<h2>防恶意软件<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h2>
+<p>防恶意软件（Anti-malware software）是指扫描独立计算机和整个企业网络，查找已知病毒、木马、蠕虫以及其他恶意程序的保护性软件。一些防恶意软件还会尝试查找未知的有害软件。建议在所有计算机上都安装防恶意软件并根据组织的补丁策略保持更新。</p>
+</div>
+<div class="section" id="id13">
+<h2>防恶意软件类型<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h2>
+<p>有许多常用的防恶意软件能够保护系统不受特定的威胁和攻击。一些软件还在一个解决方案中结合使用了以下两种或更多的类型。</p>
+<dl>
+<dt>..csv-table:: 防恶意软件</dt><dd><dl class="field-list simple">
+<dt class="field-odd">header</dt>
+<dd class="field-odd"><p>“类型”, “描述”</p>
+</dd>
+<dt class="field-even">widths</dt>
+<dd class="field-even"><p>5 30</p>
+</dd>
+</dl>
+<p>“防病毒（Antivirus）”, “这种应用程序会扫描文件，查找与特定模式匹配的可执行代码，这种模式通常被认为是病毒。这被称为基于签名的防病毒软件。防病毒软件还能监控系统与病毒有关的活动，如访问启动扇区。这种积极的监控能力被称为基于行为或启发式的防病毒软件。”
+“防垃圾邮件（Anti-spam）”, “垃圾邮件检测可能包含一个放垃圾邮件过滤程序，可以检测垃圾消息中常用的特定单词。一旦找到了这些单词，这条消息可能就会被拒绝。如果监测系统拒绝了包含这种关键词的合法信息，可能会引发问题。还有一些其他检测方式，会拒绝已知垃圾邮件发送者的互联网协议（IP）地址。”
+“防间谍软件（Anti-spyware）”, “这种软件专门用于保护系统不受间谍软件的攻击。一些防病毒软件包提供了针对广告软件和间谍软件的保护，但是在某些情况下，在防病毒保护之外维持防间谍软件的保护还是很有必要。”
+“弹出窗口组织程序（Pop-up blocker）”, “弹出窗口阻止程序会阻止来自未知或不受信任站点的弹出窗口，并防止不想要的代码被传输到本地系统。大多数网络浏览器包含了一些弹出窗口阻止功能。”
+“基于主机的防火墙（Host-Based firewall）”, “这种软件被安装在单个系统中，专门用于防止网络攻击。这种软件被配置用来监控进出系统的网络数据包，以便能够控制并防止未授权的访问。尽管不完全是防恶意软件解决方案，但防火墙可以阻止那些尝试通过特定网络协议和端口感染主机的恶意软件。”</p>
+</dd>
+</dl>
+<div class="section" id="id14">
+<h3>高级防恶意软件工具<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h3>
+<p>除了上表所示的工具，还有一些高级恶意软件分析工具你需要了解：</p>
+<ul class="simple">
+<li><p>端点保护（Endpoint protection）软件，与防恶意软件扫描器相结合组成一个更大的安全控制套件，包括从中央服务器扫描网络主机的健康状况。</p></li>
+<li><p>恶意软件沙盒（Malware sandboxing）软件，将恶意软件放在一个虚拟环境中，可以在不破坏生产系统或网络其余部分的前提下安全地对其进行分析。</p></li>
+<li><p>逆向工程（Revetrse engineering）软件，尝试将恶意软件解构成它的的基础组件，以便能更容易地理解其属性。</p></li>
+</ul>
+</div>
+<div class="section" id="id15">
+<h3>数据执行保护<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h3>
+<p>数据执行保护[Data Execution Prevention(DEP)]是一种CPU和Windows功能，能够防止内存中的恶意代码执行。内存中的特定区域为操作系统，关键程序所保留，或者就是简单地保存数据。一些恶意软件会尝试利用内存中的这些区域；DEP会检测这些位置上的任何此类代码并阻止它们运行。</p>
+</div>
+</div>
+<div class="section" id="id16">
+<h2>硬件外围设备的安全<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h2>
+<p>除了主机的主要物理组成部分，还有许多不同的外围设备链接在这些主机上。虽然通常情况下可能想不到这些外围设备会变得易受攻击，但是仍然应当考虑保护它们不受攻击。</p>
+<table class="colwidths-given docutils align-default" id="id22">
+<caption><span class="caption-text">硬件外围设备</span><a class="headerlink" href="#id22" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>外围设备</p></th>
+<th class="head"><p>安全考虑</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>无线键盘和鼠标</p></td>
+<td><p>一些无线接收器容易受到劫持。攻击者可能会向无线鼠标发送信号强制做出点击行为，或向无线键盘发送信号强制做出击键行为。攻击者可能还会通过无线信号干扰用户被发送的击键。解决这种问题最有效的方式就是研究易受此类影响的设备，并且无论供应商如何始终保持最新的固件更新。</p></td>
+</tr>
+<tr class="row-odd"><td><p>显示</p></td>
+<td><p>如果监视器和其他显示设备是独立联网的，那么它们可能容易受到劫持——例如，智能电视。如果这些设备的安全性有问题，请避免使用它们。否则，请确保显示设备中的操作系统、固件和其他软件始终保持最新状态。</p></td>
+</tr>
+<tr class="row-even"><td><p>外部存储设备</p></td>
+<td><p>外部存储设备，尤其是USB拇指驱动器，又是可能会被用作攻击矢量。攻击者用恶意代码加载设备，当设备被插到主机中时，恶意代码就会执行。预防这种攻击的一种方法就是确保主机操作系统已经关闭了自动运行功能。 外部存储设备还能成为一种漏洞，如支持Wi-Fi功能的微型存储卡。最好就是避免使用这些设备。如果你必须使用，确保设备上的固件保持最新状态，并且考虑使用一些可移动媒介的控制手段来限制外部存储设备的使用。</p></td>
+</tr>
+<tr class="row-odd"><td><p>打印机和多功能设备（MFD）</p></td>
+<td><p>打印机和多功能设备，就是将打印和扫描复印等其他功能结合起来的设备，通常会通过无线网络连接。其中一些设备在默认情况下无法对访问控制进行限制，可能会被攻击者用来打印不想要的材料，浪费油墨，防止合法员工使用设备，或手机敏感数据。完善的无线网络安全能防止不想要的访问，设备打印机和MFD，使之在每次工作后清除内存和存储驱动，降低数据泄露的可能性。</p></td>
+</tr>
+<tr class="row-even"><td><p>摄像头和麦克风</p></td>
+<td><p>数码相机，网络摄像头和麦克风都可能成为被窃听的多媒体外接设备。高度敏感的主机不应当允许此类设备被接入。对于不那么敏感的主机，当不需要使用这些设备时，可以考虑关闭它们的应用程序和驱动器。如果这些设备时联网的，请务必改掉远程访问的默认密码。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id17">
+<h2>嵌入式系统<a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h2>
+<p>嵌入式系统（Embedded system）是指大型系统中拥有的特定功能的计算机硬件和软件系统。这些大型系统可能包含各种各样的类型，从微波炉等家电到大型工业机器。许多不同行业中的各种技术中都能找到嵌入式系统的身影。</p>
+<p>在许多情况下，嵌入式系统没有个人计算机或服务器那样的硬件复杂性。因为嵌入式系统有专门的用途，因此通常没有太复杂的结构。例如，一写嵌入式系统没有独立的CPU、内存模块和其他外围设备；它们可能会将所有这些组件合并成一个来使用。另外，许多嵌入式系统没有友好的用户界面，甚至可能根本没有GUI。但是，嵌入式系统可能还是会是会使用操作系统，它所在的大型系统在用户友好方面做的非常出色（如智能手机）。</p>
+</div>
+<div class="section" id="id18">
+<h2>嵌入式系统的安全协议<a class="headerlink" href="#id18" title="永久链接至标题">¶</a></h2>
+<p>下表列出了一些嵌入式系统或包含嵌入式组件的大型系统。还说明了每种系统的安全意义。</p>
+<table class="colwidths-given docutils align-default" id="id23">
+<caption><span class="caption-text">嵌入式系统的安全协议</span><a class="headerlink" href="#id23" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>系统</p></th>
+<th class="head"><p>安全意义</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ICS/SCADA</p></td>
+<td><p>工业控制系统[Industrial control system(ICSs)]是一种控制关键基础设施的网络系统，如水、电、运输和通讯服务。ICS中最重要的类型就是监控和数据采集[supervisory control and data acquisition(SCADA)]系统。SCADA系统向嵌入式系统发送或接受远程控制信息。例如，一个通过采暖通风空调[heating ventilation and air conditioning(HVAC)]服务控制温度的嵌入式系统可以接收远程信息提升或降低温度。</p></td>
+</tr>
+<tr class="row-odd"><td><p>微型控制器</p></td>
+<td><p>正如前文提到的，一些嵌入式系统将CPU、内存模块和外围设备合并为一个组件。这种组件被称为微型控制器（microcontroller）或系统级芯片[system on chip(SoC)]。许多现代微型控制器有一个内置的加密引擎，这样嵌入式系统就不必依赖额外的软件来支持数据加密。</p></td>
+</tr>
+<tr class="row-even"><td><p>RTOS</p></td>
+<td><p>实时操作系统[real-time operating system(RTOS)]是一种专用操作系统。在一般用途的操作系统中，系统使用调度器来为每个运行进程或用户平衡处理器世间。这使得任务的完成时间会随着一些因素的变化而变化，在RTOS中，调度器更具可预测性和一致性。因此，RTOS对嵌入式系统来说更加理想，因为它们往往对任务完成的时间有着严格要求，并且没有特别重的工作量。 和任何一般用途的操作系统一样，RTOS容易被利用。这就促使一些RTOS开发商在其中包含一些安全功能，如访问控制模式，拒绝服务保护，恶意代码注入防御，以及更多。</p></td>
+</tr>
+<tr class="row-odd"><td><p>智能设备</p></td>
+<td><p>智能设备（smart device）是一种能够联网并有一些自主计算属性的电子设备，包括但不限于典型的计算机。一个例子就是可穿戴技术，如智能手表。 由于智能设备是一种相对较新的概念，对其安全性总是后知后觉，在一些情况中甚至根本没有考虑。因此许多此类设备本身就非常脆弱。</p></td>
+</tr>
+<tr class="row-even"><td><p>IoT</p></td>
+<td><p>与智能设备相关的一个概念就是物联网[Internet of Things(IoT)]，指代任何非传统计算机对象（电子或非电子的），它们通过使用嵌入式电子组件连接到更加广泛的互联网中。家庭自动化使用IoT将许多家庭中的组成部分链接到更广泛的网络中，如房间里的灯可以通过互联网进行远程控制。</p></td>
+</tr>
+<tr class="row-odd"><td><p>摄像系统</p></td>
+<td><p>传统闭路电视（CCTV）摄像头在有限的区域内提供了联网监控。但是，更多现代相机被嵌入了支持互联网协议（IP）的系统，使之能通过使用常见计算机系统和软件进行远程管理。但是，这使得相机承受了与网络计算机与IoT设备相同的漏洞。同时，IP相机还能使用传输加密协议来保持记录数据的机密和完整性。</p></td>
+</tr>
+<tr class="row-even"><td><p>特殊用途的系统</p></td>
+<td><p>特殊用途的系统包括医疗设备，ATM、摩托车、飞机、无人驾驶飞机（UAV或drone）等等——所有这些设备都包含了嵌入式系统。这些系统的安全意义取决于它们的用途和和功能。例如，在军用飞机，RTOS因其确定性获得了很高的价值。但是对于那些没有严格要求的系统来说可能就不是这样。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id19">
+<h2>保护主机的准则<a class="headerlink" href="#id19" title="永久链接至标题">¶</a></h2>
+<p>在保护主机时：</p>
+<ul class="simple">
+<li><p>实时跟进操作系统供应商的安全信息。</p></li>
+<li><p>在你的操作总系统中应用安全设置，如禁用不必要的服务，对用户的账户遵守最低权限的原则。</p></li>
+<li><p>为你的系统创建安全基线，提高加固过程的效率。</p></li>
+<li><p>将这些基线与当前主机配置进行比对。</p></li>
+<li><p>考虑实施应用程序黑名单和白名单来限制允许在系统中执行的软件。</p></li>
+<li><p>确保系统中的所有关键活动都被记录下来。</p></li>
+<li><p>审核日志，确定可疑行为。</p></li>
+<li><p>准备第三方审计，验证你的主机是否符合要求。</p></li>
+<li><p>在你的主机中实施防恶意软件方案。</p></li>
+<li><p>考虑不同硬件外围设备的特殊安全意义。</p></li>
+<li><p>考虑嵌入式系统的特殊安全意义。</p></li>
+</ul>
+</div>
+</div>
+
 
           </div>
           
@@ -55,6 +332,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../Chapter_2/index.html">第二章：分析风险</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Chapter_3/index.html">第三章：确定安全威胁</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Chapter_4/index.html">第四章：执行安全评估</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">第五章：实现主机和软件的安全性</a></li>
 </ul>
 
 <div class="relations">
