@@ -95,8 +95,8 @@
 <div class="section" id="id6">
 <h3>硬件和固件安全<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
 <p>一些组件包含了TCB中的硬件和固件元素。这些组件如下表所示：</p>
-<table class="colwidths-given docutils align-default" id="id22">
-<caption><span class="caption-text">TCB硬件和固件</span><a class="headerlink" href="#id22" title="永久链接至表格">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id37">
+<caption><span class="caption-text">TCB硬件和固件</span><a class="headerlink" href="#id37" title="永久链接至表格">¶</a></caption>
 <colgroup>
 <col style="width: 14%" />
 <col style="width: 86%" />
@@ -147,8 +147,8 @@
 <div class="section" id="id9">
 <h3>软件更新<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
 <p>软件生产商通常会发布不同类型的系统更新，其中可能包括软件在安全方面的变更。安装合适的更新通常意味着易受攻击的服务器与加固服务器之间还存在差距。</p>
-<table class="colwidths-given docutils align-default" id="id23">
-<caption><span class="caption-text">软件更新</span><a class="headerlink" href="#id23" title="永久链接至表格">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id38">
+<caption><span class="caption-text">软件更新</span><a class="headerlink" href="#id38" title="永久链接至表格">¶</a></caption>
 <colgroup>
 <col style="width: 14%" />
 <col style="width: 86%" />
@@ -203,8 +203,8 @@
 <div class="section" id="id14">
 <h3>防恶意软件类型<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h3>
 <p>有许多常用的防恶意软件能够保护系统不受特定的威胁和攻击。一些软件还在一个解决方案中结合使用了以下两种或更多的类型。</p>
-<table class="colwidths-given docutils align-default" id="id24">
-<caption><span class="caption-text">防恶意软件</span><a class="headerlink" href="#id24" title="永久链接至表格">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id39">
+<caption><span class="caption-text">防恶意软件</span><a class="headerlink" href="#id39" title="永久链接至表格">¶</a></caption>
 <colgroup>
 <col style="width: 14%" />
 <col style="width: 86%" />
@@ -249,8 +249,8 @@
 <div class="section" id="id17">
 <h3>硬件外围设备的安全<a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h3>
 <p>除了主机的主要物理组成部分，还有许多不同的外围设备链接在这些主机上。虽然通常情况下可能想不到这些外围设备会变得易受攻击，但是仍然应当考虑保护它们不受攻击。</p>
-<table class="colwidths-given docutils align-default" id="id25">
-<caption><span class="caption-text">硬件外围设备</span><a class="headerlink" href="#id25" title="永久链接至表格">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id40">
+<caption><span class="caption-text">硬件外围设备</span><a class="headerlink" href="#id40" title="永久链接至表格">¶</a></caption>
 <colgroup>
 <col style="width: 14%" />
 <col style="width: 86%" />
@@ -287,8 +287,8 @@
 <div class="section" id="id19">
 <h3>嵌入式系统的安全协议<a class="headerlink" href="#id19" title="永久链接至标题">¶</a></h3>
 <p>下表列出了一些嵌入式系统或包含嵌入式组件的大型系统。还说明了每种系统的安全意义。</p>
-<table class="colwidths-given docutils align-default" id="id26">
-<caption><span class="caption-text">嵌入式系统的安全协议</span><a class="headerlink" href="#id26" title="永久链接至表格">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id41">
+<caption><span class="caption-text">嵌入式系统的安全协议</span><a class="headerlink" href="#id41" title="永久链接至表格">¶</a></caption>
 <colgroup>
 <col style="width: 14%" />
 <col style="width: 86%" />
@@ -349,6 +349,404 @@
 <p>虚拟化（Virtualization）过程是指创建模拟的计算环境。虚拟化系统能够模拟典型计算机的硬件，操作系统何况应用程序，但它却不是一台真正的物理计算机。比如，你有一台Windows Server 2016物理计算机。在这台计算机中，你可以创建并运行一个运行Linux操作系统的虚拟计算机。这个虚拟计算机被还称为虚拟机[Virtual machine(VM)]。操作Linux虚拟机与使用运行着Linux的物理计算机有着非常相似的结果。唯一的不同就是，你是通过Windows Server上的应用程序来操作虚拟机的。</p>
 <p>创建虚拟机并使用其他形式的虚拟化有几种好处。虚拟机比物理计算机更易管理，因为控制着虚拟机的操作系统提供了能够容易的启动、停止、一次性配置多个虚拟系统等多种选项。减少使用硬件还降低了操作的成本。虚拟机还能更高效地运行，消耗更少的能源和物理资源。</p>
 </div>
+<div class="section" id="id22">
+<h3>超级管理器<a class="headerlink" href="#id22" title="永久链接至标题">¶</a></h3>
+<p>超级管理器（hypervisor）是将虚拟软件与其运行的物理硬件分离开来的软件层。超级管理器管理物理主机中的资源，并将它们提供给多个虚拟环境（guest）。通过在单一的主机系统上运行多个客户系统，实现了额外的灵活性并提高了硬件利用效率，每个客户系统都作为一个独立系统进行。</p>
+<p>超级管理器可以进一步被分为两种基本类型：Ⅰ型和Ⅱ型。当管理客户虚拟环境时，Ⅰ型超级管理器直接在主机的硬件上运行。另一方面，Ⅱ型超级管理器实际上在主机操作系统的最高层中以应用程序的形式运行。这就在超级管理器和硬件之间又加了一层。Ⅱ型超级管理器通常比Ⅰ型更慢，并且为虚拟机管理添加了一层额外的复杂性。</p>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>Ⅰ型超级管理器也被称为裸机型超级管理程序。</p>
+</div>
+<div class="section" id="id23">
+<h4>应用程序容器<a class="headerlink" href="#id23" title="永久链接至标题">¶</a></h4>
+<p>应用程序容器（application container）或应用程序单元（application cell）是一种虚拟化方式，表示应用程序在主机操作系统的独立容器中运行。容器不会像虚拟机一样运行完整的操作系统；当容器需要使用操作系统时，主机操作系统为它们提供了所需的操作资源。因此，容器能够比典型的虚拟机更高效地运行。</p>
+</div>
+</div>
+<div class="section" id="id24">
+<h3>虚拟桌面架构系统<a class="headerlink" href="#id24" title="永久链接至标题">¶</a></h3>
+<p>虚拟桌面基础架构[Virtual desktop infrastructure（VDI）]使用虚拟化将个人计算环境与用户地物理机分离开来。在VDI中，桌面操作系统和应用程序在虚拟机内运行，这些虚拟机被托管在虚拟化基础架构中地服务器上。运行桌面操作系统地虚拟机被称为虚拟桌面环境[virtual desktop environment（VDE）]。</p>
+<p>在你的组织中为用户部署VDE能使你更容易地管理并监控这些环境，减少与物理计算机有关的一些成本。</p>
+</div>
+<div class="section" id="id25">
+<h3>虚拟化的安全性<a class="headerlink" href="#id25" title="永久链接至标题">¶</a></h3>
+<p>有一些与虚拟化基础架构有关的安全问题。</p>
+<table class="colwidths-given docutils align-default" id="id42">
+<caption><span class="caption-text">虚拟化的安全性</span><a class="headerlink" href="#id42" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>安全问题</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>补丁管理</p></td>
+<td><p>补丁管理系统应当部署到位，以确保安装了所有相关补丁。这对那些针对虚拟化软件本身发布的任何补丁来说就尤为重要。另外，必须进行仔细地分析，确定通过操作系统补丁是否应当或什么时候在主机和客户机上安装。</p></td>
+</tr>
+<tr class="row-odd"><td><p>最小权限</p></td>
+<td><p>在为任何虚拟环境确定访问控制分配时，必须应用最小权限地概念。必须定期监控对所有环境的访问行为，防止未授权访问。</p></td>
+</tr>
+<tr class="row-even"><td><p>日志</p></td>
+<td><p>虚拟环境中的用户和系统活动应当进行记录并审核，检查不寻常的活动和任何可能的安全泄露。</p></td>
+</tr>
+<tr class="row-odd"><td><p>联网</p></td>
+<td><p>虚拟联网设备的安全能力可能不会完全和物理设备一样。如特定模式下的虚拟交换机在可能无法将虚拟基础架构中的主机和客户机之间或客户机与客户机之间的流量分离开来。由于最佳实践是仅在必要的时候启用系统间的网络连接，你应当特别注意如何配置你的虚拟网络设备。</p></td>
+</tr>
+<tr class="row-even"><td><p>快照</p></td>
+<td><p>持续不断地捕捉快照（snapshot）或特定时间点上的虚拟环境状态，就能在虚拟环境被破坏或性能降低时提供一种快速简单的方法恢复整个环境。</p></td>
+</tr>
+<tr class="row-odd"><td><p>避免VM蔓延</p></td>
+<td><p>虚拟机蔓延（VM sprawl）发生在虚拟机数量超出组织的控制或管理能力之时。如果你正在处理虚拟机蔓延，受影响的VM可能会被轻易忽略。避免虚拟机蔓延的最佳方式之一就是使用虚拟机生命周期管理[VM lifecycle management(VMLM)]方案。VMLM方案为你提供了一个能够维护和监控组织中所有虚拟机的中央控制面板。</p></td>
+</tr>
+<tr class="row-even"><td><p>VM逃逸保护</p></td>
+<td><p>虚拟机逃逸（VM escape）发生在攻击者在虚拟机上执行代码，允许运行在虚拟机上的应用程序脱离虚拟环境并直接与超级管理器互动时。攻击者可能可以访问最底层的主机操作系统，因此也能访问运行在主机上的所有其他虚拟机。防止虚拟机逃逸的最佳方式就是确保你的虚拟软件保持最新。你还可以尝试限制主机和客户机之间的资源共享功能。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id26">
+<h3>云计算<a class="headerlink" href="#id26" title="永久链接至标题">¶</a></h3>
+<p>云计算（Cloud computing）是一种计算方式，其中包含了通过大型分布式网络进行的实时通讯，以便为用户、企业或组织提供资源、软件、数据和媒体需求。这种计算方式通常需要依赖互联网来提供计算能力，这是单个机器做不到的。“云”是指在特定网络上可用的资源。可能包括商业网站、消费者网站、云存储服务、基于IT的服务、文件编辑应用程序和社交网站。</p>
+<p>云计算背后的主要思想就是你可以从世界任意地方的任意计算机中访问并管理你的数据和应用程序，而存储方式和位置不会立即可见。云计算几乎总是使用一种或多种虚拟化方式来确保资源能快速简便地提供给需要地客户。因此，虚拟化的安全影响与云的安全密切相关。</p>
+<div class="section" id="vs">
+<h4>内部部署vs.云环境<a class="headerlink" href="#vs" title="永久链接至标题">¶</a></h4>
+<p>云帮助组织将管理内部部署系统的要求和复杂性转移给第三方供应商。当这些系统托管在云端时，组织就能集中精力管理商业的其他方面。但是，云的缺点就是组织无法完全控制被托管的系统——即使作为客户的组织有一定能力管理系统，但云供应商才是最终掌握控制权的一方。</p>
+</div>
+</div>
+<div class="section" id="id27">
+<h3>云部署模型<a class="headerlink" href="#id27" title="永久链接至标题">¶</a></h3>
+<p>可以使用四种基本方法来部署云计算技术。下表描述了这些方法。</p>
+<table class="colwidths-given docutils align-default" id="id43">
+<caption><span class="caption-text">云部署模型</span><a class="headerlink" href="#id43" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>部署</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>私有</p></td>
+<td><p>私有云服务通常由单个公司或其他商业实体通过私有网络发布。这种托管可能在内部进行，或在异地进行。使用私有云计算，组织能够更好地控制服务的私密性和安全性。这种交付方式更多地针对在运营中需要严格访问控制的银行和政府服务。</p></td>
+</tr>
+<tr class="row-odd"><td><p>公共</p></td>
+<td><p>公共云时由向普通客户提供服务的组织通过互联网进行部署的。在这种模型下，企业能够提供按订阅或按需付费的融资方式，同时还能提供免费的低层次服务。由于公共计算机依赖互联网，安全一直都是一个问题。</p></td>
+</tr>
+<tr class="row-even"><td><p>社群</p></td>
+<td><p>当多个组织共享云服务的所有权时，将以社群云的方式部署。这通常时为了集中资源以便用于共同关心的问题，如标准化和安全策略。</p></td>
+</tr>
+<tr class="row-odd"><td><p>混合</p></td>
+<td><p>混合云计算在一个实体中结合了两种或多种部署方式。这种方法的好处就是组织不仅能够依赖内部云服务进行业务操作，还能向公众提供计算服务。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id28">
+<h3>云服务的类型<a class="headerlink" href="#id28" title="永久链接至标题">¶</a></h3>
+<p>下表描述了云计算提供给用户的四种主要服务。</p>
+<table class="colwidths-given docutils align-default" id="id44">
+<caption><span class="caption-text">云服务的类型</span><a class="headerlink" href="#id44" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>服务</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>软件</p></td>
+<td><p>软件即服务[Software as a Service(Saas)]是指使用云向客户提供应用程序。这种服务无需用户在他们的计算机上安装软件，也不需要组织购买和维护软件版本。这样的例子包括 Microsoft Office 365、Salesforce 和 Google G Suite。</p></td>
+</tr>
+<tr class="row-odd"><td><p>平台</p></td>
+<td><p>平台即服务[Platform as a Service(Paas)]是指使用云向客户提供虚拟系统，如操作系统。这样的例子包括Oracle数据库、Microsoft Azure SQL数据库和Google App Engine</p></td>
+</tr>
+<tr class="row-even"><td><p>基础设施</p></td>
+<td><p>基础设施即服务[Infrastructure as a Service(Iaas)]是指使用云提供客户端所需的任意或所有基础设施访问。这包括数据中心、服务器、或任何所需的联网设备。IaaS能保障客户端的服务质量（QoS）。这样的例子包括Amazon Elastic Compute Cloud、Microsoft Azure Virtual Machines 和 OpenStack。</p></td>
+</tr>
+<tr class="row-odd"><td><p>安全</p></td>
+<td><p>安全即服务[Security as a Service(SECaaS)]使客户能够利用云供应商在计算机安全的特定区域内提供的信息、服务、软件、基础设施和流程。这包括认证机制，防恶意软件方案，入侵检测系统以及更多。这样的例子有Cloudflare，FireEye 和 SonicWall。</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>一些服务类型之间有重叠，一些组织能提供包含多种服务类型的套件。</p>
+</div>
+<div class="section" id="id29">
+<h4>云访问安全代理<a class="headerlink" href="#id29" title="永久链接至标题">¶</a></h4>
+<p>一些SECaaS供应商能提供云访问安全代理[cloud access security broker(CASB)]服务，这些服务实质上是安装在组织内部部署和云网络之间的安全网关，确保往来的流量符合安全策略。</p>
+</div>
+</div>
+<div class="section" id="id30">
+<h3>保护虚拟和基于云的资源的标准<a class="headerlink" href="#id30" title="永久链接至标题">¶</a></h3>
+<p>保护虚拟和基于云的资源时：</p>
+<ul class="simple">
+<li><p>考虑在你的组织中使用虚拟化，实现更简单高效的资源管理。</p></li>
+<li><p>认识不同虚拟机类型之间的区别并确定哪种最符合你的要求。</p></li>
+<li><p>确保VM软件以及主机和客户机的操作系统都定期地打补丁。</p></li>
+<li><p>对访问虚拟机执行最小权限原则。</p></li>
+<li><p>确保虚拟机记录关键事件的日志。</p></li>
+<li><p>配置虚拟联网设备，以支持必要的隔离通讯。</p></li>
+<li><p>记录最佳虚拟机状态的快照。</p></li>
+<li><p>结合使用虚拟机生命周期管理方案。</p></li>
+<li><p>熟悉不同的云部署模型和服务类型。</p></li>
+<li><p>考虑利用SECaaS将一些安全操作转移给第三方供应商。</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="c">
+<h2>课题C：实现移动设备的安全性<a class="headerlink" href="#c" title="永久链接至标题">¶</a></h2>
+<p>现在，移动设备被广泛应用，并被许多公司部署到员工的商业用途中。这些设备有着需要解决的独特安全问题。</p>
+<div class="section" id="id31">
+<h3>移动设备的连接方式<a class="headerlink" href="#id31" title="永久链接至标题">¶</a></h3>
+<p>移动设备可以使用许多不同方式与其他设备和网络进行通讯。每种方式都有自己的安全意义。</p>
+<table class="colwidths-given docutils align-default" id="id45">
+<caption><span class="caption-text">移动设备的连接方式</span><a class="headerlink" href="#id45" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>连接方式</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>蜂窝</p></td>
+<td><p>蜂窝网络（cellular network）使移动设备能连接到世界各地固定位置上的无线收发器。这些无线收发器的覆盖区域被称为小区（cell）。蜂窝网络主要被移动手机用来进行语音和信息通讯。但也可以进行通用数据传输。虽然现代蜂窝网结合了传输加密等安全措施，但用户和组织在网络配置安全的方式上几乎毫无控制权。</p></td>
+</tr>
+<tr class="row-odd"><td><p>Wi-Fi</p></td>
+<td><p>移动设备可以连接到Wi-Fi网络进行无线局域连接。安全的Wi-Fi网络结合认证和加密服务来确保数据传输不会被攻击者轻易拦截或破译。但是，一些Wi-Fi网络配置可能不安全，并且会导致中间人攻击。相对蜂窝网络，组织对其环境中的Wi-Fi网络拥有更多的控制权。</p></td>
+</tr>
+<tr class="row-even"><td><p>蓝牙</p></td>
+<td><p>正如课程前文中讨论的一样，蓝牙是一种主要用于增强移动设备之间短距离无线通讯的无线技术。这在设备之间创建了一个个人区域网络（PAN），因此，例如，无线耳机智能在短距离内与智能手机通讯。蓝牙容易受到蓝牙劫持（攻击者向蓝牙设备发送不想要的信号）和蓝牙窃听（攻击者拦截设备之间的蓝牙通讯）等攻击的影响。</p></td>
+</tr>
+<tr class="row-odd"><td><p>NFC</p></td>
+<td><p>正如课程前文中讨论的一样，近场通讯（NFC）是指智能手机和平板电脑等移动设备在非常近的距离内进行的通讯标准，通常在接触或彼此相距仅几英寸的情景下进行。NFC通常用于当面交易或数据传输。它容易受到攻击者的攻击，攻击者会从几英尺元的地方拦截来自设备的射频（RF）信号，攻击者还能使用RF信号淹没设备以造成DoS状况。</p></td>
+</tr>
+<tr class="row-even"><td><p>红外线</p></td>
+<td><p>红外传输（Infrated transmission）是无线传输的一种形式，其中信号以红外光脉冲的形式被发送。设备接收器要能一览无余地看到收发器才能成功地接受信号。接受脉冲对方向地要求确保了数据不会在近距离内泄露到未授权设备中。</p></td>
+</tr>
+<tr class="row-odd"><td><p>SATCOM</p></td>
+<td><p>专用移动设备还能使用卫星通讯[satelite communications](SATCOM)来发送和接受来自轨道卫星地无线电信号。这些卫星能将需要视线的信号转发到全球不同的位置上。这种无线通讯方式在军事组织中很受欢迎。SATCOM网络通常使用加密形式保障通讯的机密性；但是，研究人员已经发现其中某些加密实现是脆弱的。</p></td>
+</tr>
+<tr class="row-even"><td><p>ANT</p></td>
+<td><p>ANT是一种专有无线网络技术，与消耗较少能量的蓝牙技术类似。主要用于传感器之间的通讯，如心率检测器，健身检测器中的传感器等更多。ANT提供访问控制和加密措施来保障安全。</p></td>
+</tr>
+<tr class="row-odd"><td><p>USB</p></td>
+<td><p>移动设备可以通过USB物理连接到计算机或其他移动设备上。这种连接类型主要用于向（或从）移动设备传输或同步数据。这种物理连接有助于缓解与上述无线方式有关的风险，但是，计算机仍然能够通过USB连接将恶意代码传输到移动设备中。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id32">
+<h3>移动设备管理<a class="headerlink" href="#id32" title="永久链接至标题">¶</a></h3>
+<p>移动设备管理（Mobile device management/MDM）是指跟踪、控制、保护组织移动基础架构的过程。MDM方案通常是一种基于Web的平台，允许管理员从中央控制台开展工作。使用MDM，你就能立即提升组织中连接私有网络的所有移动设备的安全策略，而不是为每个设备单独地应用安全控制。</p>
+</div>
+<div class="section" id="id33">
+<h3>移动设备的安全控制<a class="headerlink" href="#id33" title="永久链接至标题">¶</a></h3>
+<p>组织的安全策略应对用于商业的所有移动设备中实施并加强移动安全控制。这里有一些用于提供移动设备安全的控制方法。</p>
+<table class="colwidths-given docutils align-default" id="id46">
+<caption><span class="caption-text">移动设备的安全安全控制</span><a class="headerlink" href="#id46" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>安全控制</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>屏幕锁定</p></td>
+<td><p>所有移动设备上的屏幕锁定选项应当被启用，对设备什么时候会被锁定做出严格要求。一旦设备被锁定，只有输入用户设备的代码才能访问。</p></td>
+</tr>
+<tr class="row-odd"><td><p>强密码和PIN码</p></td>
+<td><p>当设备打开时，用户应当设备强密码和PIN码来访问设备。密码要求在每个组织中各不相同，并且应当被记录在组织安全策略中。</p></td>
+</tr>
+<tr class="row-even"><td><p>全设备加密</p></td>
+<td><p>如果可能的话，所有的移动设备应当配置使用数据加密来保护存储在设备上的公司专有数据及其访问。</p></td>
+</tr>
+<tr class="row-odd"><td><p>远程擦除/锁定</p></td>
+<td><p>远程擦除（remote wipe）是一种用于从移动设备中删除敏感数据，并不在实际拥有该设备时永久删除其中数据的方法。 远程锁定（remote lockout）是一种不从内存中删除设备中删除敏感数据的前提下限制其访问的方法。但是，技术高超的攻击者可能可以绕过锁定获取到敏感数据，尤其是在未加密的情况下。 如果手机丢失或被盗，你可以远程地执行这些功能。擦除和锁定地指南和要求应当被包括在公司使用移动设备地安全策略中。</p></td>
+</tr>
+<tr class="row-even"><td><p>地理定位和地理围栏</p></td>
+<td><p>GPS跟踪服务功能，或地理定位在许多移动设备中都可用，在大多数处于商业原因需要的情形下可以进行添加。这种功能被用作多数出于商业原因需要的情形下可以进行添加。这种功能被用作一种安全措施来保护可能丢失或被盗的移动设备。地理围栏（Geofencing）是以中国根据现实世界的地理位置创建虚拟边界的实践。组织可以使用地理围栏在它的办公区周围创建边界，然后对超出此边界的任何设备限制其中的功能。</p></td>
+</tr>
+<tr class="row-odd"><td><p>访问控制</p></td>
+<td><p>和其他计算平台一样，移动设备应当对访问的人员和内容进行管理。当员工使用移动设备时实施认证和授权机制就能维持最低权限原则。比如，一些移动设备支持生物识别（如指纹）的认证方式。其他一些支持情景感知认证（context-aware authentication）配置，在进行认证和授权决策时考虑当前情况。比如，如果检测到移动设备通过不安全的公共Wi-Fi连接到互联网，可能就会锁定特定应用的访问。</p></td>
+</tr>
+<tr class="row-even"><td><p>应用程序和内容管理</p></td>
+<td><p>对用户可访问的应用和内容进行限制可以防止员工无意间使用他们的移动设备上的不安全软件。根据你的需求，你可以将一组被认为安全的应用程序列入白名单，同时阻止其余应用。或者可以起草一份禁止入内的黑名单。</p></td>
+</tr>
+<tr class="row-odd"><td><p>资产跟踪和清单控制</p></td>
+<td><p>资产跟踪提供给用户的移动设备对建立组织必须遵守的特定安全标准至关重要。对供应给员工的任何移动设备制定统一的清单，确保每台移动设备都被考虑在内。</p></td>
+</tr>
+<tr class="row-even"><td><p>推送服务通知</p></td>
+<td><p>推送通知时一种由中央服务器向多个客户端发送通讯。在移动设备中，推送通讯可能会以短信形式出现，它是由移动设备管理控制台向所有员工设备发送的。发生事件时，你可以使用推送通知向IT人员发送警报，或在灾难发生时向所有工作人员发送重大警告。</p></td>
+</tr>
+<tr class="row-odd"><td><p>限制可移动存储功能</p></td>
+<td><p>由于像SD卡这样可移动存储设备进一步分离了用户和设备的信息，因此，你的员工需要谨慎行事。你应当强制要求易丢失和经常共享的可移动存储组件中不能包含敏感数据，尤其是明文形式的数据。主流的移动操作系统限制特定应用及其中存储的数据向设备中的其他应用和进程开放，但是可移动存储设备通常不会提供这种保护。</p></td>
+</tr>
+<tr class="row-even"><td><p>存储分区（Storage segmentation）</p></td>
+<td><p>移动设备的普及与云存储技术的兴起密切相关，因此，你需要做好准备，以便能够对管理组织中数据存储的最佳方式作出评估。根据你的安全需求，可以考虑按照特定界线划分数据存储（例如，云v.s.本地）。当你在网络中分割数据存储时，就能在移动设备及其用户中提供高级别的访问控制。</p></td>
+</tr>
+<tr class="row-odd"><td><p>容器化</p></td>
+<td><p>移动设备可以使用虚拟容器来将敏感应用程序和存储与设备中的其他应用程序和存储分离开来。即使设备上的其他区域受到恶意软件的感染，也不会影响到隔离容器。几种移动操作系统，如Android，默认执行这种应用程序和存储的隔离。</p></td>
+</tr>
+<tr class="row-even"><td><p>禁用不使用的功能</p></td>
+<td><p>每种功能都可能成为移动系统中的潜在漏洞，因此，最好禁用组织中任何不必要的功能。例如，在企业提供的Android手机上进行Google账户同步可能不是必要的。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id34">
+<h3>移动设备的监控和执行<a class="headerlink" href="#id34" title="永久链接至标题">¶</a></h3>
+<p>除了前面的安全控制，一个优秀的移动设备管理系统还能使你监控移动设备的活动并执行你为组织制定的策略。这些活动包括以下内容。</p>
+<table class="colwidths-given docutils align-default" id="id47">
+<caption><span class="caption-text">移动设备的监控和执行</span><a class="headerlink" href="#id47" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>活动</p></th>
+<th class="head"><p>安全考虑</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>来自第三方商店的应用安装</p></td>
+<td><p>由于移动操作系统的第三方商店不必进行与官方商店相同程度的审查。此类应用的安全性可能很难验证，所以你应当监控第三方商店的使用，或者可能需要完全阻止它们的使用。</p></td>
+</tr>
+<tr class="row-odd"><td><p>应用侧面加载</p></td>
+<td><p>侧面加载（Sideloading）是指在移动设备上直接安装应用数据包的做法，而不必通过应用商店下载。和第三方应用商店类似，通过侧面加载的应用无法验证安全性且应当进行监控。</p></td>
+</tr>
+<tr class="row-even"><td><p>Rooting/越狱</p></td>
+<td><p>对安卓设备来说，rooting是指启用设备上根权限的过程，这些权限在默认情况下是禁用的。这使得用户基本上完全控制了他们的设备，绕过操作系统中固有的一些安全措施。iOS设备中一个类似的概念叫做越狱（jailbreaking），它消除了设备上的软件限制，允许用户运行未从官方应用商店中下载的应用。这两种实践都会严重影响设备的安全性。</p></td>
+</tr>
+<tr class="row-odd"><td><p>自定义固件配置</p></td>
+<td><p>当取得Android设备的权限时，就可能配置其中的自定义固件。这允许用户对他们的设备进行使用制造商固件无法完成的大量改变。这也意味着用户可能会将设备暴露在安全缺陷下，甚至可能导致设备不可使用。</p></td>
+</tr>
+<tr class="row-even"><td><p>固件OTA更新</p></td>
+<td><p>为了运行一致且最新的固件，你的移动设备管理系统可能可以对设备实施空中下载（OTA）的更新。以这种方式更新的固件能确保管理系统权限范围内的所有设备不会运行不安全的固件。</p></td>
+</tr>
+<tr class="row-odd"><td><p>运营商解锁</p></td>
+<td><p>一些设备，尤其时iPhone，可能会将用户锁定未特定移动运行商的用户。但是，一些运营商提供了解锁功能，使用户能够切换服务供应商。如果你希望组织中的服务使用蜂窝数据，可能会向让此类设备使用特定供应商。在这种情况下，你可能想要监控更换供应商的任何尝试。</p></td>
+</tr>
+<tr class="row-even"><td><p>摄像头和麦克风的使用</p></td>
+<td><p>移动设备，尤其时电话，即小巧有强大。它们可能包含用于录制视频和音频的高清摄像头和麦克风，但这也意味着这些设备能轻易地用来窃听和侦察办公大楼等室内环境。你可能想要监控这类活动，或强制设备禁用这种功能。</p></td>
+</tr>
+<tr class="row-odd"><td><p>地理标记</p></td>
+<td><p>当设备捕捉视频和音频时，它们可能会使用元数据标记该媒体。其中一种此类元数据就是当媒体被捕捉时，通过GPS显示的设备所处地理位置。如果被捕捉的媒体比较敏感，那么被记录对象的位置也是敏感的，GPS标记，俗称地理标记（geotagging）就可能向未授权用户泄露敏感信息。因此，可能有必要监控GPS标记记录下来的媒体，或禁用此类功能。</p></td>
+</tr>
+<tr class="row-even"><td><p>外部媒介的使用</p></td>
+<td><p>正如前文讨论的一样，你应当限制像SD卡这样的外部媒介在移动设备中的使用。外部媒介的另一个例子就是随身USB[USB On-the-Go(OTG)]。USB OTG允许两个设备通过USB进行连接，其中一个设备时主设备，另一个是从设备。基本上，主设备充当主机。例如，你可能会将一个USB拇指驱动连接到智能手机上以便从每台设备中传输数据。在这种情形中，手机是主机。与任何外部媒介一样，OTG可能会导致设备泄露敏感数据到不受你控制的存储媒介中。</p></td>
+</tr>
+<tr class="row-odd"><td><p>SMS/MMS的使用</p></td>
+<td><p>员工可能会使用他们的设备发送并接受文本和媒体信息。与任何通讯媒体一样，这可能会导致有意或无意的数据泄露风险。根据拥有移动设备的人员以及设备使用的隐私预期，你可能会希望监控所有的SMS/MMS传输。</p></td>
+</tr>
+<tr class="row-even"><td><p>Wi-Fi直连的使用</p></td>
+<td><p>无线直连（Wi-Fi Direct）可让两个设备在没有无线访问点的情况下相互连接。这使得它类似与蓝牙等协议。类似的想法是Wi-Fi ad hoc网络，这种网络不需要路由器等联网基础设施，因为每个设备节点都会执行流量转发。缺少集中式架构可能会导致难以监控无线通讯的恶意流量。</p></td>
+</tr>
+<tr class="row-odd"><td><p>数据共享</p></td>
+<td><p>数据共享（Tethering）是指与多个设备共享无线互联网连接的过程。通常情况下，如果用户想要使用笔记本电脑这样的设备，又不在Wi-Fi连接附近，他们可以将手机连接到笔记本电脑，让笔记本电脑使用蜂窝网络连接。一些运营商为数据共享设备收取额外费用，因此你可能会想监控数据共享的使用。</p></td>
+</tr>
+<tr class="row-even"><td><p>支付方式的使用</p></td>
+<td><p>有几种不同的应用可以提供移动设备的支付服务。用户可以使用这些应用为产品或服务付费。如果你担心这些服务的安全性，可能会想要监控它们的使用情况，或强制执行所有设备必须使用的单一支付服务。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id35">
+<h3>移动部署模型<a class="headerlink" href="#id35" title="永久链接至标题">¶</a></h3>
+<p>移动设备正在工作中越来越多地采用。这类设备地性质引起了所有权、管理、可及性等诸多问题。企业和用户可以通过几种方式在组织中部署移动设备基础架构。</p>
+<table class="colwidths-given docutils align-default" id="id48">
+<caption><span class="caption-text">移动部署模型</span><a class="headerlink" href="#id48" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>部署模型</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>企业拥有</p></td>
+<td><p>在这种部署模型中，用于工作相关目的的所有移动设备的唯一所有者是组织。同样，该组织全权负责所述设备的维护和管理。因为这种部署模型使组织全面控制移动设备的使用方式，通常被认为是最安全的选择。但是，由于许多此类策略禁止员工使用甚至携带他们的设备用于工作，因此在某些情况下，这可能不是一种现实可行的模式。</p></td>
+</tr>
+<tr class="row-odd"><td><p>BYOD</p></td>
+<td><p>自带设备[bring your own device(BYOD)]模型将控制权和所有权从组织转移到个人员工。如果员工选择自带设备，他们就要对使用自己的个人设备进行的工作负责。由于这些设备对日常生活是如此不可或缺，这种情况变得越来越普遍。</p></td>
+</tr>
+<tr class="row-even"><td><p>CYOD</p></td>
+<td><p>选择你自己的设备[choose your own device(CYOD)]模型与BYOD类似，员工对他们的设备负有实质性的责任，甚至可被视为设备的所有者。但是，组织仅允许使用通过安全性和功能目的测试的特定设备，并且员工必须从可接受设备列表中选择。因此，CYOD是为了减轻BYOD主要漏洞的一种尝试，同时又不像企业拥有部署模型那么严格。</p></td>
+</tr>
+<tr class="row-odd"><td><p>COPE</p></td>
+<td><p>企业拥有，个人启用[corpotate-owned, personally enabled(COPE)]模型让组织选择他们希望员工使用的设备，同时仍允许员工拥有使用设备进行个人活动的一些自由。这是标准的企业拥有部署模型的一种稍微宽松版本，因为员工没有被迫要求严格使用设备用于工作。</p></td>
+</tr>
+<tr class="row-even"><td><p>VMI</p></td>
+<td><p>正如VDI，组织可以为员工创建一个虚拟移动基础架构[virtual mobile infrastructure(VMI)]来使用他们的移动设备。VMI中的虚拟机运行如 android 这样的操作系统，而不是桌面操作系统。员工连接到这些虚拟机而不是直接在他们的个人设备中运行操作系统。这种方式让员工使用它们的个人设备连接到组织的VMI，使组织能够在沙盒环境中控制与工作相关的活动，同时仍然允许用户在下班后进行自己的个人活动。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="byod">
+<h3>BYOD安全控制<a class="headerlink" href="#byod" title="永久链接至标题">¶</a></h3>
+<p>下表列举了几种不同的控制方法，你可以实施这些方法来缓解BYOD引入的安全问题。</p>
+<table class="colwidths-given docutils align-default" id="id49">
+<caption><span class="caption-text">BYOD安全控制</span><a class="headerlink" href="#id49" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>安全控制</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>策略</p></td>
+<td><p>为满足BYOD实现应该做的第一件事就是起草一份有关组织中BYOD处理方式的企业策略。你可能会认为BYOD完全不可容忍，也可能会想将安全小组应对BYOD相关事件的方式信息包含在策略中。 同样，你应当起草一份员工需要了解并遵守的可接受使用策略，还应当清晰地列出允许使用地设备类型，允许或不允许如何使用。这种策略取决于有效且明确地用户接受，因此，请确保组织中地每个人都会服从策略。</p></td>
+</tr>
+<tr class="row-odd"><td><p>所有权归属</p></td>
+<td><p>虽然员工的个人设备使他们的私有财产，但是，当涉及公司数据时，所有权之间的界限就会变得模糊。你需要制定清晰的界线，明确定义员工所有和组织所有的内容。这样的话，允许用个人设备访问和管理公司机密的员工就不能对上述机密声明所有权。 另一个你要问自助机的问题就是：谁来提供对BYOD的支持？自己供应软硬件的公司应该能够提供帮助台支持，员工带到工作环境中的大量不同移动设备要如何管理？请考虑一下，如果你不提供足够的支持，员工个人设备中存在的任何安全漏洞都可能影响你的网络。</p></td>
+</tr>
+<tr class="row-even"><td><p>补丁管理和防恶意软件</p></td>
+<td><p>根据操作系统及其软件，一些移动设备可以容易地进行修补。但是，其他一些可能很难打补丁，使它们变得非常脆弱。可以考虑应用补丁管理系统来缓解过时软硬件带来的威胁。 同样，许多移动设备缺少防恶意软件。为了防止你的网络被感染，你可能会想鼓励用户在他们的个人设备中下载防恶意软件应用。</p></td>
+</tr>
+<tr class="row-odd"><td><p>考虑架构和基础设施的需求</p></td>
+<td><p>随着越来越多的设备被添加到你的企业网络中，你可能需要扩展并更新基础设施。否则，当前的办公设置可能不足以服务数量众多的移动设备。如果你的网络架构在无线方面不够重视，就需要进行改进来适应BYOD。正如你所见，无线网络可能对你的组织安全形成新的挑战。</p></td>
+</tr>
+<tr class="row-even"><td><p>取证</p></td>
+<td><p>随着BYOD变得越来越普遍，它们与你进行的安全调研的相关性变得越来越高。当你考虑可能需要进行取证的所有不同操作系统和硬件时，会带来一些挑战。你的取证程序和工具知识必须时最新的，而不仅仅时一套有限的规范标准，其中应当包括各种各样的设备。</p></td>
+</tr>
+<tr class="row-odd"><td><p>隐私支持</p></td>
+<td><p>员工可能会担心他们的隐私处于被暴露在企业网络中的风险下，尤其是网络可以被许多人共享的情况下。你应当向员工提供保护隐私信息和设备使用安全的工具和专有技术来让员工放心。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id36">
+<h3>实现移动设备安全性的准则<a class="headerlink" href="#id36" title="永久链接至标题">¶</a></h3>
+<p>实现移动设备的安全性时：</p>
+<ul class="simple">
+<li><p>了解移动设备可能在组织中使用的不同连接方式。</p></li>
+<li><p>了解你对特定连接方式应用的不同控制等级。</p></li>
+<li><p>在你的组织中纳入移动设备管理平台。</p></li>
+<li><p>在移动设备上实施安全控制，如屏幕锁定、地理定位、远程擦除、设备加密等更多。</p></li>
+<li><p>监控与移动设备有关的特定活动，如来自第三方的应用安装，获得根权限/越狱，运营商解锁等等。</p></li>
+<li><p>执行策略限制或禁止特定移动设备活动的使用，这些活动可能会给组织带来不必要的风险。</p></li>
+<li><p>考虑移动设备可以在组织中部署的不同方式。</p></li>
+<li><p>了解组织中允许BYOD的内在风险。</p></li>
+<li><p>应用不同的安全控制打击BYOD风险，如确定所有权，鼓励使用防恶意软件应用，为用户提供工具和知识保护隐私等等。</p></li>
+</ul>
+</div>
 </div>
 </div>
 
@@ -400,6 +798,23 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#b">课题B：实现云和虚拟化的安全性</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id21">虚拟化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id22">超级管理器</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id24">虚拟桌面架构系统</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id25">虚拟化的安全性</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id26">云计算</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id27">云部署模型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id28">云服务的类型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id30">保护虚拟和基于云的资源的标准</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#c">课题C：实现移动设备的安全性</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id31">移动设备的连接方式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id32">移动设备管理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id33">移动设备的安全控制</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id34">移动设备的监控和执行</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id35">移动部署模型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#byod">BYOD安全控制</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id36">实现移动设备安全性的准则</a></li>
 </ul>
 </li>
 </ul>
