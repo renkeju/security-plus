@@ -15,3 +15,5 @@
     * 实施安全的联网协议和服务。
     * 保护无线网络流量。
 
+.. include:: /_documents/Chapter_6/Subject_A.rst
+.. include:: /_documents/Chapter_6/Subject_B.rst
