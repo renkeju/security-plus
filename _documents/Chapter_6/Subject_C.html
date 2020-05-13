@@ -35,8 +35,8 @@
 <div class="section" id="id1">
 <h2>开放系统互连模式<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
 <p>开放系统互连模型[Open Systems Interconnection(OSI) mode]是一种根据网络与网络中的其他要素进行通讯的方式来抽象说明网路的构建方式的方法，类似于传输控制协议/Internet协议（TCP/IP）模型。这些要素按特定的顺序分为七个独立的层。顺序决定了层间的交互层次结构——一个层面支持在其之上的层，同时它又由下面的层所支持。OSI模型的主要目的是促进不同类型的网络产品和服务之间的无缝和一致通信。</p>
-<table class="colwidths-given docutils align-default" id="id13">
-<caption><span class="caption-text">OSI模型</span><a class="headerlink" href="#id13" title="永久链接至表格">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id16">
+<caption><span class="caption-text">OSI模型</span><a class="headerlink" href="#id16" title="永久链接至表格">¶</a></caption>
 <colgroup>
 <col style="width: 3%" />
 <col style="width: 9%" />
@@ -96,8 +96,8 @@
 <div class="section" id="internet">
 <h2>Internet协议套件<a class="headerlink" href="#internet" title="永久链接至标题">¶</a></h2>
 <p>Internet 协议套件（Internet protocol suite）也称为传输控制协议/Internet协议[Transmission Control Protocol/Internet Protocol(TCP/IP)]套件，这是Internet的本地协议套件，是互联网连接所必需的。TCP/IP以包含在套件中的两个初始协议命名。下表介绍了构成该套件的其他常用协议。</p>
-<table class="colwidths-given docutils align-default" id="id14">
-<caption><span class="caption-text">Internet 协议套件</span><a class="headerlink" href="#id14" title="永久链接至表格">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id17">
+<caption><span class="caption-text">Internet 协议套件</span><a class="headerlink" href="#id17" title="永久链接至表格">¶</a></caption>
 <colgroup>
 <col style="width: 14%" />
 <col style="width: 86%" />
@@ -216,8 +216,8 @@
 <div class="section" id="id11">
 <h2>文件传输协议<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h2>
 <p>下表介绍了用于支持网络内和网络间文件传输的协议。</p>
-<table class="colwidths-given docutils align-default" id="id15">
-<caption><span class="caption-text">文件传输协议</span><a class="headerlink" href="#id15" title="永久链接至表格">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id18">
+<caption><span class="caption-text">文件传输协议</span><a class="headerlink" href="#id18" title="永久链接至表格">¶</a></caption>
 <colgroup>
 <col style="width: 14%" />
 <col style="width: 86%" />
@@ -257,6 +257,94 @@
 <p>安全POP/IMAP也被称为POP3S/IMAPS，基于SSL的POP/IMAP，和使用SSL的POP/IMAP。</p>
 </div>
 <p>安全/多用途Internet邮件扩展[Secure/Multipurpose Internet Mail Extensions（S/MIME）]是一种电子邮件加密标准，它使用公钥加密技术将数字签名添加到传统的MIME通讯中。MIME定义了电子邮件以前不可用的几种高级特性，包括能够发送除ASCII以外的字符集文本的能力，以及发送非文本文件附件的能力。S/MIME提供了保密性、完整性、身份验证和不可否认性的保障，并且内置与大多数现代带电子邮件客户端中。</p>
+</div>
+<div class="section" id="id13">
+<h2>其他联网协议和服务<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h2>
+<p>下表介绍了一些其他的联网协议和服务。</p>
+<table class="colwidths-given docutils align-default" id="id19">
+<caption><span class="caption-text">其他联网协议和服务</span><a class="headerlink" href="#id19" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>协议/服务</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>电话</p></td>
+<td><p>电话（Telephony）通过远距离的设备提供语音和视频通讯。一种常见的电话协议是VoIP，在这种协议中语音流量通过IP网络传输。网络会议平台还为VoIP增添了视频功能。</p></td>
+</tr>
+<tr class="row-odd"><td><p>路由和交换</p></td>
+<td><p>路由和交换协议定义了这些设备进行通讯时所使用语言。常见的路由协议包括路由信息协议[Routing Information Protocol（RIP）]及其前身RIPv2。RIPv2通过启用密码验证和使用密钥验证进入路由器的路由信息来支持安全性。对RIPv2的进一步改进包括Cisco专有的内部网关路由协议[Interior Gateway Routing Protocol（IGRP）]和增强型内部网关路由协议[Enhanced Interior Gateway Routing Protocol（EIGRP）]。</p></td>
+</tr>
+<tr class="row-even"><td><p>时间同步</p></td>
+<td><p>时间同步确保软件和服务协调得当，系统生成的所有类型的事件对于事件发生的事件都是准确的。提供时间同步的最突出的协议时网络时间协议[Network Time Protocol（NTP）]。NTP通常通过联络公共时间服务器将计算机系统的时间同步到协调时间时（UTC）。但是，你也可以设置自己的本地时间服务器以实现更精确的计时，同时免除了配置外围防火墙以允许NTP流量进出网络的必要性。</p></td>
+</tr>
+<tr class="row-odd"><td><p>订阅</p></td>
+<td><p>订阅协议和服务使发布者能沿着特定频道发送信息，并且订阅了该频道的任何客户端都将收到这些消息。这使发布者能够在不知道实际收件人的情况下发送消息。丰富站点摘要[Rich Site Summary（RSS）]是最受欢迎的订阅技术，它使用户能够订阅每个感兴趣的站点的订阅源（feed）。参与的网站会自动将新条目发布到网站的订阅源中，如新闻网站上的新文章。因此，用户可以跟踪他们订阅的所有订阅源发布的内容。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id14">
+<h2>端口和端口范围<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h2>
+<p>如你所知，端口是指逻辑连接的终点。客户端计算机通过指定端口连接到特定服务器程序。所有端口都被分配了一个从0到65535范围的数字。互联网编号分配机构（IANA）将端口号分为三个模块：知名端口，是指由IANA预先分配给广泛使用的核心服务的端口；注册端口，这些端口可用于通过IANA请求注册的服务；以及动态端口，这些端口出现服务请求时由客户端操作系统按需分配。</p>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>IANA管理知名端口的注册，为了方便起见，还列出了注册端口。有关TCP和UDP端口的完整列表，请参阅IANA网站：<a class="reference external" href="https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?&amp;page=1">https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?&amp;page=1</a></p>
+</div>
+<p>TCP和UDP端口在下表列出的三种范围之内进行分配。黑客可能会针对常用的知名端口进行攻击，但也可能会扫描开放的注册端口或动态端口。</p>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>一些操作系统使用不同范围作为动态端口，而不是上表列举出来的内容。</p>
+</div>
+<div class="section" id="id15">
+<h3>常见的默认网络端口<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h3>
+<p>这张表列举了一些最常见的网络端口号。</p>
+<table class="colwidths-given docutils align-default" id="id20">
+<caption><span class="caption-text">常见的默认网络端口</span><a class="headerlink" href="#id20" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>端口号</p></th>
+<th class="head"><p>服务</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>21</p></td>
+<td><p>FTP（文件传输协议）</p></td>
+</tr>
+<tr class="row-odd"><td><p>22</p></td>
+<td><p>SSH（安全Shell）</p></td>
+</tr>
+<tr class="row-even"><td><p>53</p></td>
+<td><p>DNS（域名系统）</p></td>
+</tr>
+<tr class="row-odd"><td><p>80</p></td>
+<td><p>HTTP（超文本传输协议）</p></td>
+</tr>
+<tr class="row-even"><td><p>443</p></td>
+<td><p>HTTPS（超文本传输协议安全）</p></td>
+</tr>
+<tr class="row-odd"><td><p>990</p></td>
+<td><p>FTPS（文件传输协议安全）</p></td>
+</tr>
+<tr class="row-even"><td><p>993</p></td>
+<td><p>安全IMAP</p></td>
+</tr>
+<tr class="row-odd"><td><p>995</p></td>
+<td><p>安全POP</p></td>
+</tr>
+<tr class="row-even"><td><p>3389</p></td>
+<td><p>RDP（远程桌面协议）</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 

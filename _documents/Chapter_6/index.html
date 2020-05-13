@@ -57,8 +57,8 @@
 <div class="section" id="id2">
 <h3>网络组件<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
 <p>下表描述了组成网络的集中常见组件。</p>
-<table class="colwidths-given docutils align-default" id="id37">
-<caption><span class="caption-text">网络组件</span><a class="headerlink" href="#id37" title="永久链接至表格">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id63">
+<caption><span class="caption-text">网络组件</span><a class="headerlink" href="#id63" title="永久链接至表格">¶</a></caption>
 <colgroup>
 <col style="width: 14%" />
 <col style="width: 86%" />
@@ -165,8 +165,8 @@
 <div class="section" id="id11">
 <h3>网络扫描器和分析工具<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h3>
 <p>下表介绍了一些在网络中用于安全措施的扫描和分析工具。</p>
-<table class="colwidths-given docutils align-default" id="id38">
-<caption><span class="caption-text">网络扫描器和分析工具</span><a class="headerlink" href="#id38" title="永久链接至表格">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id64">
+<caption><span class="caption-text">网络扫描器和分析工具</span><a class="headerlink" href="#id64" title="永久链接至表格">¶</a></caption>
 <colgroup>
 <col style="width: 14%" />
 <col style="width: 86%" />
@@ -228,8 +228,8 @@
 <div class="section" id="id17">
 <h3>网络监控系统的类型<a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h3>
 <p>下表描述了可以使用的IDS/IPS进行监控网络的各种方法。</p>
-<table class="colwidths-given docutils align-default" id="id39">
-<caption><span class="caption-text">网络监控系统</span><a class="headerlink" href="#id39" title="永久链接至表格">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id65">
+<caption><span class="caption-text">网络监控系统</span><a class="headerlink" href="#id65" title="永久链接至表格">¶</a></caption>
 <colgroup>
 <col style="width: 14%" />
 <col style="width: 86%" />
@@ -345,8 +345,8 @@
 <div class="section" id="id29">
 <h4>其他分区方法和拓扑<a class="headerlink" href="#id29" title="永久链接至标题">¶</a></h4>
 <p>除DMZ之外，还有其他方式可以为网络体系结构创建分区和拓扑。</p>
-<table class="colwidths-given docutils align-default" id="id40">
-<caption><span class="caption-text">其他分区方法和拓扑</span><a class="headerlink" href="#id40" title="永久链接至表格">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id66">
+<caption><span class="caption-text">其他分区方法和拓扑</span><a class="headerlink" href="#id66" title="永久链接至表格">¶</a></caption>
 <colgroup>
 <col style="width: 14%" />
 <col style="width: 86%" />
@@ -392,8 +392,8 @@
 <div class="section" id="id33">
 <h3>网络安全设备的布局<a class="headerlink" href="#id33" title="永久链接至标题">¶</a></h3>
 <p>保护网络设计的一个要点是将你的网络设备放置在最能发挥作用的物理位置和逻辑位置上。下表提供了常见网络设备的推荐位置。</p>
-<table class="colwidths-given docutils align-default" id="id41">
-<caption><span class="caption-text">网路安全设备</span><a class="headerlink" href="#id41" title="永久链接至表格">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id67">
+<caption><span class="caption-text">网路安全设备</span><a class="headerlink" href="#id67" title="永久链接至表格">¶</a></caption>
 <colgroup>
 <col style="width: 14%" />
 <col style="width: 86%" />
@@ -454,6 +454,560 @@
 <li><p>将每种类型的安全设备放置在网络中最能发挥其效能的逻辑和物理架构上。</p></li>
 <li><p>实施NAT向外部网络隐藏内部主机的IPv4地址。</p></li>
 <li><p>考虑实施SDN以改进网络管理流程。</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="c">
+<h2>课题C：实施安全的网络协议和服务<a class="headerlink" href="#c" title="永久链接至标题">¶</a></h2>
+<p>构成网络的技术及其设计与一系列常用网络协议和服务紧密结合。随着你继续探索网络安全领域，需要了解这些网络协议和服务在网络中的使用方式。</p>
+<div class="section" id="id37">
+<h3>开放系统互连模式<a class="headerlink" href="#id37" title="永久链接至标题">¶</a></h3>
+<p>开放系统互连模型[Open Systems Interconnection(OSI) mode]是一种根据网络与网络中的其他要素进行通讯的方式来抽象说明网路的构建方式的方法，类似于传输控制协议/Internet协议（TCP/IP）模型。这些要素按特定的顺序分为七个独立的层。顺序决定了层间的交互层次结构——一个层面支持在其之上的层，同时它又由下面的层所支持。OSI模型的主要目的是促进不同类型的网络产品和服务之间的无缝和一致通信。</p>
+<table class="colwidths-given docutils align-default" id="id68">
+<caption><span class="caption-text">OSI模型</span><a class="headerlink" href="#id68" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 3%" />
+<col style="width: 9%" />
+<col style="width: 29%" />
+<col style="width: 59%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>编号</p></th>
+<th class="head"><p>层</p></th>
+<th class="head"><p>描述</p></th>
+<th class="head"><p>主要协议和使用工具</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>物理</p></td>
+<td><p>定义设备和物理传输介质之间的连接</p></td>
+<td><p>物理连接组件（如电缆和布线）以及基本网络设备（如集线器，中继器和适配器）的规格。</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>数据链路</p></td>
+<td><p>提供两个直接相连节点之间的链路，并检测和修复物理层中的错误。</p></td>
+<td><p>点到点协议（PPP）：在节点之间提供加密、认证和压缩的连接协议。</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>网络</p></td>
+<td><p>在包含多个具有唯一地址的节点的系统（网络）中，提供将数据从一个节点传输到另一个节点的协议。</p></td>
+<td><p>Internet协议（IP）：管理互联网上的数字主机地址。 Internet 控制消息协议（ICMP）：测试设备之间的通讯并在网络功能不可用时发送错误消息。 路由信息协议（RIP）：通过限制源和目的地之间的中间设备数量来防止路由中的环路。</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>传输</p></td>
+<td><p>控制网络中节点之间数据传输的可靠性，使更高层能从中受益。</p></td>
+<td><p>传输控制协议（TCP）：一种面向连接的有保证传输协议。这意味着它不仅可以发送数据，还可以等待确认（ACK）并在可能的情况下修复错误。 用户数据协议（UDP）：通过绕过错误检查来确保数据包（数据报）的一致传输，这可能会导致延迟并要求更高的处理能力。 流控制传输协议（SCTP）：将TCP和UDP的功能合并到一个协议中。</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>会话</p></td>
+<td><p>通过检查点控制计算机之间的连接，以便在连接终止时可以恢复。</p></td>
+<td><p>网络文件系统（NFS）：允许用户客户端访问本地存储一样地访问网络上地文件。 套接字安全（SOCKS）：通过代理服务器在网络上路由数据包，其中还包含了身份验证。</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>表示</p></td>
+<td><p>将数据转换为上面应用层中地程序可以理解的格式。</p></td>
+<td><p>独立计算架构（ICA）：指定客户端和应用程序服务器之间的数据传输。</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>应用</p></td>
+<td><p>通过识别资源和通讯要求，使客户端于软件进行交互。</p></td>
+<td><p>超文本传输协议（HTTP）：允许在万维网上交换信息。 文件传输协议（FTP）：通过TCP网络在用户工作站和远程主机之间实现文件传输。 域名系统（DNS）：将人类可以理解的域名转换为相应的IP地址。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="osi">
+<h3>OSI模型和安全性<a class="headerlink" href="#osi" title="永久链接至标题">¶</a></h3>
+<p>作为一名安全专家，了解OSI模型的各个层面可以让你更容易地识别威胁及其目标，以及这些威胁如何影响你的网络。此外，按照层次保护你地网络使维护网络整体安全地一种有用策略，因为这些层次被设计为互相集成整合。如果最基本的层（物理）发生故障，那么其余可能也会发生故障。同样，如果攻击侵入安全性较差的应用层，则受保护的底层将无法纠正上述情况。</p>
+</div>
+<div class="section" id="internet">
+<h3>Internet协议套件<a class="headerlink" href="#internet" title="永久链接至标题">¶</a></h3>
+<p>Internet 协议套件（Internet protocol suite）也称为传输控制协议/Internet协议[Transmission Control Protocol/Internet Protocol(TCP/IP)]套件，这是Internet的本地协议套件，是互联网连接所必需的。TCP/IP以包含在套件中的两个初始协议命名。下表介绍了构成该套件的其他常用协议。</p>
+<table class="colwidths-given docutils align-default" id="id69">
+<caption><span class="caption-text">Internet 协议套件</span><a class="headerlink" href="#id69" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>TCP/IP协议</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>IP版本4（IPv4）</p></td>
+<td><p>这是一种Internet标准，使用分配给TCP/IP网络上计算机的一个32位数字。地址中的一些位元表示网段；其他位代表计算机或节点本身。为了便于阅读，32位IPv4地址通常用点分成四个八位元（例如， 10101100.00010000.11110000.00000001），并且每个八位元被转换为一个十进制数值（例如，172.16.240.1）。</p></td>
+</tr>
+<tr class="row-odd"><td><p>IP版本6（IPv6）</p></td>
+<td><p>这是一种Internet标准，通过应用128位地址空间来增加可用的IP地址池。IPv6还包括了新的提效功能，如简化的地址头，分层寻址，支持时间敏感的网络流量，以及用于单播寻址的新结构。 IPv6地址通常用冒号分成八组，每组由四个十六进制数字：2001:0db8:85a3:0000:0000:8a2e:0370:7334。虽然所有八组必须有四位数字，但前导0可以被省略，如写作：2001:db8:85a3:0:0:8a2e:370:7334，其中连续的零组可以用两个冒号替换，如写作：2001:db8:85a3::8a2e:370:7334。 IPv4与IPv6不兼容，目前还没有向IPv4那样广泛部署。</p></td>
+</tr>
+<tr class="row-even"><td><p>动态主机配置协议(DHCP)</p></td>
+<td><p>这种协议用于网络地址分配。DHCP会自动将IP寻址信息分配给IP网络计算机。除了手动分配静态IP地址的系统外，大多数IP系统从中央DHCP服务器或被配置成提供DHCP功能的路由器中动态获取地址信息。因此，DHCP服务是大多数企业环境中IP实施的关键组成。</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>Google在https://www.google.com/intl/en/ipv6/statistics.html网站中持续收集有关IPv6采用情况的统计信息。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>IP套件中还包含了许多其他协议，其中的一些在课题后面部分会有详细介绍。</p>
+</div>
+</div>
+<div class="section" id="apipa">
+<h3>APIPA<a class="headerlink" href="#apipa" title="永久链接至标题">¶</a></h3>
+<p>自动专私有IP寻址（APIPA）是一种Microsoft Windows服务，能使DHCP客户端计算机在DHCP不可用时初始化TCP/IP。当DHCP服务器发生故障或计算机没有连接时，DHCP客户端可以通过APIP获得IP地址。APIPA从169.254.0.1到169.254.255.254的小范围内随机自动分配地址。</p>
+</div>
+<div class="section" id="id38">
+<h3>域名系统<a class="headerlink" href="#id38" title="永久链接至标题">¶</a></h3>
+<p>域名系统（DNS）是互联网和私有IP网络上的主要域名解析服务。DNS是一种将计算机名称映射到其相关联IP地址的分层数据库系统。DNS服务器存储，维护和更新数据库，并响应DNS客户端名称解析请求，将人类可理解的主机名称转换为IP地址。互联网上的DNS服务器共同工作，为所有互联网主机提供全局名称解析。</p>
+<div class="section" id="dns">
+<h4>DNS安全措施<a class="headerlink" href="#dns" title="永久链接至标题">¶</a></h4>
+<p>在任何公司网络中，DNS通常都是首先受到攻击的目标。IT市场中有几个应用程序可以帮补保护DNS。保护DNS可以采取的一些措施有：</p>
+<ul class="simple">
+<li><p>将DNS服务器放在DMZ中并位于防火墙范围内。</p></li>
+<li><p>设置防火墙规则以阻止不必要的入站服务请求。</p></li>
+<li><p>只开放必要端口。</p></li>
+<li><p>实施域名系统安全扩展[Domain Name System Security Extensions（DNSSEC）]，这种机制能提供DNS数据的认证并维护DNS数据的完成性。</p></li>
+<li><p>定期更新DNS。操作系统供应商发布安全补丁更新DNS。</p></li>
+<li><p>备份DNS并将备份保存在不同的地理位置。</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id39">
+<h3>超文本传输协议<a class="headerlink" href="#id39" title="永久链接至标题">¶</a></h3>
+<p>超文本传输协议[Hypertext Transfer Protocol(HTTP)]是使客户端能连接到网站并与之进行交互的TCP/IP协议。它负责在系统之间传输网页上的数据。HTTP定义了消息的格式和传输方式，以及Web服务器和客户端浏览器响应不同命令时采取的操作。</p>
+</div>
+<div class="section" id="id40">
+<h3>安全套接字层/传输层安全<a class="headerlink" href="#id40" title="永久链接至标题">¶</a></h3>
+<p>安全套接字层[Secure Sockets Layer(SSL)]和传输层安全[Transport Layer Security(TLS)]是集合了数字证书认证和公钥数据加密的安全协议。这两种协议通过在TCP/IP连接上使用安全、加密和经认证的通道来保护敏感通信免受窃听和篡改。SSL/TLS是一个服务器驱动的过程；任何支持SSL或TLS的Web客户端（包括所有当前的Web浏览器）都以安全连接到启用SSL或TLS的服务器。</p>
+<p>SSL/TLS通常使用它的服务器软件提供。但是，SSL/TLS加速器（SSL/TLS accelerator）可以卸载SSL/TLS中的资源密集型的加密计算，以减少服务器的开销。这使服务器能更有效地履行其主要职责。SSL/TLS加速器通常使被插入到需要使用加密服务地服务器中的一种硬件卡，因此可以在网络中任何想要进行SSL/TLS卸载的地方放置加速器。</p>
+<div class="section" id="ssl-tls">
+<h4>SSL/TLS 解密器<a class="headerlink" href="#ssl-tls" title="永久链接至标题">¶</a></h4>
+<p>通过SSL/TLS加密的基于Web、VPN和其他流量对安全控制（如入侵检测、数据丢失防御和一般监控系统）提出了挑战。大多数此类解决方案无法读取加密流量以查找恶意行为，这严重限制了其功效。SSL/TLS解密器解决了这个问题，它能解密流量，然后将明文流量转发给相关安全设备进行解析。</p>
+</div>
+<div class="section" id="tls-vs-ssl">
+<h4>TLS vs. SSL<a class="headerlink" href="#tls-vs-ssl" title="永久链接至标题">¶</a></h4>
+<p>尽管SSL经常与其他协议一起使用，但SSL是TLS的前身。最新版本的TLS比SSL更安全。</p>
+</div>
+</div>
+<div class="section" id="http">
+<h3>HTTP安全<a class="headerlink" href="#http" title="永久链接至标题">¶</a></h3>
+<p>超文本传输协议安全[Hypertext Transfer Protocol Secure(HTTPS)]是HTTP的安全版本，它通过在Web浏览器和服务器之间提供安全连接来支持Web通讯。HTTPS使用SSL/TLS来加密数据。现在几乎所有的Web浏览器和服务器软件都支持HTTPS。启用SSL或TLS的Web地址以协议标识符 <a class="reference external" href="https://">https://</a> 开头。</p>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>HTTPS 也被称为基于SSL/TLS的HTTP。</p>
+</div>
+</div>
+<div class="section" id="shell">
+<h3>安全Shell<a class="headerlink" href="#shell" title="永久链接至标题">¶</a></h3>
+<p>安全Shell(SSH)是一种用于安全远程访问和安全数据传输的协议，SSH由一个服务器和一个客户端组成。大多数SSH客户端还应用了终端模拟软件以便在远程服务器上打开安全的终端会话。为确保安全性，整个SSH会话（包括身份验证）均使用各种加密方法进行加密。SSH是使用文件传输协议（FTP）的首选协议，主要用于在Linux和Unix系统上访问shell账户。Microsoft Windows本身并不提供对SSH的支持，但可以使用第三方工具来实现。</p>
+</div>
+<div class="section" id="telnet">
+<h3>Telnet<a class="headerlink" href="#telnet" title="永久链接至标题">¶</a></h3>
+<p>Telnet是一种较早的网络协议，它允许客户端启动对基于TCP/IP主机的远程命令访问，与SSH类似。客户端运行一个Telnet程序，该程序可以建立与远程服务器的连接，为客户端授权一个虚拟终端到服务器中。大多数现代操作系统都支持Telnet；然而，现在不鼓励使用Telnet，因为它引入了严重的安全漏洞。Telnet协议未经加密，因此可以轻易地分析数据包，攻击者也可以窃听输入。中间人攻击也相对容易，因为Telnet不需要客户端和主机之间地任何认证。这导致了网络专业人员放弃了Telnet。</p>
+</div>
+<div class="section" id="id41">
+<h3>简单网络管理协议<a class="headerlink" href="#id41" title="永久链接至标题">¶</a></h3>
+<p>简单网络管理协议[Simple Network Management Protocol(SNMP)]是一种用于从网络设备中收集信息进行诊断和维护的服务。SNMP包括两个组成部分：管理系统和代理软件，后者安装在网络设备（如服务器、路由器和打印机）上。代理将信息发送到SNMP管理器，然后SNMP管理器就能将有关问题通知给管理员，运行纠正程序或脚本，存储信息以供日后查看，或向代理询问特定的网络设备。</p>
+<p>最新版本的SNMP是SNMPv3，它对协议通讯进行加密以支持机密性、完整性和身份验证。</p>
+</div>
+<div class="section" id="id42">
+<h3>实时传输协议<a class="headerlink" href="#id42" title="永久链接至标题">¶</a></h3>
+<p>实时传输协议[Real-Time Transport Protocol(RTP)]提供了基于TCP/IP网络的音频和视频流媒体。RTP经常用于VoIP、网络会议、内容传递等服务。RTP使用UDP以低水平的开销传输媒体本身，同时与RTP控制协议（RTCP）结合使用，提供了高质量的流传输服务。</p>
+<p>安全实时传输协议[Secure Real-Time Transport Protocol(SRTP)]向RTP添加了加密服务，以维护流媒体的真实性和完整性，并预防了重放攻击。</p>
+</div>
+<div class="section" id="id43">
+<h3>互联网控制消息协议<a class="headerlink" href="#id43" title="永久链接至标题">¶</a></h3>
+<p>互联网控制消息协议[Internet Control Message Protocol(ICMP)]是一种IP网络服务，用于报告两台主机之间的连接。它通常用于简单的功能，例如检查来自特定目标主机的响应的ping命令。攻击者一旦进入网络，通常会使用ICMP数据包来检查主机的可用性。这些信息可以帮助它们决定将攻击转向何处。</p>
+</div>
+<div class="section" id="id44">
+<h3>Internet协议安全<a class="headerlink" href="#id44" title="永久链接至标题">¶</a></h3>
+<p>Internet协议安全[Internet Protocol Security(IPSec)]是一组开放的非专用标准，你可以使用它们来保护数据在网络或互联网上传输的安全。IPSec使用不同的协议和服务来提供数据真实性和完整性，防重放保护，不可否认性以及放置窃听和嗅探。与SSL/TLS和SSH不同，IPSec在OSI模型的网络层（第3层）中运行，因此该协议不依赖于应用程序。</p>
+<p>IPSec中使用两种主要协议。一种是认证报头[Authentication Header(AH)]，它为传输数据的来源提供身份验证，并提供了完整性和防止重放攻击的保护。封装安全有效负荷[Encapsulation Security Payload(ESP)]提供了与AH相同的功能，并增加了加密功能以支持传输数据的机密性。</p>
+<p>许多操作系统都支持IPSec，包括Microsoft Windows和Windows Server，Linux和Unix的当前支持版本。联网设备（如大多数路由器）也支持IPSec。虽然IPSec是行业标准，但他在每个操作系统和设备中的实施方式都不相同。</p>
+<div class="section" id="ipsec">
+<h4>IPSec模式<a class="headerlink" href="#ipsec" title="永久链接至标题">¶</a></h4>
+<p>IPSec有两种主要的操作模式：传输模式和隧道模式。在传输模式下，只有数据包内容被加密，而报头则不会被加密。传输模式通常用于远程访问VPN。在隧道模式下，数据包内容和报头都被加密。隧道模式通常用于站点到站点的VPN。</p>
+</div>
+<div class="section" id="id45">
+<h4>IPSec策略<a class="headerlink" href="#id45" title="永久链接至标题">¶</a></h4>
+<p>IPSec策略是一组安全配置的设置集合，其中定义启用了IPSec的系统将如何响应IP网络流量。该策略确定IPSec连接的安全级别和其他特征。每台使用IPSec的计算机都必须具有一项被分配策略。策略成对出现；网络通讯中的每个端点都必须有一个IPSec策略，以及至少一个与之匹配的安全方法，以确保通讯成功。</p>
+</div>
+</div>
+<div class="section" id="id46">
+<h3>网络基本输入输出系统<a class="headerlink" href="#id46" title="永久链接至标题">¶</a></h3>
+<p>网络基本输入输出系统[Network Basic Input/Output System(NetBIOS)]是一种能使应用程序在网络中的不同计算机之间正确通讯的服务。NetBIOS有三个基本功能：基于会话的通讯，使用数据报的无连接通讯和名称注册。攻击者可以通过获取有关系统的信息来利用NetBIOS，这些信息包括注册名称，IP地址及使用的操作系统/应用程序。为了加强NetBIOS防御攻击的能力，你应该实施强密码策略，限制网络共享的根访问权限，并禁用空会话功能。</p>
+</div>
+<div class="section" id="id47">
+<h3>文件传输协议<a class="headerlink" href="#id47" title="永久链接至标题">¶</a></h3>
+<p>下表介绍了用于支持网络内和网络间文件传输的协议。</p>
+<table class="colwidths-given docutils align-default" id="id70">
+<caption><span class="caption-text">文件传输协议</span><a class="headerlink" href="#id70" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>协议</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>文件传输协议（FTP）</p></td>
+<td><p>该协议实现了用户工作站和远程主机之间的文件传输。通过FTP，用户可以访问远程主机上的目录结构，更改目录，搜索和重命名文件和目录，以及下载和上载文件。</p></td>
+</tr>
+<tr class="row-odd"><td><p>简单文件传输协议（SFTP）</p></td>
+<td><p>这种协议使一个早期的不安全文件传输协议，后来被宣布已经过时。</p></td>
+</tr>
+<tr class="row-even"><td><p>普通文件传输协议（TFTP）</p></td>
+<td><p>这是一种非常有限的协议，主要用于自动配置机器间启动文件与路由器和交换机固件更新的过程。由于它几乎不提供安全性，因此这种协议主要用在本地网络上而不是互联网。</p></td>
+</tr>
+<tr class="row-odd"><td><p>基于SSH的FTP</p></td>
+<td><p>也称为安全FTP(Secure FTP)，基于SSH的FTP是FTP的安全版本，它使用SSH隧道作为加密方式来进行传输，访问和管理文件。安全FTP主要用于Windows系统。</p></td>
+</tr>
+<tr class="row-even"><td><p>安全复制协议（SCP）</p></td>
+<td><p>这种协议使用SSH在本地和远程主机之间或两台远程主机之间安全的传输计算机文件。SCP也可以通过使用SCP或SFTP执行安全复制的命令行工具来实现。SCP主要用在Linux和Unix系统中。</p></td>
+</tr>
+<tr class="row-odd"><td><p>文件传输协议安全(FTPS)</p></td>
+<td><p>该协议也被称为FTP-SSL，它在FTP的使用中结合了对SSL/TLS的额外支持。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id48">
+<h3>电子邮件协议<a class="headerlink" href="#id48" title="永久链接至标题">¶</a></h3>
+<p>电子邮件传输中使用的两种主要协议是邮局协议[Post Office Protocol(POP)]和Internet消息访问协议[Internet Message Access Protocol（IMAP）]。IMAP是较新的一种协议，用来弥补POP的一些缺点，包括多客户端访问同一收件箱的能力以及跟踪消息状态的能力。这两种协议本身都不支持加密。但是，安全POP和安全IMAP扩展让使用这些协议的电子邮件得以利用SSL/TLS。</p>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>安全POP/IMAP也被称为POP3S/IMAPS，基于SSL的POP/IMAP，和使用SSL的POP/IMAP。</p>
+</div>
+<p>安全/多用途Internet邮件扩展[Secure/Multipurpose Internet Mail Extensions（S/MIME）]是一种电子邮件加密标准，它使用公钥加密技术将数字签名添加到传统的MIME通讯中。MIME定义了电子邮件以前不可用的几种高级特性，包括能够发送除ASCII以外的字符集文本的能力，以及发送非文本文件附件的能力。S/MIME提供了保密性、完整性、身份验证和不可否认性的保障，并且内置与大多数现代带电子邮件客户端中。</p>
+</div>
+<div class="section" id="id49">
+<h3>其他联网协议和服务<a class="headerlink" href="#id49" title="永久链接至标题">¶</a></h3>
+<p>下表介绍了一些其他的联网协议和服务。</p>
+<table class="colwidths-given docutils align-default" id="id71">
+<caption><span class="caption-text">其他联网协议和服务</span><a class="headerlink" href="#id71" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>协议/服务</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>电话</p></td>
+<td><p>电话（Telephony）通过远距离的设备提供语音和视频通讯。一种常见的电话协议是VoIP，在这种协议中语音流量通过IP网络传输。网络会议平台还为VoIP增添了视频功能。</p></td>
+</tr>
+<tr class="row-odd"><td><p>路由和交换</p></td>
+<td><p>路由和交换协议定义了这些设备进行通讯时所使用语言。常见的路由协议包括路由信息协议[Routing Information Protocol（RIP）]及其前身RIPv2。RIPv2通过启用密码验证和使用密钥验证进入路由器的路由信息来支持安全性。对RIPv2的进一步改进包括Cisco专有的内部网关路由协议[Interior Gateway Routing Protocol（IGRP）]和增强型内部网关路由协议[Enhanced Interior Gateway Routing Protocol（EIGRP）]。</p></td>
+</tr>
+<tr class="row-even"><td><p>时间同步</p></td>
+<td><p>时间同步确保软件和服务协调得当，系统生成的所有类型的事件对于事件发生的事件都是准确的。提供时间同步的最突出的协议时网络时间协议[Network Time Protocol（NTP）]。NTP通常通过联络公共时间服务器将计算机系统的时间同步到协调时间时（UTC）。但是，你也可以设置自己的本地时间服务器以实现更精确的计时，同时免除了配置外围防火墙以允许NTP流量进出网络的必要性。</p></td>
+</tr>
+<tr class="row-odd"><td><p>订阅</p></td>
+<td><p>订阅协议和服务使发布者能沿着特定频道发送信息，并且订阅了该频道的任何客户端都将收到这些消息。这使发布者能够在不知道实际收件人的情况下发送消息。丰富站点摘要[Rich Site Summary（RSS）]是最受欢迎的订阅技术，它使用户能够订阅每个感兴趣的站点的订阅源（feed）。参与的网站会自动将新条目发布到网站的订阅源中，如新闻网站上的新文章。因此，用户可以跟踪他们订阅的所有订阅源发布的内容。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id50">
+<h3>端口和端口范围<a class="headerlink" href="#id50" title="永久链接至标题">¶</a></h3>
+<p>如你所知，端口是指逻辑连接的终点。客户端计算机通过指定端口连接到特定服务器程序。所有端口都被分配了一个从0到65535范围的数字。互联网编号分配机构（IANA）将端口号分为三个模块：知名端口，是指由IANA预先分配给广泛使用的核心服务的端口；注册端口，这些端口可用于通过IANA请求注册的服务；以及动态端口，这些端口出现服务请求时由客户端操作系统按需分配。</p>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>IANA管理知名端口的注册，为了方便起见，还列出了注册端口。有关TCP和UDP端口的完整列表，请参阅IANA网站：<a class="reference external" href="https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?&amp;page=1">https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?&amp;page=1</a></p>
+</div>
+<p>TCP和UDP端口在下表列出的三种范围之内进行分配。黑客可能会针对常用的知名端口进行攻击，但也可能会扫描开放的注册端口或动态端口。</p>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>一些操作系统使用不同范围作为动态端口，而不是上表列举出来的内容。</p>
+</div>
+<div class="section" id="id51">
+<h4>常见的默认网络端口<a class="headerlink" href="#id51" title="永久链接至标题">¶</a></h4>
+<p>这张表列举了一些最常见的网络端口号。</p>
+<table class="colwidths-given docutils align-default" id="id72">
+<caption><span class="caption-text">常见的默认网络端口</span><a class="headerlink" href="#id72" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>端口号</p></th>
+<th class="head"><p>服务</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>21</p></td>
+<td><p>FTP（文件传输协议）</p></td>
+</tr>
+<tr class="row-odd"><td><p>22</p></td>
+<td><p>SSH（安全Shell）</p></td>
+</tr>
+<tr class="row-even"><td><p>53</p></td>
+<td><p>DNS（域名系统）</p></td>
+</tr>
+<tr class="row-odd"><td><p>80</p></td>
+<td><p>HTTP（超文本传输协议）</p></td>
+</tr>
+<tr class="row-even"><td><p>443</p></td>
+<td><p>HTTPS（超文本传输协议安全）</p></td>
+</tr>
+<tr class="row-odd"><td><p>990</p></td>
+<td><p>FTPS（文件传输协议安全）</p></td>
+</tr>
+<tr class="row-even"><td><p>993</p></td>
+<td><p>安全IMAP</p></td>
+</tr>
+<tr class="row-odd"><td><p>995</p></td>
+<td><p>安全POP</p></td>
+</tr>
+<tr class="row-even"><td><p>3389</p></td>
+<td><p>RDP（远程桌面协议）</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="d">
+<h2>课题D：安全的无线流量<a class="headerlink" href="#d" title="永久链接至标题">¶</a></h2>
+<p>在之前的课题中，你已经为适用于有线和无线架构的网络组件配置了安全性。但是，无线设备和协议带来了它们自己独特的安全挑战。因此，在本章课题中，你将保护基于无线局域网连接的流量。</p>
+<div class="section" id="id52">
+<h3>无线网络<a class="headerlink" href="#id52" title="永久链接至标题">¶</a></h3>
+<p>从根本上讲，无线网络时指不必单纯凭借网络基础设施中物理布线的网络。相反，无线网络中的数据可以通过不可见电磁频谱中的低频无线电波传输。用这些波发射的信号可以覆盖较小或较大的距离。并且可以有效地穿过墙壁等物体已到达目的地。无线联网的优点包括易于携带，节省昂贵的布线费用，以及破除了物理空间的障碍。这使得无线系统成为手机网络、家庭网络、企业网络和互联网中使用的强大工具。</p>
+<p>然而，无线信号的广泛且经常无限制的传播已经导致需要实施专门处理无线网络的新安全策略。</p>
+</div>
+<div class="section" id="id53">
+<h3>无线天线类型<a class="headerlink" href="#id53" title="永久链接至标题">¶</a></h3>
+<p>无线天线网信号可以使用各种不同类型的天线进行放大。两种主要天线类别使定向天线和全向天线。定向天线将信号传输到特定点。因此，它们通常具有较大的增益（gain），或者说它们的信号有着可靠的连接范围和以分贝衡量的功率。因此。于全向天线相比，它们不易受干扰。全向天线从各个方向发送和接收无线电波，通常作为无线信号的主要分配源。这些天线在无线路由器和移动无线适配器上很常见，因为这些设备需要在所有可能的方向上提供或接收服务。由于全向天线提供的覆盖范围，它们的增益受到了限制。</p>
+<table class="colwidths-given docutils align-default" id="id73">
+<caption><span class="caption-text">天线的分类</span><a class="headerlink" href="#id73" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 71%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>天线的分类</p></th>
+<th class="head"><p>天线种类</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>全向</p></td>
+<td><p>橡皮鸭</p></td>
+<td><p>橡皮鸭（rubber duck 或 rubber ducky）是一种小型全向天线，通常用橡皮套密封。与全向天线的典型情况一样，橡皮天线增益很小。然后，由于体积小，它们理想地满足了移动性，并常被用于对讲机或其他双向无线电以及短距离无线联网。</p></td>
+</tr>
+<tr class="row-odd"><td><p>全向</p></td>
+<td><p>圆形天花板</p></td>
+<td><p>顾名思义，这种全向天线被安装在天花板上，通常用于在建筑物中地房间覆盖无线信号。</p></td>
+</tr>
+<tr class="row-even"><td><p>定向</p></td>
+<td><p>八木</p></td>
+<td><p>主要用于无线点的一种定向天线，在长距离无线联网中也有应用，用于扩大热点的范围。</p></td>
+</tr>
+<tr class="row-odd"><td><p>定向</p></td>
+<td><p>抛物面</p></td>
+<td><p>一种非常精确的定向天线，常用于蝶形卫星天线，具有显著的增益。由于它们非常精确，与抛物面天线建立连接要更加困难一些。</p></td>
+</tr>
+<tr class="row-even"><td><p>定向</p></td>
+<td><p>背射</p></td>
+<td><p>一种小型定向天线，看起来与抛物面蝶形天线相似，但增益较少。背射天线用在无线网络中以便能够有效针对特定物理区域，同时不会过度扩大覆盖范围。</p></td>
+</tr>
+<tr class="row-odd"><td><p>定向</p></td>
+<td><p>易拉罐</p></td>
+<td><p>这种一种自制的定向天线，它可以扩展无线网络或帮助发现无线网络。顾名思义，易拉罐天线（cantennas）的制作过程通常包括将金属罐放在另一个天线上，例如蝶形卫星天线，以提高其增益。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id54">
+<h3>802.11协议<a class="headerlink" href="#id54" title="永久链接至标题">¶</a></h3>
+<p>802.11是由电气与电子工程师协会[Institute of Electrical and Electronics Engineers(IEEE)]开发的一种协议族，用于无线设备之间或无线设备与基站之间的无线局域网通讯。在履行安全专业人员的职责中，你可能会在联网实现中遇到各种802.11协议。802.11族中的每种批准协议都有不同的特性，它们被统称为802.11x。下表描述了每种主要协议。</p>
+<table class="colwidths-given docutils align-default" id="id74">
+<caption><span class="caption-text">802.11协议</span><a class="headerlink" href="#id74" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>802.11协议</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>802.11a</p></td>
+<td><p>当时（1999年）批准的一种快速，安全但相对昂贵的无线协议规范。802.11a在5GHz频段上支持高达54Mbps的速度，不幸的是，该速度的范围被限制在仅60英尺内，根据安排接入点的方式，者可能会严重限制用户的移动性。</p></td>
+</tr>
+<tr class="row-odd"><td><p>802.11b</p></td>
+<td><p>802.11b是第一个被称为Wi-Fi的规范，它是最便宜的无线网络协议。802.11b在2.4GHz频率下提供11Mbps的传输速率。（一些厂商，如D-Link，已将其设备上的速率提高到22Mbps。） 802.11b在开放区域可覆盖1000英尺的范围，在封闭空间可覆盖200至400英尺的范围（墙壁可能会妨碍信号）。它可以向后兼容802.11，但不能与802.11a兼容。</p></td>
+</tr>
+<tr class="row-even"><td><p>802.11g</p></td>
+<td><p>在这种规范中，2.4GHz频带内无线数据吞吐量的速率最高可达54Mbps。它与802.11b兼容，且可以以更快的速度运行。</p></td>
+</tr>
+<tr class="row-odd"><td><p>802.11n</p></td>
+<td><p>这种规范极大地提高了速度，在2.4GHz或5GHz范围内数据吞吐量可达600Mbps。</p></td>
+</tr>
+<tr class="row-even"><td><p>802.11ac</p></td>
+<td><p>这种规范通过在5GHz频段中增加更宽地信道来提高802.11n的性能，从而将数据吞吐量提高到1300Mbps。</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>802.11协议的完整列表，请导航到 <a class="reference external" href="https://standards.ieee.org/develop/wg/WG802.11.html">https://standards.ieee.org/develop/wg/WG802.11.html</a> 网页中进行查看。</p>
+</div>
+</div>
+<div class="section" id="id55">
+<h3>无线加密协议<a class="headerlink" href="#id55" title="永久链接至标题">¶</a></h3>
+<p>下表介绍了无线联网中常用的加密协议。</p>
+<table class="colwidths-given docutils align-default" id="id75">
+<caption><span class="caption-text">无线加密协议</span><a class="headerlink" href="#id75" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>协议</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>有线等效协议（WEP）</p></td>
+<td><p>使用Rivest Cipher 4(RC4)算法为使用802.11a和802.11b协议的无线通讯提供64位，128位和256位加密。WEP被认为存在安全隐患，因为它依赖初始化向量（IV）来随机化相同的文本字符串，因此已被启用。使用24位IV的WEP在能够预测IV值的IV攻击中非常容易受到影响。</p></td>
+</tr>
+<tr class="row-odd"><td><p>无线保护访问（WPA）</p></td>
+<td><p>为解决WEP中的一些缺陷而引入的安全协议。WPA是在IEEE 802.11i标准的开发过程中被引入的。提供了密钥的动态重新分配，以防止WEP的密钥攻击漏洞。WPA通过临时密钥完整性协议[Temporal Key Integrity Protocol（TKIP）]提供了改进的数据加密，TKIP是由IEEE 802.11i任务创建的用于替换WEP的安全协议。它与现有的WEP加密相结合，提供了一个128为加密密钥，修复了WEP的密钥长度问题。但是，如果在攻击中，小数据包的内容能被解密，TKIP仍然容易受到影响。</p></td>
+</tr>
+<tr class="row-even"><td><p>无线保护访问Ⅱ（WPA2）</p></td>
+<td><p>通过实施802.11i标准的所有强制性组件，在WPA的基础上改进了WPA2。 WPA2增加了高级加密标准（AES）基于密码的计数器模式密码块链消息认证协议[Counter Mode with Cipher Block Chaining Message Authentication Code Protocol(CCMP)]加密，进一步提高安全性并取代TKIP。它提供了一个128位的加密密钥。</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>虽然802.11i遵循了802.11x的命令惯例，但它处理的更多的是无线安全而非连接方面的问题。</p>
+</div>
+</div>
+<div class="section" id="id56">
+<h3>无线认证协议<a class="headerlink" href="#id56" title="永久链接至标题">¶</a></h3>
+<p>下表介绍了无线网络中常用的认证协议。</p>
+<table class="colwidths-given docutils align-default" id="id76">
+<caption><span class="caption-text">无线认证协议</span><a class="headerlink" href="#id76" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>协议</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>可扩展认证协议[Extensible Authentication Protocol（EAP）]</p></td>
+<td><p>可使客户端和服务器使用一种插件进行互相认证的框架。由于EAP并未指定应当使用的认证方法，因此可以在当前广泛的认证方式中选择，并允许实施将来的认证方式。</p></td>
+</tr>
+<tr class="row-odd"><td><p>IEEE 802.1X</p></td>
+<td><p>这种标准用于封装基于局域网的EAP通讯。802.1X后来被改编为与无线局域网技术一起使用。802.1X提供基于端口的认证。</p></td>
+</tr>
+<tr class="row-even"><td><p>受保护的可扩展认证协议[Protected Extensible Authentication Protocol（PEAP）]</p></td>
+<td><p>由Cisco System、Microsoft和RSA Security组成的联盟开发的开放标准。与802.1X一样，从技术上看，PEAP不是一种EAP方法，而是使用SSL/TLS隧道封装EAP通讯的一种方式。这使PEAP在功能上类似于EAP-TTLS，尽管EAP-TTLS往往能够支持比PEAP更多的认证协议。</p></td>
+</tr>
+<tr class="row-odd"><td><p>RADIUS联合</p></td>
+<td><p>RADIUS是一种网络认证协议，联合意味着不同网络之间共享信任级别。802.1X标准通常与RADIUS一起使用以执行基于端口的身份验证。</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>802.1X不能和802.11x混淆，802.11x是指无线联网协议的族。</p>
+</div>
+</div>
+<div class="section" id="id57">
+<h3>VPN和开放无线<a class="headerlink" href="#id57" title="永久链接至标题">¶</a></h3>
+<p>开放无线网络被直接访问时，存在严重的安全风险。由于它们不安全，攻击者可以在网络上任意地发动攻击，并且损害每个用户地通讯。这就是为什么当被迫使使用开放无线网络时，应当尽可能地使用VPN隧道。即使使用不安全地无线热点时，VPN也能提供身份验证技术并加密通过Internet传输的数据。但是，如果VPN不使用安全的隧道协议，就无法提供足够的防御能力。例如，PPTP很容易受到中间人攻击；因此，你应该在使用VPN进行隧道传输时使用更安全的IPSec协议。</p>
+</div>
+<div class="section" id="id58">
+<h3>无线客户端认证方法<a class="headerlink" href="#id58" title="永久链接至标题">¶</a></h3>
+<p>在配置WPA或WPA2无线网络时，你还可以选择以下三种客户端认证方法。</p>
+<ol class="arabic simple">
+<li><p>WPA/2-个人。由于它依赖预共享密钥[pre-shared key(PSK)]，因此也被称为WPA/2-PSK。这个密钥是你在连接Wi-Fi网络时从你输入的密码生成的。由于每个客户端的密码都是相同的，因此存在攻击者收集密码并获得网络未授权访问的风险。</p></li>
+<li><p>WPA/2-企业。这要求客户端在被授予访问Wi-Fi网络的权限之前使用802.1X与RADIUS服务器进行身份验证。这有助于缓解密码的猜测或暴力破解攻击。因此WPA/2-企业适用于大型公司网络。</p></li>
+<li><p>Wi-Fi保护设置（WPS）。这种方法简化了Wi-Fi网络的认证过程。它的工作方式是使客户端输入与特定访问点相关联的PIN码，或按下访问点上的按钮使客户端和接入点建立连接并进行身份验证。正如你所见，WPS上的PIN方法很容易遭受暴力破解，应该避免使用。</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>所有这三种方式在开放无线网络中都推荐使用，因为开放无线网络不提供任何实质性的认证方式。</p>
+</div>
+</div>
+<div class="section" id="id59">
+<h3>无线访问点的安全性<a class="headerlink" href="#id59" title="永久链接至标题">¶</a></h3>
+<p>下表介绍了一些可用于降低无线网络操作风险的安全方法，特别是有关无线访问点（AP）的安全方法。</p>
+<table class="colwidths-given docutils align-default" id="id77">
+<caption><span class="caption-text">无线访问带你的安全性</span><a class="headerlink" href="#id77" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>安全方法</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MAC过滤</p></td>
+<td><p>当你在AP上过滤MAC地址时，要么将具有不想要MAC地址的设备列入黑名单，要么将具有授权MAC地址的设备列入白名单。以任何一种方式进行过滤都可以防止未经授权的设备连接到无线网络，即使这些设备知道密码或能够通过其它身份验证方法。MAC过滤可能由几分用处，但由于MAC地址很容易伪装，所以不应该仅依靠这种安全方法。</p></td>
+</tr>
+<tr class="row-odd"><td><p>禁用服务集标识符[service set identifier(SSID)]广播</p></td>
+<td><p>AP可以广播SSID，SSID通常时人类用户识别一定范围内特定无线网络的方式。这是大多数情况下的默认行为，但你可以选择禁用SSID广播，使用户必须知道并输入SSID才能进行连接。 禁用SSID广播有助于防止随机窥探，但是，与MAC地址过滤一样，这不是一种值得信赖的安全策略。网络扫描器可以轻松揭示试图以这种方式隐藏的无线网络。</p></td>
+</tr>
+<tr class="row-even"><td><p>信号配置</p></td>
+<td><p>调整无线信号的强度可以帮助你改变网络的包含范围。例如，超出你的实际场所的信号易受战争驾驶攻击；限制信号的强度从而限制它覆盖的范围，有助于缓解这种攻击。 信号的频带选择和带宽也可能会影响你的无线安全策略。大多数Wi-Fi频带是2.4GHz或5GHz。在现代802.11x实现中，5GHz频率提供比2.4GHz更大的带宽。但2.4GHz频率提供更大的范围，并且可以更容易地穿透墙壁等固件物体。</p></td>
+</tr>
+<tr class="row-odd"><td><p>在胖AP与瘦AP之间做出决定</p></td>
+<td><p>如果一个访问点将某些任务推卸到另一个设备中，则认为这是个瘦AP。胖AP自己承担这些任务中地大部分。例如，瘦AP可以将认证和加密密钥地生成推卸给集中式服务器，从而使AP简单的管理连接。瘦AP在802.1X认证架构中通常很有用，因为在这种架构中多个AP依靠集中式RADIUS服务器提供身份认证服务。瘦AP由WLAN控制器管理，这是一种配置AP并为无线流量提供交换功能的设备。 尽管瘦AP在基于控制器的无线局域网中可以使用你利用管理式网络架构的优势，但独立存在的胖AP可能有助于降低某些环境中的复杂性。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id60">
+<h3>强制网络门户<a class="headerlink" href="#id60" title="永久链接至标题">¶</a></h3>
+<p>强制网络门户（captive portal）是一种要求客户端连接到无线网络以便通过网页进行身份验证的技术。除非客户端打开浏览器并完成网页上的必要步骤，否则它们的数据包将被拦截，并且无法正确使用网络。Wi-Fi热点通常会使用强制网络门户，尤其是免费和/或公共的热点，以便在用户开始使用服务之前让用户同意可接受的使用政策。强制网络门户还可以通过要求用户使用正确的证书登录来验证用户身份，防止未经授权的用户加入网络。</p>
+</div>
+<div class="section" id="id61">
+<h3>站点勘察<a class="headerlink" href="#id61" title="永久链接至标题">¶</a></h3>
+<p>从一般意义上看，站点勘察（site survey）是指收集某个位置上的信息的过程，包括访问路径，潜在障碍和器材的最佳摆放位置，其目的是尽可能地以最佳方式构建某种东西。无线网络可能会经历一个站点勘察阶段，以便能确切地知道在硬件位置方面如何设计网络。成功的站点勘察为网络及其用户提供了高质量的覆盖范围和带宽，同时还意识到安全协议和要求。通过使用收集RF信号数据的专用工具对建议环境进行建模来完成站点勘察。</p>
+<p>例如，无线访问点发出的频率在建筑物中可能会受到墙壁的阻碍，而在开放地带则可以传播地更远。作为一名具有安全意识地专业人员，你可以确定，将访问点放在信号受墙壁限制的地方（超出指定区域）可以防止墙壁另一边的设备使用访问点。在此过程中，你维护了公司的协议，规定不要将无线网络扩展到指定的物理范围之外。</p>
+</div>
+<div class="section" id="id62">
+<h3>保护无线流量的准则<a class="headerlink" href="#id62" title="永久链接至标题">¶</a></h3>
+<p>保护无线流量时：</p>
+<ul>
+<li><p>你选择最合适你的基础架构需求的无线天线类型。</p></li>
+<li><p>选择一种能充分满足你的带宽需要和信号范围要求的802.11x的协议。</p></li>
+<li><p>使用WPA2加密配置你的Wi-Fi网络。</p></li>
+<li><p>考虑不同的无线认证协议以及它们如何为你的无线网络提供安全性。</p></li>
+<li><p>如果你连接到不安全的开放式无线网络，请使用具有强大隧道协议（如IPSec）的VPN。</p></li>
+<li><p>考虑在大型企业环境中使用WPA2-企业，以便能够利用802.1X/RADIUS认证功能。</p></li>
+<li><p>避免使用WPS的PIN功能。</p></li>
+<li><p>不要单纯地依靠MAC过滤，同时还要禁用SSID广播。</p></li>
+<li><p>选择适当地频带并配置能够满足需求地信号强度。</p></li>
+<li><p>考虑在基于控制器的架构中使用瘦AP来集中无线网络操作。</p></li>
+<li><p>实施需要登陆证书的强制网络门户，以防未经授权的用户访问你的Wi-Fi热点。</p></li>
+<li><p>进行站点勘察，以便能够从安全方面确定布置无线基础设施的最佳方式。</p></li>
+<li><p>总结</p>
+<blockquote>
+<div><p>在本章课程中，你确定在保护网络免受威胁和漏洞攻击方面发挥重要作用的许多不同组件。你还成功地在不影响网络对合法用户地可用性地前提下应用了安全协议和设计原则加强了网络的防御。安全的网络对任何组织的业务运营的整体安全都至关重要。</p>
+<p>你在你的组织中使用过哪些网络协议？这些协议提供了哪些安全功能？</p>
+<p>你希望在你的组织中使用哪种无线客户端身份验证方法？为什么？</p>
+</div></blockquote>
+</li>
 </ul>
 </div>
 </div>
@@ -521,6 +1075,42 @@
 <li class="toctree-l3"><a class="reference internal" href="#id34">网络地址转换</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id35">软件定义网络</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id36">保护网络设计要素的准则</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#c">课题C：实施安全的网络协议和服务</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id37">开放系统互连模式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#osi">OSI模型和安全性</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#internet">Internet协议套件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#apipa">APIPA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id38">域名系统</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id39">超文本传输协议</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id40">安全套接字层/传输层安全</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#http">HTTP安全</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#shell">安全Shell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#telnet">Telnet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id41">简单网络管理协议</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id42">实时传输协议</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id43">互联网控制消息协议</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id44">Internet协议安全</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id46">网络基本输入输出系统</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id47">文件传输协议</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id48">电子邮件协议</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id49">其他联网协议和服务</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id50">端口和端口范围</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#d">课题D：安全的无线流量</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id52">无线网络</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id53">无线天线类型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id54">802.11协议</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id55">无线加密协议</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id56">无线认证协议</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id57">VPN和开放无线</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id58">无线客户端认证方法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id59">无线访问点的安全性</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id60">强制网络门户</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id61">站点勘察</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id62">保护无线流量的准则</a></li>
 </ul>
 </li>
 </ul>
