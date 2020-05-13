@@ -17,3 +17,14 @@
 
 .. include:: /_documents/Chapter_6/Subject_A.rst
 .. include:: /_documents/Chapter_6/Subject_B.rst
+.. include:: /_documents/Chapter_6/Subject_C.rst
+.. include:: /_documents/Chapter_6/Subject_D.rst
+
+* 总结
+
+    在本章课程中，你确定在保护网络免受威胁和漏洞攻击方面发挥重要作用的许多不同组件。你还成功地在不影响网络对合法用户地可用性地前提下应用了安全协议和设计原则加强了网络的防御。安全的网络对任何组织的业务运营的整体安全都至关重要。
+
+    你在你的组织中使用过哪些网络协议？这些协议提供了哪些安全功能？
+
+    你希望在你的组织中使用哪种无线客户端身份验证方法？为什么？
+
