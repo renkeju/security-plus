@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh_CN">
   <head>
     <meta charset="utf-8" />
-    <title>&lt;no title&gt; &#8212; 《Security+ 学习手册》 alpha 文档</title>
+    <title>课题B：配置目录服务 &#8212; 《Security+ 学习手册》 alpha 文档</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
@@ -29,7 +29,78 @@
 
           <div class="body" role="main">
             
-  
+  <div class="section" id="b">
+<h1>课题B：配置目录服务<a class="headerlink" href="#b" title="永久链接至标题">¶</a></h1>
+<p>在许多组织中，目录服务在维护所有用户，计算机和任何其他需要网络访问的实体的身份识别和访问定义方面有着重要作用。你将配置这些服务以维护安全原则。</p>
+<div class="section" id="id1">
+<h2>目录服务<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>目录服务（directory service）是一种网络服务，用于存储特定网络中所有对象的身份信息，包括用户、组、服务器、客户端、打印机和网络服务。目录还为目录对象和网络资源提供了用户访问控制。目录服务也可用于集中安全性并控制对各个网络资源的访问。</p>
+<p>典型目录服务的结构通常是网络对象的分层树。树的顶部是根组件，如组织本身，下面由其他对象的分支。这使得目录服务能更好地对其对象进行分类。</p>
+<div class="section" id="id2">
+<h3>目录机制<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
+<p>目录结构由模式（schema）控制，该模式定义了如何创建对象以及对象有哪些特征地规则。大多数机制是可扩展地，因此可以被加以修改以支持组织的特定需求。</p>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>轻型目录访问协议<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>轻型目录访问协议[lightweight Directory Access Protocol（LDAP）]是一种通过传输控制协议/Internet协议（TCP/IP）网络运行的目录服务协议。LDAP客户端向LDAP服务进行身份验证，并且服务的机制定义了客户端在访问目录数据库时可以和不可以执行的任务，目录查询必须采用的形式以及目录服务器响应的方式。LDAP机制是可扩展的，这意味着你可以对其进行更改或添加。</p>
+<div class="section" id="id4">
+<h3>目录管理工具<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<p>多种目录服务的实施都附带一些自己的管理工具。此外，开源和闭源提供商还提供了各种各样可用的第三方LDAP浏览和管理工具。</p>
+<p>虽然明文编辑器在故障排除的情形中比较有用，但图形用户界面（GUI）使用程序通常变得更易于使用。除了预配置的工具，还可以创建使用LDAP的脚本来自动执行例行目录维护任务，如添加大量用户或组，以及检查空白密码，禁用或过时的用户账户。</p>
+</div>
+</div>
+<div class="section" id="ldap">
+<h2>LDAP安全<a class="headerlink" href="#ldap" title="永久链接至标题">¶</a></h2>
+<p>安全LDAP(LDAPS)是一种使用安全套接字层/传输层安全（SSL/TLS）加密协议来实施LDAP的方法，这种方法可以防止窃听和中间人攻击。LDAPS强制要求客户端和服务器在进行任何传输之前先建立安全的连接，并且如果安全连接被中断或丢弃，LDAPS就会关闭连接。实施LDAPS的服务器需要一个由证书颁发机构颁发的签名证书，并且客户端必须在它们的机器上接收并安装证书。</p>
+</div>
+<div class="section" id="id5">
+<h2>常见的目录服务<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p>可用且稳健的目录服务有多种多样，有付费或免费的，开源或闭源的。下表介绍了最常见的一些。</p>
+<table class="colwidths-given docutils align-default" id="id7">
+<caption><span class="caption-text">常见的目录服务</span><a class="headerlink" href="#id7" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>目录服务</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Active Directory</p></td>
+<td><p>Microsoft提供的目录服务，为单个域或多个域保存所有网络对象的信息。Active Directory允许管理员使用控制列表（ACL）集中管理和控制都资源的访问。它允许用户在网络的任何地方寻找资源。Active Directory 还有一个用于控制账户创建方式以及管理员可以为账户分配哪些属性的机制。Active Directory 轻型目录服务（AD LDS）是Active Directory的轻量级版本。</p></td>
+</tr>
+<tr class="row-odd"><td><p>Oracle Directory Server 企业版本（ODSEE）</p></td>
+<td><p>Oracle Directory Server 企业版本面向需要可扩展性的大型安装。该软件是免费的，可从Oracle获得付费支持。在Sun Microsystems被Oracle之前，ODSEE以前被称为Sun Java System Directory Server。</p></td>
+</tr>
+<tr class="row-even"><td><p>OpenDJ</p></td>
+<td><p>在Linux、Unix、Microsoft Windows和macOS上运行的开源目录服务器。OpenDJ是由ForgeRock使用Java编写。它支持LDAPv3和目录服务标记语言版本2（DSMLv2）。OpenDJ是基于Sun的OpenDS服务开发的，OpenDS服务已不再进行维护。</p></td>
+</tr>
+<tr class="row-odd"><td><p>OpenLDAP</p></td>
+<td><p>一种开源LDAP实现，具有适用于大多数操作系统的版本。OpenLDAP包含在许多Linux发行版中。</p></td>
+</tr>
+<tr class="row-even"><td><p>Open Directory</p></td>
+<td><p>苹果公司定制的OpenLDAP实施，是MacOS服务器操作系统的一部分。开放目录与Active Directory有些兼容，并集成了LDAP和Kerberos标准。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id6">
+<h2>备份活动目录<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<p>在加固Active Directory之前，你应该对它进行备份以防止出现任何问题。通过在Windows备份工具中备份计算机的系统状态数据来备份Active Directory。除Active Directory以外，备份计算机的系统状态数据还备份了以下组成部分：</p>
+<ul class="simple">
+<li><p>Windows Registry</p></li>
+<li><p>COM + Class Registration Database</p></li>
+<li><p>启动和系统文件</p></li>
+<li><p>Certificate Services数据库（如果你有在服务器上安装Certificate Service）</p></li>
+<li><p>SYSVOL目录（如果服务器是域控制器）</p></li>
+<li><p>IIS配置文件（如果你有安装IIS）</p></li>
+</ul>
+</div>
+</div>
+
 
           </div>
           
@@ -57,6 +128,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../Chapter_4/index.html">第四章：执行安全评估</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Chapter_5/index.html">第五章：实现主机和软件的安全性</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Chapter_6/index.html">第六章：实现网络的安全性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">第七章：管理身份识别和访问</a></li>
 </ul>
 
 <div class="relations">

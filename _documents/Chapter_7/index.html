@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh_CN">
   <head>
     <meta charset="utf-8" />
-    <title>&lt;no title&gt; &#8212; 《Security+ 学习手册》 alpha 文档</title>
+    <title>第七章：管理身份识别和访问 &#8212; 《Security+ 学习手册》 alpha 文档</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
@@ -31,7 +31,222 @@
 
           <div class="body" role="main">
             
-  
+  <div class="section" id="id1">
+<h1>第七章：管理身份识别和访问<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<ul>
+<li><p>课程简介</p>
+<blockquote>
+<div><p>在之前的课程中，你实现了主机安全性，软件安全性和网络安全性。你的下一个任务时检查用户和设备如何访问这些资产。这些实体中的每一个都必须以特定方式进行识别和分类，以便控制它们对组织应用程序，数据和服务的访问。在本章课程中，你将实施高级认证和授权解决方案，制定一个强大的访问管理程序。</p>
+</div></blockquote>
+</li>
+<li><p>课程目标</p>
+<blockquote>
+<div><p>在本章课程中，你将：</p>
+<ul class="simple">
+<li><p>实施身份识别和访问管理（IAM）流程。</p></li>
+<li><p>配置不同的目录服务。</p></li>
+<li><p>配置不同的访问服务。</p></li>
+<li><p>安全地管理账户。</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<div class="section" id="a">
+<h2>课题A：实施身份识别和访问管理<a class="headerlink" href="#a" title="永久链接至标题">¶</a></h2>
+<p>第一步是在组织中实施身份识别和访问管理流程。这些流程将为你提供以后可以实施的详细技术性解决方案的指导。</p>
+<div class="section" id="id2">
+<h3>身份识别和访问管理<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
+<p>身份识别和访问管理[dentity and access management(IAM)]是一种安全流程，为用户、计算机和其他实体提供身份识别、认证和授权机制，以便能够使用网络、操作系统和应用程序等组织资产。IAM使你能够定义形成实体本身的属性，如用途、功能、安全许可等。这些属性随后可以帮助访问管理系统做出理智的决策，确定是否批准或拒绝实体访问，并且如果获准，确定实体被授予了哪些权限。例如，一位员工可能在IAM系统中拥有其他或他自己的身份。员工在公司中的角色会是他们身份管理中的考虑因素，如员工所在的部门以及员工是否是经理。</p>
+<p>在大多数商业环境中，IAM是提供和管理访问以及加强IT基础架构整体安全性的关键服务。</p>
+</div>
+<div class="section" id="id3">
+<h3>访问控制模型<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+<p>IAM的访问控制组件可以通过几种不同的方式实现。下表概述了可以部署的主要访问控制模型。</p>
+<table class="colwidths-given docutils align-default" id="id15">
+<caption><span class="caption-text">访问控制模型</span><a class="headerlink" href="#id15" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>访问控制模型</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>强制访问控制[Mandatory access control(MAC)]</p></td>
+<td><p>当你尝试访问被标记为“绝密”的文件时，只有在你拥有查看绝密文件的权限时才能打开该文件。在此模型中，通过比较对象的指定安全等级和主体（用户或其他实体）的安全许可来控制访问。对象（如文件和其他资源）会根据它们的敏感程度被分配不同级别的安全标签。主体被分配一个安全级别或许可，当他们尝试访问一个对象时，他们的许可级别必须与该对象的安全级别相对应。如果匹配，主体就能访问该对象；如果没有匹配，主体就会被决绝访问。 MAC安全标签通常只能由系统管理员更改。</p></td>
+</tr>
+<tr class="row-odd"><td><p>自主访问控制[Discretionary access control(DAC)]</p></td>
+<td><p>当你尝试访问受保护的文件时，只需要让管理员授予你访问权限，然后就能开始使用该文件。在这个模型中，每个对象的访问权限可以根据主体身份自定义地进行控制。为对象配置一个访问控制列表[access control list(ACL)]，确定允许访问它们的主体。所有者有权决定是否将主体放入列表中，并配置特定的访问级别。 与MAC不同，在DAC授权方案中，对相所有者通常可以修改其对象的ACL。</p></td>
+</tr>
+<tr class="row-even"><td><p>基于角色的访问控制[Role-based access control(RBAC)]</p></td>
+<td><p>当你尝试访问被标记为“员工数据库”的文件时，出现了访问拒绝。这是因为你作为员工的角色不允许访问HR文件夹中的文件。在这种模型中，主体会被分配预定义的角色，网络对象被配置为只允许特定角色的访问。访问时根据主体被分配的角色进行控制的。一个主体可能被一次性分配多个角色，或者在主体工作期间可能会从一个角色切换到另一个角色。管理员仅为主体分配在角色中完成其工作所需的那些权限。</p></td>
+</tr>
+<tr class="row-odd"><td><p>基于规则的访问控制[Rule-based access control]</p></td>
+<td><p>当你尝试登陆一个白天使用过的系统时发现被锁定了，因为现在是晚上10点。规则只允许在上午9点到下午6点之间登录到系统。如果你想在上述时间以外的时间中登录，即使拥有正确的证书，也将被拒绝访问。这是一种基于一组操作规则或限制的访问控制技术。 在主体被授权访问对象的权限之前，总是需要核查规则集。</p></td>
+</tr>
+<tr class="row-even"><td><p>基于属性的访问控制[Atttibure-based access control(ABAC)]</p></td>
+<td><p>当你尝试登录到客户数据库时，尽管你时一名一般管理员，并且没有任何明确规则禁止你进入，但你还是被拒绝访问。在这种模型中，基于每个主体拥有的一组属性来控制访问。ABAC评估“if x, then y”程序中的每个属性。例如，假设一个主体同时具有“type=database admin”和“deparment=customer service”属性，就会授予其访问客户数据库的权限。由于你作为一般管理员不具备这些属性，因此被拒绝访问。 属性提前进行创建，并且必须恰当地描述能够区分一个主体与另一个主体地重要因素。根据属性的不同，管理员可以在身份创建过程中分配这些属性，也可以动态分配这些属性。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id4">
+<h3>物理访问控制设备<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<p>物理访问控制设备在IAM架构中很常见，在IAM架构中，组织不能仅仅依靠基于软件的认证和授权方案。这些设备既可以是主体的所有物，如口令，也可以是实际用于验证主体身份的设备，例如门锁。在任何一种情况下，物理访问控制设备都可以与提供物理控制（例如门）或虚拟控制（例如网站的登录页面）的对象一起工作。</p>
+<p>从主体角度看，物理访问控制设备的一个常见示例是智能卡。智能卡被用作一种“你拥有的东西”认证因素来验证用在某个位置上的物理入口的权限；访问计算机系统的权限；或者启动与另一个实体的可信交易。与智能卡有关的是感应卡，当卡位于特定物理空间内时，感应卡自动对用户进行身份验证。这避免了用户需要不断将他们的卡呈现给特定系统。</p>
+<p>有相当多的物理设备能验证主体身份。就智能卡而言，读卡器就是这样的设备。读卡器可以是接触式的，也可以通过无线电频率信号从卡片传输到读卡器来实现非接触式功能。一些认证设备不使用物理令牌，而是与其他因素一起工作，如生物识别技术的“你是什么”的因素。</p>
+</div>
+<div class="section" id="id5">
+<h3>生物识别设备<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<p>当涉及“你是什么”因素时，生物识别技术可以实施各种各样的认证检查。人类有几种特征能帮助你识别个体。其中一些特征比其他特征更有效地识别独特地个体。根据这些不同特征进行认证的设备包括：</p>
+<ul>
+<li><p>指纹扫描器</p>
+<blockquote>
+<div><p>这些设备可以捕捉人类指纹的生物图像，通常是人在设备传感器上按下手指时采集到的。由于每个人的指纹都是独一无二的，因此基于指纹的认证是相当准确的。</p>
+</div></blockquote>
+</li>
+<li><p>语音识别设备</p>
+<blockquote>
+<div><p>使用这些设备时，一个人通常会向麦克风说出一个单词或短语，并将其保存为声纹。下一次用户对着设备说这个词或短语时，语音分析系统会尝试将其与声纹进行匹配。语音识别的一个弱点时尽管很难模仿语音的确切模式，但人声是可以被录制和复制的。</p>
+</div></blockquote>
+</li>
+<li><p>视网膜扫描仪</p>
+<blockquote>
+<div><p>这些设备扫描人眼视网膜部分中的血管。这些血管的排列非常复杂，通常从出生到死亡都不会改变，除非发生某些疾病或受伤，因此，视网膜扫描是最精确的生物测量形式之一。然而，它具有一些侵入性，因为它要求扫描装置非常靠近眼睛。</p>
+</div></blockquote>
+</li>
+<li><p>虹膜扫描仪</p>
+<blockquote>
+<div><p>与视网膜扫描仪一样，虹膜扫描仪扫描人的眼睛。但是，虹膜扫描仪会拍摄可见度较高的眼睛整个虹膜部分的近红外图像。因此，虹膜扫描仪的侵入性较小，可以从舒适的距离进行扫描。虹膜扫描仪器具有与视网膜扫描仪类似的精准度，而且受到疾病的影响更小。</p>
+</div></blockquote>
+</li>
+<li><p>面部识别设备</p>
+<blockquote>
+<div><p>这些设备拍摄人整个面部的数字图像，并尝试确定其中的独特特征，如两眼间距，或鼻子的宽度和长度。面部识别有明显的弱点，特别是因为变化造成的影响，例如照明变化，面部表情的变化以及面部毛发或化妆的变化。</p>
+</div></blockquote>
+</li>
+</ul>
+<div class="section" id="id6">
+<h4>生物识别因素<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h4>
+<p>有几个因素会影响生物识别设备的功效：</p>
+<ul class="simple">
+<li><p>错误接受率[false acceptance rate(FAR)]，未经授权的用户在生物识别系统中错误地通过验证的百分比。</p></li>
+<li><p>错误拒绝率[false rejection rate(FRR)]，被生物认证系统错误拒绝的授权用户的百分比。</p></li>
+<li><p>交叉错误率[crossover error rate(CER)]，FAR和FRR相等时的值，低CER值表示认证系统正以最佳状态运行。</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>FAR和FRR实质上时生物识别情境中的误检和漏检现象。</p>
+</div>
+</div>
+</div>
+<div class="section" id="id7">
+<h3>基于证书的认证<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
+<p>“你拥有什么”认证设备中使用的一种技术是通过使用数字证书来验证身份。在公钥密码技术中，数字证书证明实体拥有公钥。任何信任证书颁发机构的人都可以验证证书持有者的身份。基于证书的身份验证是使用密码的替代方法，密码可能很容易忘记或被攻击者猜测/破解；也可以替代不准确，不实际或有争议生物识别技术验证方法。</p>
+<p>智能卡上的集成电路芯片使之成为了基于证书的认证方法之一。例如，美国联邦政府为个人身份验证[Personal Identity Verification(PIV)]卡的制定了一项标准，并将其包含到联邦信息处理标准（FIPS）201中。符合此标准的卡必须能够抵制篡改并提供对持卡人的快速电子身份验证。PIV卡被发放给联邦政府的文职雇员以及为联邦政府工作的承包商。每张卡都包含一个或多个由可信机构签署的证书，证明持卡人的身份。持卡人使用他们的卡来访问需要特定授权级别的设施和计算机系统。</p>
+<p>与PIV卡相关的是通用访问卡(CAC)。CAC卡对所有国防部（DoD）人员来说是强制性的，其中包含了许多与智能卡相同的技术，以实现基于证书的身份验证。通过使用持卡人必须输入的PIN码，CAC还支持双因素认证。</p>
+</div>
+<div class="section" id="x">
+<h3>802.1X<a class="headerlink" href="#x" title="永久链接至标题">¶</a></h3>
+<p>基于证书的认证的另一个例子是802.1X。尽管使用802.1X的认证机制可以通过用户名和密码对实体进行认证，但它们也可以通过数字证书来验证身份。</p>
+</div>
+<div class="section" id="id8">
+<h3>文件系统和数据库访问<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
+<p>为确保组织中文件系统和数据库的安全性，你需要控制对这些关键组成的访问。根据文件系统的类型和运行的操作系统，可能可以实施像DAC这样的访问控制模型。例如，在Active Directory环境中，Windows为不同的对象（如文件和文件夹）维护ACL。你可以在授予用户访问权限后设置更细化的许可条件。你可以对与员工所在部门有关的特定网络文件夹授予该员工只读权限，并允许他们在父文件夹中创建和删除子文件夹。与此同时，该员工被禁用修改或删除更高级别的文件和文件夹。</p>
+<p>类似的访问控制也可用于数据库，但实际的实施方案取决于使用的软件。这些控制方法通常会授予或拒绝数据库特定元素（如表格）的访问，并且可能会根据向元素发布的命令来控制访问权限，如选择、更新、修改和创建新元素。</p>
+</div>
+<div class="section" id="iam">
+<h3>实施IAM的准则<a class="headerlink" href="#iam" title="永久链接至标题">¶</a></h3>
+<p>实施IAM时：</p>
+<ul class="simple">
+<li><p>考虑将IAM重要过程添加到整个组织安全管理流程中。</p></li>
+<li><p>熟悉可用的不同访问控制模板。</p></li>
+<li><p>根据组织的业务和安全需求以及你的环境配置决定要使用的访问控制模型。</p></li>
+<li><p>考虑应用物理访问控制设备，比如智能卡和智能卡读卡器，以控制对设施和系统的访问。</p></li>
+<li><p>认识每种生物识别设备的优缺点。</p></li>
+<li><p>考虑使用虹膜扫描仪和指纹扫描仪等生物识别设备进行身份验证。</p></li>
+<li><p>考虑实施基于证书的认证方法，以避免密码和生物识别中出现的相关问题。</p></li>
+<li><p>如果你与美国联邦政府合作或为他们工作，需要考虑使用PIV或CAC可能时强制要求。</p></li>
+<li><p>在文件系统层面上实施访问控制模型，以防止文件和文件夹的未授权读取和修改。</p></li>
+<li><p>在你使用的数据库软件中实施可用的访问控制。</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="b">
+<h2>课题B：配置目录服务<a class="headerlink" href="#b" title="永久链接至标题">¶</a></h2>
+<p>在许多组织中，目录服务在维护所有用户，计算机和任何其他需要网络访问的实体的身份识别和访问定义方面有着重要作用。你将配置这些服务以维护安全原则。</p>
+<div class="section" id="id9">
+<h3>目录服务<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
+<p>目录服务（directory service）是一种网络服务，用于存储特定网络中所有对象的身份信息，包括用户、组、服务器、客户端、打印机和网络服务。目录还为目录对象和网络资源提供了用户访问控制。目录服务也可用于集中安全性并控制对各个网络资源的访问。</p>
+<p>典型目录服务的结构通常是网络对象的分层树。树的顶部是根组件，如组织本身，下面由其他对象的分支。这使得目录服务能更好地对其对象进行分类。</p>
+<div class="section" id="id10">
+<h4>目录机制<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h4>
+<p>目录结构由模式（schema）控制，该模式定义了如何创建对象以及对象有哪些特征地规则。大多数机制是可扩展地，因此可以被加以修改以支持组织的特定需求。</p>
+</div>
+</div>
+<div class="section" id="id11">
+<h3>轻型目录访问协议<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h3>
+<p>轻型目录访问协议[lightweight Directory Access Protocol（LDAP）]是一种通过传输控制协议/Internet协议（TCP/IP）网络运行的目录服务协议。LDAP客户端向LDAP服务进行身份验证，并且服务的机制定义了客户端在访问目录数据库时可以和不可以执行的任务，目录查询必须采用的形式以及目录服务器响应的方式。LDAP机制是可扩展的，这意味着你可以对其进行更改或添加。</p>
+<div class="section" id="id12">
+<h4>目录管理工具<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h4>
+<p>多种目录服务的实施都附带一些自己的管理工具。此外，开源和闭源提供商还提供了各种各样可用的第三方LDAP浏览和管理工具。</p>
+<p>虽然明文编辑器在故障排除的情形中比较有用，但图形用户界面（GUI）使用程序通常变得更易于使用。除了预配置的工具，还可以创建使用LDAP的脚本来自动执行例行目录维护任务，如添加大量用户或组，以及检查空白密码，禁用或过时的用户账户。</p>
+</div>
+</div>
+<div class="section" id="ldap">
+<h3>LDAP安全<a class="headerlink" href="#ldap" title="永久链接至标题">¶</a></h3>
+<p>安全LDAP(LDAPS)是一种使用安全套接字层/传输层安全（SSL/TLS）加密协议来实施LDAP的方法，这种方法可以防止窃听和中间人攻击。LDAPS强制要求客户端和服务器在进行任何传输之前先建立安全的连接，并且如果安全连接被中断或丢弃，LDAPS就会关闭连接。实施LDAPS的服务器需要一个由证书颁发机构颁发的签名证书，并且客户端必须在它们的机器上接收并安装证书。</p>
+</div>
+<div class="section" id="id13">
+<h3>常见的目录服务<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h3>
+<p>可用且稳健的目录服务有多种多样，有付费或免费的，开源或闭源的。下表介绍了最常见的一些。</p>
+<table class="colwidths-given docutils align-default" id="id16">
+<caption><span class="caption-text">常见的目录服务</span><a class="headerlink" href="#id16" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>目录服务</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Active Directory</p></td>
+<td><p>Microsoft提供的目录服务，为单个域或多个域保存所有网络对象的信息。Active Directory允许管理员使用控制列表（ACL）集中管理和控制都资源的访问。它允许用户在网络的任何地方寻找资源。Active Directory 还有一个用于控制账户创建方式以及管理员可以为账户分配哪些属性的机制。Active Directory 轻型目录服务（AD LDS）是Active Directory的轻量级版本。</p></td>
+</tr>
+<tr class="row-odd"><td><p>Oracle Directory Server 企业版本（ODSEE）</p></td>
+<td><p>Oracle Directory Server 企业版本面向需要可扩展性的大型安装。该软件是免费的，可从Oracle获得付费支持。在Sun Microsystems被Oracle之前，ODSEE以前被称为Sun Java System Directory Server。</p></td>
+</tr>
+<tr class="row-even"><td><p>OpenDJ</p></td>
+<td><p>在Linux、Unix、Microsoft Windows和macOS上运行的开源目录服务器。OpenDJ是由ForgeRock使用Java编写。它支持LDAPv3和目录服务标记语言版本2（DSMLv2）。OpenDJ是基于Sun的OpenDS服务开发的，OpenDS服务已不再进行维护。</p></td>
+</tr>
+<tr class="row-odd"><td><p>OpenLDAP</p></td>
+<td><p>一种开源LDAP实现，具有适用于大多数操作系统的版本。OpenLDAP包含在许多Linux发行版中。</p></td>
+</tr>
+<tr class="row-even"><td><p>Open Directory</p></td>
+<td><p>苹果公司定制的OpenLDAP实施，是MacOS服务器操作系统的一部分。开放目录与Active Directory有些兼容，并集成了LDAP和Kerberos标准。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id14">
+<h3>备份活动目录<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h3>
+<p>在加固Active Directory之前，你应该对它进行备份以防止出现任何问题。通过在Windows备份工具中备份计算机的系统状态数据来备份Active Directory。除Active Directory以外，备份计算机的系统状态数据还备份了以下组成部分：</p>
+<ul class="simple">
+<li><p>Windows Registry</p></li>
+<li><p>COM + Class Registration Database</p></li>
+<li><p>启动和系统文件</p></li>
+<li><p>Certificate Services数据库（如果你有在服务器上安装Certificate Service）</p></li>
+<li><p>SYSVOL目录（如果服务器是域控制器）</p></li>
+<li><p>IIS配置文件（如果你有安装IIS）</p></li>
+</ul>
+</div>
+</div>
+</div>
+
 
           </div>
           
@@ -52,13 +267,35 @@
 
 
 <h3>导航</h3>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../Chapter_1/index.html">第一章： 确定安全基础</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Chapter_2/index.html">第二章：分析风险</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Chapter_3/index.html">第三章：确定安全威胁</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Chapter_4/index.html">第四章：执行安全评估</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Chapter_5/index.html">第五章：实现主机和软件的安全性</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Chapter_6/index.html">第六章：实现网络的安全性</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">第七章：管理身份识别和访问</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#a">课题A：实施身份识别和访问管理</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">身份识别和访问管理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">访问控制模型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">物理访问控制设备</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">生物识别设备</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">基于证书的认证</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#x">802.1X</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">文件系统和数据库访问</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iam">实施IAM的准则</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#b">课题B：配置目录服务</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id9">目录服务</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">轻型目录访问协议</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ldap">LDAP安全</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">常见的目录服务</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">备份活动目录</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
 <div class="relations">
