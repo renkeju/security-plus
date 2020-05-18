@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh_CN">
   <head>
     <meta charset="utf-8" />
-    <title>&lt;no title&gt; &#8212; 《Security+ 学习手册》 alpha 文档</title>
+    <title>课题C：配置访问服务 &#8212; 《Security+ 学习手册》 alpha 文档</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
@@ -29,7 +29,143 @@
 
           <div class="body" role="main">
             
-  
+  <div class="section" id="c">
+<h1>课题C：配置访问服务<a class="headerlink" href="#c" title="永久链接至标题">¶</a></h1>
+<p>你已经实施并配置了目录服务，现在可以开始配置更具体的访问服务来进行使用。这些服务形式多样、用途广泛，因此你需要选择最能满足安全需求的服务。</p>
+<div class="section" id="id1">
+<h2>远程访问方式<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>对于现在的移动用户，组织可以使用几种不同的方法为远程员工和客户提供访问他们网络资源的途径。需要保护隐私的公司可能会连接到网关远程访问服务器（RAS），该服务器为全部或部分内部网络提供访问控制服务。另外，中间网络（例如互联网）可以提供从远程系统或无线设备到私有网络的远程服务。尤其是在这种情况下，安全人员必须注意在传输通过公共网络时要对它们进行保护。</p>
+</div>
+<div class="section" id="id2">
+<h2>隧道<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>隧道（Tunneling）是一种可用于提供远程访问的数据传输技术，在传输过程中，数据包被加密并封装在另一个数据包中，以隐藏包内的信息。这使得来自一个网络的数据能够通过另一个网络传播。通过在运载网络中隐藏被用户加密的数据，隧道提供了额外的安全性，隧道通常是一种用在VPN连接中的安全措施。</p>
+</div>
+<div class="section" id="id3">
+<h2>远程访问协议<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>下表介绍了用于提供网络远程访问的常用协议。</p>
+<table class="colwidths-given docutils align-default" id="id9">
+<caption><span class="caption-text">远程访问协议</span><a class="headerlink" href="#id9" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>协议</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>点到点协议（PPP）</p></td>
+<td><p>这是一种通过串行点对点链路发送IP数据报的过时互联网标准。它最常见的用途是拨号访问互联网。它可以用于同步和异步连接。许多数字用户线路（DSL）宽带互联网连接使用基于以太网的点对点协议（PPPoE）和基于异步传输模式（ATM）的点对点协议（PPPoA）这两种较新的应用。 PPP可以动态地配置和测试远程网络连接，且常被客户用来连接网络和互联网。它还提供密码加密功能，为远程用户地安全认证铺垫道路。</p></td>
+</tr>
+<tr class="row-odd"><td><p>点到点隧道协议（PPTP）</p></td>
+<td><p>这是Microsoft VPN的第2层协议，通过为PPP数据包提供隧道和数据加密来增加PPP的安全性。它使用与PPP相同的认证类型，是早期Windows客户端中常见的VPN方法。PPTP封装了任何类型的网络协议并在IP网络上进行传输。但是，由于它存在严重的漏洞，因此Microsoft不再推荐PPTP。</p></td>
+</tr>
+<tr class="row-even"><td><p>第二层隧道协议（L2TP）</p></td>
+<td><p>这是一种结合PPTP和第二层转发（L2F）的互联网标准协议，支持在各种网络协议（如IP，帧中继或ATM）上建立PPP会话的隧道。L2TP专门用于为客户端到网关和网关到网关之间的连接提供隧道和安全互操作性。L2TP本身不提供任何加密，L2TP隧道以IP数据包的形式出现，因此L2TP采用IP安全（IPSec）传输模式进行身份验证、完整性和机密性。</p></td>
+</tr>
+<tr class="row-odd"><td><p>安全套接字隧道协议（SSTP）</p></td>
+<td><p>该协议使用SSL/TLS并使用PPP报头封装IP数据包，然后再使用SSTP报头进行封装。IP数据包，PPP报头和SSTP报头有SSL/TLS会话加密。然后将包含目的地址的IP报头添加到数据包中。目前所有的Windows操作系统均支持这种协议。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="hmac">
+<h2>基于HMAC的一次性密码<a class="headerlink" href="#hmac" title="永久链接至标题">¶</a></h2>
+<p>基于HMAC的一次性密码[HMAC-based one-time password(HOTP)]是使用基于散列的消息认证码（HMAC）生成一次性密码[one-time password(OTP)]的一种算法，能够确保消息的真实性。一次性密码旨在替代或补充不安全的静态密码作为认证的另一个因素。顾名思义，OTP仅对一次特定的会话有效；知后，它将不再用于访问和认证。这对于能够发现别人证书的攻击者来说是一种特别有力的防御，因为攻击者在用户完成会话后将无法使用它们。</p>
+<p>OTP也可以替代需要在用于访问系统的每台计算机上安装特定软件的认证方式。基于HMAC的OTP可跨软件和硬件平台提供更改的互操作性，还能作为开源标准免费使用。大多数主要的移动操作系统（包括Android、iOS和Windows 10 Mobile）都提供HMAC安全口令用于身份验证。</p>
+</div>
+<div class="section" id="otp">
+<h2>基于时间的OTP<a class="headerlink" href="#otp" title="永久链接至标题">¶</a></h2>
+<p>基于HMAC的定时一次性密码[Timed HMAC-based one-time password(TOTP)]通过在一次性密码认证中引入基于时间的因素来改进HOTP算法。HOTP和其他一次性密码有一个弱点，如果密码从未使用过，攻击者就能利用该密码。临时密码只有在成功用于认证后才会失效，但如果它一直没有失效，就可以无期限保持活动状态。如果攻击者获得未使用密码的访问权限，那么他们就能轻易危及依赖OTP的系统。</p>
+<p>TOTP算法通过在特定时间增量（例如60秒）内生成新密码并使之失效来解决此安全漏洞。如果攻击者获得生成密码的访问权限，并且无法在60秒内使用它进行认证，就无法渗透系统的防御。攻击者不可能在短时间内执行必要的步骤，所以基于时间的OTP是防御身份验证弊端的有用措施。</p>
+</div>
+<div class="section" id="id4">
+<h2>密码认证协议<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>密码认证协议[Password Authentication Protocol(PAP)]是一种以明文形式发送用户ID和密码的认证协议。通常在远程客户端连接到不支持强密码加密的非Windows服务器时使用。当服务器收到用户ID和密码对时，它将它们于本地证书列表进行比对。如果找到匹配项，服务器将接收证书并允许远程客户端访问资源。如果找不到匹配，则连接终止。由于缺乏加密，PAP非常脆弱，并且已经在很大程度上被淘汰为过时协议。</p>
+</div>
+<div class="section" id="id5">
+<h2>质询-握手认证协议<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p>质询握手认证协议[Challenge Handshake Authentication Protocol(CHAP)]是一种加密认证协议，通常用于远程访问服务器提供访问控制。CHAP的开发使用密码不必以明文形式发送。它通常用于连接到非Windows服务器。CHAP结合使用了消息摘要5(MD5)散列和质询-响应机制，并且在不需要通过网络发送纯文本密码的前提下完成了认证。它可以接收来自任何认证方法的连接，但某些未加密的方式除外。出于这些原因，CHAP比PAP更安全。但是，CHAP还是被认为是一种过时的协议，尤其是因为MD5散列算法不再能提供合适的安全性。</p>
+</div>
+<div class="section" id="chap">
+<h2>CHAP流程<a class="headerlink" href="#chap" title="永久链接至标题">¶</a></h2>
+<p>下表介绍了CHAP握手过程的每个步骤。</p>
+<table class="colwidths-given docutils align-default" id="id10">
+<caption><span class="caption-text">CHAP流程</span><a class="headerlink" href="#id10" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>步骤</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>第一步</p></td>
+<td><p>远程客户端请求连接到RAS</p></td>
+</tr>
+<tr class="row-odd"><td><p>第二步</p></td>
+<td><p>远程服务器发送一个质询序列，通常是一个随机值。</p></td>
+</tr>
+<tr class="row-even"><td><p>第三步</p></td>
+<td><p>远程客户端使用其密码作为加密密钥来加密质询序列，并将修改后的序列发送到服务器。</p></td>
+</tr>
+<tr class="row-odd"><td><p>第四步</p></td>
+<td><p>服务器使用存储在本地证书列表中的密码加密初始质询序列。 1.如果两个序列不匹配，则服务器关闭连接。2.如果两个序列匹配，则服务器允许客户端访问资源。</p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="ms-chap">
+<h3>MS-CHAP<a class="headerlink" href="#ms-chap" title="永久链接至标题">¶</a></h3>
+<p>MS-CHAP是CHAP的Microsoft实施版本。最新版本MS-CHAPv2支持VPN和RADIUS服务器中的身份验证。MS-CHAP有许多弱点，使用暴力攻击更容易执行。</p>
+</div>
+</div>
+<div class="section" id="nt-lan">
+<h2>NT LAN 管理器<a class="headerlink" href="#nt-lan" title="永久链接至标题">¶</a></h2>
+<p>NTLAN管理器（NTLM）是一种由Microsoft创建的，用于他们产品之中的一种质询-响应认证协议，最初在Windows NT的早期版本中发布。在NTLM过程中，客户端于服务器建立连接，然后服务器质询请求并尝试发现客户端的身份。客户端随后回应认证信息。</p>
+<p>NTLM中已经发现了一些弱点，包括过时的加密算法，这些算法很容易受到暴力破解的攻击尝试。NTLM对传递散列的攻击也没有抵抗力，使窃取NTLM散列的攻击者能在不知道密码的情况下登录。Microsoft不鼓励依靠NTLM对应用程序认证，同样，在Active Directory域中，Kerberos才是首选的认证方法。</p>
+</div>
+<div class="section" id="id6">
+<h2>认证、授权和计费<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<p>认证、授权和计费[Authentication, authorization and accounting（AAA）]是一种安全概念，其中集中式平台验证对象标识，确保为对象分配相关权限，然后记录这些操作以创建审计跟踪。AAA方案通常是一种把关系统，为客户提供了访问权限以便能在网络上使用服务或设备。</p>
+<p>AAA实施的例子包括RADIUS和Diameter、TACACS和TACACS+以及Kerberos。</p>
+</div>
+<div class="section" id="id7">
+<h2>远程认证拨号用户服务<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<p>远程认证拨号用户服务[Remote Authentication Dial-In User Service(RADIUS)]是一种提供AAA服务的互联网标准协议。当一个网络包含多台远程访问服务器时，你可以将其中一台服务器配置为RADIUS服务器，将所有其他服务器配置为RADIUS客户端。RADIUS客户端将所有认证请求传递给RADIUS服务器进行验证。用户配置，远程访问策略和使用情况日志记录可集中在RADIUS服务器上。在此配置中，远程访问服务器通称为网络访问服务器[network access server（NAS）]。</p>
+<div class="section" id="diameter">
+<h3>Diameter<a class="headerlink" href="#diameter" title="永久链接至标题">¶</a></h3>
+<p>Diameter认证协议通过克服RADIUS中的一些弱点来对它进行改善。“Diameter（直径）”这个名字表示它优于RADIUS（半径）两倍。Diameter在很多方面都更加强大，但由于缺乏使用它的产品，Diameter在实施中尚未普及。</p>
+</div>
+<div class="section" id="nps">
+<h3>NPS<a class="headerlink" href="#nps" title="永久链接至标题">¶</a></h3>
+<p>网络策略服务器（NPS）是RADIUS服务器在Windows Server上的实现，它能帮助管理VPN和无线网络。</p>
+</div>
+</div>
+<div class="section" id="id8">
+<h2>终端访问控制器访问—控制系统<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
+<p>终端访问控制器访问-控制系统[Terminal Access Controller Access-Control System（TACACS+）]协议为远程用户提供AAA服务。于RADIUS相比，TACACS+被认为更安全且更具可扩展性，因为它能接收登录请求并验证用户的访问证书。TACACS+包含认证的全程加密，而RADIUS只加密密码。另外，TACACS+将认证数据包与授权数据包分开，而RADIUS将这些功能组合在一同一个数据包中。TACACS+还支持多因素认证。</p>
+<p>最初的TACACS和Cisco开发的另一个扩展版本XTACACS，已被更安全的TACACS+有效取代。与RADIUS不同的是，TACACS+支持不适用于Windows环境，但有一些解决方案可以在Windows上启用TACACS+。还有针对Linux环境的解决方案。</p>
+</div>
+<div class="section" id="kerberos">
+<h2>Kerberos<a class="headerlink" href="#kerberos" title="永久链接至标题">¶</a></h2>
+<p>Kerberos是基于时间敏感的票据授予系统的认证服务。它由麻省理工学院（MIT）开发，使用单点登录(SSO)方法，用户输入访问凭证，然后将其传递给认证服务器，该认证服务器管理许多不同服务的访问控制。</p>
+<p>在Microsoft环境中，Kerberos经常于Active Directory一起用于域中的用户和计算机的身份验证。Kerberos采用互相认证方式，以便客户端和服务器都可以验证对方的身份。它还使用AES等现代加密标准，减轻了于NTLM和其他认证协议有关的一些漏洞。</p>
+<p>在Kerberos进程中：</p>
+<ol class="arabic simple">
+<li><p>用户登录到域。</p></li>
+<li><p>用户从认证服务器（例如，域控制器）请求授予票据（TGT）</p></li>
+<li><p>认证服务器使用一个时间戳TGT进行响应</p></li>
+<li><p>用户将TGT返回给认证服务器，并请求服务票据访问特定资源</p></li>
+<li><p>认证服务器使用服务票据进行响应</p></li>
+<li><p>用户将服务票据提供给他们希望访问的资源</p></li>
+<li><p>资源认证用并允许访问</p></li>
+</ol>
+</div>
+</div>
+
 
           </div>
           
