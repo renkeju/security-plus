@@ -17,3 +17,5 @@
 
 .. include:: /_documents/Chapter_7/Subject_A.rst
 .. include:: /_documents/Chapter_7/Subject_B.rst
+.. include:: /_documents/Chapter_7/Subject_C.rst
+.. include:: /_documents/Chapter_7/Subject_D.rst

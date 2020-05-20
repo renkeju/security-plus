@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh_CN">
   <head>
     <meta charset="utf-8" />
-    <title>&lt;no title&gt; &#8212; 《Security+ 学习手册》 alpha 文档</title>
+    <title>第八章：实施密码技术 &#8212; 《Security+ 学习手册》 alpha 文档</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
@@ -31,7 +31,377 @@
 
           <div class="body" role="main">
             
-  
+  <div class="section" id="id1">
+<h1>第八章：实施密码技术<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<ul>
+<li><p>课程简介</p>
+<blockquote>
+<div><p>到现在为止，你学习和使用的大部分安全机制都依赖于密码学原理。事实上，密码学时信息安全领域最重要的理念之一。加密和解密服务可以防止未经授权的实体读取数据——但加密技术的作用远不止于此，甚至可以在组织内形成整个基础架构。在本章课程中，你将深入讨论密码学的理论概念，并实施可为安全性奠定基础的实用解决方案。</p>
+</div></blockquote>
+</li>
+<li><p>课程目标</p>
+<blockquote>
+<div><p>在本章课程中，你将：</p>
+<ul class="simple">
+<li><p>确定高级密码学概念</p></li>
+<li><p>选择合适的加密算法</p></li>
+<li><p>配置一个PKI</p></li>
+<li><p>注册数字证书</p></li>
+<li><p>备份并恢复数字证书和私钥</p></li>
+<li><p>销毁数字证书</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<div class="section" id="a">
+<h2>课题A：确定高级密码学概念<a class="headerlink" href="#a" title="永久链接至标题">¶</a></h2>
+<p>确定课程的开始部分会向你展示主要密码学概念的概述。在本章课程中，你将学习密码学背后的一些更复杂的理念。</p>
+<div class="section" id="id2">
+<h3>密码学元素<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
+<p>密码学的学科包含几个子概念。下表描述了这些子概念。</p>
+<table class="colwidths-given docutils align-default" id="id23">
+<caption><span class="caption-text">密码学</span><a class="headerlink" href="#id23" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>密码学元素</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>混淆（Confiusion）</p></td>
+<td><p>使加密密钥和密文之间的关系变得尽可能复杂和隐蔽的技术。混淆可以防止攻击者选择性地生成明文消息的加密版本并寻找它们关系中的某些模式。</p></td>
+</tr>
+<tr class="row-odd"><td><p>扩散（Diffusion）</p></td>
+<td><p>即使在明文输入中发生轻微变化也能使密文发生剧烈变化的一种技术。扩散能防止攻击者选择性地确定由相同密钥加密地部分消息。</p></td>
+</tr>
+<tr class="row-even"><td><p>冲突（Collision）</p></td>
+<td><p>两个不同的明文输入产生完全相同的密文输出。如果加密算法易受冲突影响，其完整性就会减弱，并且攻击者可以用另一个能产生相同密文的消息替换这个消息。</p></td>
+</tr>
+<tr class="row-odd"><td><p>模糊（Obfuscation）</p></td>
+<td><p>正如你所见，模糊处理使得源代码变得更加难以阅读。因此，模糊处理与加密类似。但是，模糊处理中不涉及密钥的使用——任何知道模糊算法的人都能将代码转换回可读模式。因此模糊代码的安全性比加密数据更低。</p></td>
+</tr>
+<tr class="row-even"><td><p>伪随机生成数（PRNG）</p></td>
+<td><p>这是一种由算法产生的随机数的过程，伪随机数是指有着近似随机性的数字，但不是真正的随机。伪随机数是基于初始种子状态生成的，这是定义数字生成第一阶段的一个数字。然后种子状态通过一个数学公式输出伪随机数。加密密钥的生成倾向于使用伪随机数。</p></td>
+</tr>
+<tr class="row-odd"><td><p>完全正向保密[Perfect forward secrecy（PFS）]</p></td>
+<td><p>当某个会话期间使用的一个密钥收到损害时，这种会话加密特性能确保之前由该密钥加密的数据不会受到影响。如果攻击者恰好窃取到私钥，PFS可以防止攻击者破坏以往的会话。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id3">
+<h3>散列概念<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+<p>正如您所知，散列一个明文输入会产生一个固定长度的密文输出，被称为消息摘要，反之则不然。但是，如果攻击者再彩虹表中计算大量消息摘要，则明文输入可能时可预测的。密码盐（cryptofraphic salt）通过为每个明文输入添加一个随机值来缓解彩虹表攻击的影响。它能对摘要造成重大改变。同样，如果盐本身发生变化，那么使用不同盐的相同明文属兔将生成两个独特的摘要。</p>
+<p>盐值通常与散列数据存储再一起，因此盐本身不会被隐藏。但即使攻击者知道特定会话的盐值，它们也需要结合这个盐值来计算新的唯一彩虹表，这是不可行的。在任何包含密码散列的安全系统中，为散列添加盐值都是必须的。</p>
+<p>与密码盐有关的时一个临时数（nonce）。术语“临时数”是指仅使用一次的数字。盐可以在会话之间改变，但也可以保持不变——正如其名称所暗示的，临时数永远不会重复。鉴于盐通常用于散列密码的情况下，认证协议中更常使用临时数来防止重放攻击。</p>
+<div class="section" id="id4">
+<h4>初始化向量<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h4>
+<p>盐与临时数都可以被认为是初始化向量（IV），这是一种通用术语，描述了用于初始化加密任务的任何值，以确保每个输出都是唯一的。虽然IV通常用于双向加密方法而非单向散列的环境下，但这些术语经常被混合使用。</p>
+</div>
+</div>
+<div class="section" id="id5">
+<h3>数据状态<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<p>有三种主要的数据状态，每种状态都有各自的密码相关性。</p>
+<p>静止数据（Data at rest）主要是指被存储在各种介质上的任何数据，不会从一种介质移动到另一种介质。可能静止的数据类型的示例包含存储在数据库中的财务信息，归档视听媒体，操作策略和其他管理文档、系统配置数据等等。根据其敏感程度的级别，静止数据可以由管理数据的软件或存储数据的硬件进行加密。在发生违规事件是，加密的静止数据通过防止攻击者向公众或其他未授权方传播私人数据支持了数据的机密性。</p>
+<p>传输中的数据（Data in transit）主要是指在媒介之间移动的任何数据，例如通过专用网络和互联网传输。可能正在传输的数据类型的示例包括网站流量、远程访问流量、云存储库之间的数据同步等等。在数据可以被认为是静止之前，它通常会在计算机之间传输。加密这些数据能防止中间人攻击者危及传输通道和流经它的任何数据。</p>
+<p>正在使用的数据（Data in use）是指当前正在被创建、删除、读取或写入的任何数据。可能正在使用的数据类型的示例包括在文字处理应用程序中打开的文档，当前正在被修改的数据库数据，操作系统运行时生成的事件日志等等。当用户使用数据时，这些数据通常需要先进行解密，因为它从静止状态变为使用状态。数据在整个工作会话中可能会保持未加密状态，使其处于危险之中。但是，有些机制能够加密存储在内存中的数据，使第三方无法解码信息。</p>
+</div>
+<div class="section" id="id6">
+<h3>密钥交换<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<p>密钥交换（Key exchange）是指加密密钥在实体之间传输时使用的任何方法，以便能够使用加密算法。</p>
+<p>为了使发送者和接收者能交换加密消息，每一方都必须准备好加密被发送的消息并解密被接收的消息。他们需要准备的内容取决于所使用的加密技术。如果他们使用代码（code），则两者都需要相同的代码薄副本。如果他们使用密码（cipher），他们将需要适当的密钥：</p>
+<ul class="simple">
+<li><p>如果密码使对称密钥密码，则两者都需要相同密钥副本。</p></li>
+<li><p>如果密码使具有公钥/私钥属性的非对称密钥密码，则任何需要加密消息的实体都需要收件人的公钥。</p></li>
+</ul>
+<p>密钥交换有两种基本类型：带内（in-band）和带外（out-of-band）。带内密钥交换使用与共享数据相同的路径，而带外交换则使用不同的路径，例如电话呼叫或实际会议。对称密钥加密需要带外密钥交换以避免密钥被拦截。</p>
+</div>
+<div class="section" id="id7">
+<h3>数字证书<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
+<p>数字证书（digital signature）是以用户私钥加密的消息摘要。非对称加密算法可以与散列算法一起使用来创建数字签名。发送方创建消息文本的散列版本，然后使用发送方私钥加密散列本身。加密的散列作为数字签名附加到消息上。</p>
+<p>发送方向接收方提供签名消息和相应的公钥。接收方使用公钥来解密签名以显示发送方的散列版本。这种方式可以证明发送方的身份，因为如果公钥和私钥不匹配，接收方就将无法解密签名。然后接收方用公钥创建文档的新散列版本并比较两个散列值。如果它们匹配，就证明数据没有被修改。因此数字签名能同时支持身份验证和完整性。由于特定的加密散列值对发送方来说是唯一的，因此数字签名也支持不可否认行。</p>
+<div class="section" id="id8">
+<h4>散列的加密<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h4>
+<p>重要的是要记住，数字签名是一种散列，随后才是被加密的概念。如果没有加密，对方就能轻易地：</p>
+<ol class="arabic simple">
+<li><p>拦截文件和散列值</p></li>
+<li><p>修改文件</p></li>
+<li><p>重新创建散列</p></li>
+<li><p>将修改后地文件和散列发送给接收方</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="id9">
+<h3>密码套件<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
+<p>密码套件（cipher suite）是用于在主机之间建立安全连接的对称和非对称加密算法集合。通常与安全套接字层（SSL）/传输层安全性（TLS）网络协议有关，已有200多种已知密码套件可用，每种都提供不同级别的保护。使用弱密码的密码套件应当避免；这种套件对于现代使用而言密钥长度通常太短（例如40位或56位）。具有强密码的密码套件使用128位和/或256位密码长度，并且算法本身中没有已知的重大漏洞。</p>
+<p>密码套件定义了密钥交换算法，批量加密算法、消息认证码算法和伪随机函数。</p>
+<table class="colwidths-given docutils align-default" id="id24">
+<caption><span class="caption-text">密码套件</span><a class="headerlink" href="#id24" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>密码套件的组成</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>密钥交换算法</p></td>
+<td><p>确定客户端和服务器在SSL/TLS连接握手过程中是否以及如何进行身份认证。</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bulk加密算法</p></td>
+<td><p>加密实际的消息流，并包含密钥大小。</p></td>
+</tr>
+<tr class="row-even"><td><p>消息认证码算法</p></td>
+<td><p>创建消息摘要</p></td>
+</tr>
+<tr class="row-odd"><td><p>伪随机函数</p></td>
+<td><p>创建主密钥，主密钥是指在两个保持连接的系统之间共享的48节密钥。</p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="tls-1-3">
+<h4>TLS 1.3中的密码套件更改<a class="headerlink" href="#tls-1-3" title="永久链接至标题">¶</a></h4>
+<p>截至2017年8月，TLS 1.3仍处于工作草案阶段。TLS的这个草案版本以不同方案定义了密码套件，它们只包含了对称密码和消息认证代码。因此TLS 1.3密码套件与先前的密码套件不兼容。</p>
+</div>
+</div>
+<div class="section" id="id10">
+<h3>会话密钥<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
+<p>会话密钥（session key）是一次性使用的对称密钥，用于加密单个相关通讯系列中的所有消息。使用会话密钥有两个主要原因：</p>
+<ul class="simple">
+<li><p>随着越来也多使用特定密钥加密的素材变得可用，使得一些密码分析攻击变得更容易或更成功。通过将密钥的使用限制在唯一的通信会话中，就能限制用该密钥加密的数据量。</p></li>
+<li><p>使用会话密钥比单独使用非对称加密更快，更高效。你仍可以使用非对称算法加密另一个更快对称算法的对称密钥。这确保了密钥被安全地进行分配，并且还能提高整体性能。还有时被称为混合密码术。</p></li>
+</ul>
+</div>
+<div class="section" id="id11">
+<h3>密钥延展<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h3>
+<p>密码延展（Key streching）是一种可能可以加强弱密码密钥（如人们创建的密码或通行码）的技术，防止暴力破解。在密码延展中，原始密码通过在密码延展算法中运行来得到增强。增强型密钥通常大于128位，这使得它们难以通过暴力攻击被破解。</p>
+<p>密码延展技术包括：</p>
+<ul class="simple">
+<li><p>重复循环加密散列函数</p></li>
+<li><p>重复循环块密码</p></li>
+<li><p>密钥用于密码的情况下，配置密码的密钥的调度以增加密钥设置所需的时间。</p></li>
+</ul>
+</div>
+<div class="section" id="id12">
+<h3>密码学方面的特殊考虑<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h3>
+<p>除了迄今为止所研究的密码学概念和技术之外，还有一些你需要考虑的密码学特性。这些特性仅适用于一些常见用例，不适用于其他情况。</p>
+<table class="colwidths-given docutils align-default" id="id25">
+<caption><span class="caption-text">密码学方面</span><a class="headerlink" href="#id25" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>考虑</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>低延迟</p></td>
+<td><p>在许多业务场景中，处理数据时花费的每一秒都不能忽略。加密操作最终可能在某种状态下的数据上花费了相当的处理时间。因此，密码算法的一个目标是实现低延迟，这里的延迟一般被定义为将输入添加到用于处理的算法中与获得输出之间的时间。</p></td>
+</tr>
+<tr class="row-odd"><td><p>低功耗设备</p></td>
+<td><p>低延迟算法或轻量算法的一种特定应用是针对那些耗能非常少且处理能力最低的设备。例如，物联网（IoT）和智能设备在可用资源方面的一定的限制。同时，有必要在这些资源与设备的安全要求之间取得平衡。因此，轻量级算法旨在提供足够的安全性，同时消耗最少的资源。</p></td>
+</tr>
+<tr class="row-even"><td><p>泄露回弹</p></td>
+<td><p>加密算法和技术可能会容易受到旁路攻击（side-channel attack）的影响，这种攻击方式会收集加密实施过程中的物理信息，如系统消耗了多少能源，在执行加密技术时处理器处于何种状态等。此类消息可以帮助执行特殊的分析，使攻击者得以破解加密实施。为了防御这种攻击，一些算法针对信息泄露提供了高度的恢复能力。泄露回弹技术致力于消除全部与部分泄露来源；或者致力于切断被泄露信息与保密材料之间的联系。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="b">
+<h2>课题B：选择加密算法<a class="headerlink" href="#b" title="永久链接至标题">¶</a></h2>
+<p>你已经确定了密码学的许多概念，现在可以开始将这些概念应用于现实世界的一些特定算法。</p>
+<div class="section" id="id13">
+<h3>密码的类型<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h3>
+<p>加密密码有两种主要的类型：流密码和块密码。</p>
+<table class="colwidths-given docutils align-default" id="id26">
+<caption><span class="caption-text">密码的类型</span><a class="headerlink" href="#id26" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>密码类型</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>流密码（Stream cipher）</p></td>
+<td><p>一种一次加密一个位元的数据加密类型。每个明文位元被转换成加密密文。这些密码的执行速度相对较快，并且不需要太多的性能开销。密文的大小于原文相同。这种方法比其他方法产生的错误更少，并且发生错误时，它们只会影响一个位元。</p></td>
+</tr>
+<tr class="row-odd"><td><p>块密码（Block cipher）</p></td>
+<td><p>这种密码一次性加密一个数据块，通常以64位的数据块形式进行加密。这种密码通常更强大，更安全，但它的性能也比流加密更低。块密码通过多种可能运行模式中的一种来实现，这些模式定义了块密码将如何重复地将数据转换为多个块。</p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="id14">
+<h4>运算模式<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h4>
+<p>常见地运行模式包括：</p>
+<ul class="simple">
+<li><p>电子代码薄[Electronic Code Book（ECB）]，其中每个明文块都是用相同地密钥加密。</p></li>
+<li><p>密码块链接[Cipher Block Chaining（CBC）]，其中使用初始向量（IV）加密第一个明文块，然后，对于每个后续操作，明文块和前一个密文块通过异或（XOR）进行运算。</p></li>
+<li><p>密码反馈[Cipher Feedback（CFB）]，其中先对IV进行加密，然后用它地结果与前一个明文块进行异或运算。</p></li>
+<li><p>输出反馈[Output Feedback（OFB）]，其中加密IV的结果会被反馈到后续运算中。</p></li>
+<li><p>计数器[Counter（CTR）]或计数器模式[Counter Mode（CTM）]，其中使用数字计数器的值创建不断变化的IV。</p></li>
+<li><p>填充/明文密码块链接[Propagating/Plaintext Cipher Block Chaining（PCBC）]，其中每个明文块都与前面的明文块和密文块进行异或运算。</p></li>
+<li><p>伽罗瓦/计数器模式[Galois/Counter Mode（GCM）]，在密码模式的标准加密服务中加入了认证功能。</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id15">
+<h3>散列算法的类型<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h3>
+<p>以下是用于散列加密的一些常用算法。</p>
+<table class="colwidths-given docutils align-default" id="id27">
+<caption><span class="caption-text">散列算法的类型</span><a class="headerlink" href="#id27" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>散列算法</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>消息摘要5（MD5）</p></td>
+<td><p>该算法产生一个128位的消息摘要。它由Ronald Rivest创建，现在处于公有领域。MD5已经不再被认为是一种强大的散列函数，因此应当避免使用；但是，它在一些有限的情况下仍然有用，例如计算机取证。</p></td>
+</tr>
+<tr class="row-odd"><td><p>安全散列算法</p></td>
+<td><p>这种算法在MD5之后进行建模，被认为是两者中较强的一个。SHA的常用版本包括产生160位散列值的SHA-1，而SHA-256，SHA-384和SHA-512分别产生256位、384位和512位的摘要。SHA-1因其对冲突攻击的弱点而被弃用。</p></td>
+</tr>
+<tr class="row-even"><td><p>RACE原始完整性校验消息摘要（RIPEMD）</p></td>
+<td><p>RIPEMD是基于现在已经过时MD4算法中使用的设计原则进行设计的。128位、160位、256位和320位版本分别被称为RIPEMD-128、RIPEMD-160、RIPEMD-256和RIPEMD-320。256位和320位版本降低了产生重复输出散列的概率，但在高级安全性方面表现不佳。IPEMD-160由开放学术社区设计，并且它的使用频率低于SHA-1。</p></td>
+</tr>
+<tr class="row-odd"><td><p>基于散列的消息认证码（HMAC）</p></td>
+<td><p>这是一种通常将密码散列函数（例如MD5或SHA-256）与密钥组合在一起来验证消息完整性和真实性的方法。最终的计算是基于使用底层散列函数来进行命名的。例如，如果SHA-256是散列函数，那么HMAC算法就被命名位HMAC-SHA256。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id16">
+<h3>对称加密算法的类型<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h3>
+<p>以下是用于对称加密的一些常用算法，也称为密钥算法。</p>
+<table class="colwidths-given docutils align-default" id="id28">
+<caption><span class="caption-text">对称加密算法的类型</span><a class="headerlink" href="#id28" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>对称算法</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>数据加密标准（DES）</p></td>
+<td><p>一种块密码对称加密算法，它使用一个56位的密钥对64位的数据块进行加密，其中，密钥中有8位奇偶校验。短密钥长度使DES成为一种相对较弱的算法，尽管它需要较少的性能开销。</p></td>
+</tr>
+<tr class="row-odd"><td><p>三次DES（3DES）</p></td>
+<td><p>这总对称加密算法对每个数据块进行三次处理，每次使用不同的密钥，以此进行数据的加密。它首先使用一个密钥将明文加密成密文，然后再用另一个密钥加密该密文，最后用第三种密钥加密第二次形成的密文。3DES比DES更强大，但也将性能影响提高了三倍。</p></td>
+</tr>
+<tr class="row-even"><td><p>高级加密标准（AES）</p></td>
+<td><p>由比利时密码学家Joan Daemen和Vincent Rijmen开发的对称128位、192位或256位块密码，被美国政府采纳作为加密标准以取代DES。这种AES算法以其创建者的名字被命令位Rijndael（发音为“Rhine-dale”）。Rijndael是NIST举办的AES竞赛中被认为可采纳的五种算法之一。AES被认为是目前最强大的加密算法之一，其性能优于3DES。</p></td>
+</tr>
+<tr class="row-odd"><td><p>Blowfish</p></td>
+<td><p>一种免费可用的64位块密码算法，使用可变的密钥长度。它由Bruce Schneier开发。Blowfish已经不再被认为是强大的，虽然它提供比DES更好的性能。</p></td>
+</tr>
+<tr class="row-even"><td><p>Twofish</p></td>
+<td><p>一种对称密钥块密码，与Blowfish类似，包含一个128位的块和256位的密钥。虽然未被选作一种标准，但它在AES竞赛中挺进了前五。Twofish加密使用一个预计算的加密算法。这个加密算法是一个依赖密钥的S盒（S-box），当给定密钥时，这个相对较为复杂的密钥算法就会在其位置上提供一个置换密钥。被称为“n”，有128，192和256位大小。“n”的一半由加密密钥组成，另一半包含了在加密算法中使用的一个修饰符。Twoflish比Blowfish更加强大，并且提供了相对较高的性能。</p></td>
+</tr>
+<tr class="row-odd"><td><p>Rivest Cipher（RC）</p></td>
+<td><p>由Ronald Rivest开发的一系列算法。所有算法都有着可变的密钥长度。RC4是一种流密码。RC5和RC6是大小可变的块密码。RC6被认为是一种强大的密码，并提供良好的性能。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id17">
+<h3>非对称加密算法的类型<a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h3>
+<p>以下是用于非对称加密的一些常用算法和技术。</p>
+<table class="colwidths-given docutils align-default" id="id29">
+<caption><span class="caption-text">非对称加密算法的类型</span><a class="headerlink" href="#id29" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>非对称技术</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Rivest Shamir Adelman（RSA）</p></td>
+<td><p>以它的设计者Ronald Rivest，Adi Shamir和Len Adelman命名，RSA是第一个用于公钥加密的成功算法。它有一个可变的密钥长度和块大小。这种算法仍在广泛使用中，并且如果它使用了足够长的密钥，就能被认为具有高度安全。</p></td>
+</tr>
+<tr class="row-odd"><td><p>Diffie-Hellman（DH）</p></td>
+<td><p>提供安全密钥交换的密码技术。在1976年的描述中，它奠定了大多数公钥加密实现的基础，包括RSA、DHE和ECDHE。DH交换中使用的密钥强度由组决定。组的数量越高，密钥的安全性越高，并且添加到计算中的处理开销也越多。</p></td>
+</tr>
+<tr class="row-even"><td><p>Diffie-Hellman 临时（DHE）</p></td>
+<td><p>DH的一种变形，使用临时密钥来提供安全的密钥交换。</p></td>
+</tr>
+<tr class="row-odd"><td><p>椭圆曲线加密（ECC）</p></td>
+<td><p>一种利用有限域上椭圆曲线的代数结构的公钥加密技术。ECC通常与无线和移动设备一起使用。</p></td>
+</tr>
+<tr class="row-even"><td><p>数字签名算法（DSA）</p></td>
+<td><p>用于数字签名的公钥加密标准，为消息提供了身份验证和完整性验证。</p></td>
+</tr>
+<tr class="row-odd"><td><p>良好隐私（PGP）和GNU隐私卫士（GPG）</p></td>
+<td><p>PGP是专有的电子邮件安全和身份验证软件，使用公钥加密技术的一种变形来对电子邮件进行加密。GPG和PGP的开源版本，提供了等效加密和认证服务。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id18">
+<h3>密钥延展算法的类型<a class="headerlink" href="#id18" title="永久链接至标题">¶</a></h3>
+<p>一种流行的密钥延展方法就是使用密钥衍生函数：</p>
+<ul>
+<li><p>基于密码的密钥衍生函数2[Password-Based Key Derivation Function 2(PBKDF2)]是来自RSA实验室的公开密钥密码标准中的一部分。这个密钥衍生函数使用五个输入参数来创建衍生密钥：</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>伪随机函数，例如散列、密码或HMAC</p></li>
+<li><p>用于生成衍生密钥的主密码</p></li>
+<li><p>密码盐值</p></li>
+<li><p>进行循环的函数的指定迭代次数</p></li>
+<li><p>衍生循环的函数的指定迭代次数</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>bcrypt是基于Blowfish密码的密钥衍生函数。想PBKDF2一样，它使用密码盐，但也会通过增加迭代次数随时间的推移而进行调节。有针对Ruby、Python、C、C#、Perl、PHP、Java和其他语言的bcypt实现。</p></li>
+</ul>
+</div>
+<div class="section" id="id19">
+<h3>替换密码<a class="headerlink" href="#id19" title="永久链接至标题">¶</a></h3>
+<p>用于支持混淆的最基本技术之一是替换密码（substitution cipher）。在替换密码中，每个明文单位在转换为密文时保持相同的顺序，但单元的实际值发生了变化。为了解除密文的混淆，则只要应用反向替代。</p>
+<p>例如，ROT13就是一个简单的替换密码，用字母表上位于该字母后面的第13个字母替换它。换句话说，字母”A”变成字母“N”。例如，词语”substitution cipher”变成“fhofgvghgvba pvcure”。这种替代密码提供了一种非常基本的混淆形式，且相比严肃的技术更像时一种教学工具。与此同时，替代概念还被用于某些安全环境中（例如，S盒的替换密钥）。</p>
+</div>
+<div class="section" id="id20">
+<h3>异或<a class="headerlink" href="#id20" title="永久链接至标题">¶</a></h3>
+<p>用于混淆的另一种技术时异或[exclusive or(XOR)]运算。从最基本的意义上看，只有当一个输入为真，另一个输入为假时，XOR运算才会输出为真。该运算本身被称为“XORing”，在运算计算时称两个输入为“取其中不相同的部分（XORed）”。XORing是逐位进行的，这意味着该操作对每一位都有效。例如，大写字母“E”的二进制值是01000101，小写字母“s”的二进制值是01110011。0代表加，而1代表真。</p>
+<p>正如你从该示例所看到的，异或运算的结果是00110110，在ASCⅡ中对应的字符是6。在密码学领域，异或运算通常用于混淆恶意代码。</p>
+<p>由于异或运算快速，简单只需要很少的处理开销，因此它们常常被有着丰富知识的恶意软件作者用来隐藏他们的恶意软件以便被检测到。代码通过混淆器运行，混淆器会对代码进行异或运算，使代码的基本分析变得困难。</p>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>XOR还在AES等块密码中起到支持作用。</p>
+</div>
+<div class="section" id="id21">
+<h4>隐匿式安全<a class="headerlink" href="#id21" title="永久链接至标题">¶</a></h4>
+<p>混淆和隐匿式安全（security through obscurity）理念密切相关，这是一种试图向他人掩盖脆弱存在的做法。虽然隐匿式安全可以有效地为你的安全操作添砖加瓦，但不应仅仅依靠它来实现安全性。大多数情况下，攻击者是否会发现你试图隐藏的漏洞并不是一个问题，问题是何时发现的。</p>
+</div>
+</div>
+<div class="section" id="id22">
+<h3>加密模块<a class="headerlink" href="#id22" title="永久链接至标题">¶</a></h3>
+<p>加密模块（cryptogtaphic module）是指实现一个或多个加密概念的任何软硬件解决方案，如前面提到的不同加解密算法。一旦你选择了一个足够强大的算法在你的环境中使用，就需要通过一些方法将该算法应用到需要保护的资产中；加密模块促进了实施过程。</p>
+<p>一种模块类型是加密服务提供程序[Cryptographic Service Provider(CSP)]，这是实现Microsoft CryptoAPI的Windows软件库。Microsoft为软件开发人员提供了其中几种CSP。开发人员可以设计他们的应用程序来调用CSP，使之可以为应用程序执行一个或多个加密服务。例如，应用程序可以使用Microsoft增强型密码提供程序来生成具有可定义盐长度的128位RC4密钥。除了加密算法本身之外，每个CSP还指定其他加密项目，如密钥长度，使用的密钥交换算法，使用的数字签名算法、数字签名的格式等。</p>
+</div>
+</div>
+</div>
+
 
           </div>
           
@@ -52,7 +422,7 @@
 
 
 <h3>导航</h3>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../Chapter_1/index.html">第一章： 确定安全基础</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Chapter_2/index.html">第二章：分析风险</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Chapter_3/index.html">第三章：确定安全威胁</a></li>
@@ -60,6 +430,32 @@
 <li class="toctree-l1"><a class="reference internal" href="../Chapter_5/index.html">第五章：实现主机和软件的安全性</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Chapter_6/index.html">第六章：实现网络的安全性</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Chapter_7/index.html">第七章：管理身份识别和访问</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">第八章：实施密码技术</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#a">课题A：确定高级密码学概念</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">密码学元素</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">散列概念</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">数据状态</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">密钥交换</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">数字证书</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">密码套件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">会话密钥</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">密钥延展</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">密码学方面的特殊考虑</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#b">课题B：选择加密算法</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id13">密码的类型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">散列算法的类型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">对称加密算法的类型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">非对称加密算法的类型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id18">密钥延展算法的类型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id19">替换密码</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id20">异或</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id22">加密模块</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
 <div class="relations">

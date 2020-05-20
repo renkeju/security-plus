@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh_CN">
   <head>
     <meta charset="utf-8" />
-    <title>&lt;no title&gt; &#8212; 《Security+ 学习手册》 alpha 文档</title>
+    <title>课题A：确定高级密码学概念 &#8212; 《Security+ 学习手册》 alpha 文档</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
@@ -29,7 +29,169 @@
 
           <div class="body" role="main">
             
-  
+  <div class="section" id="a">
+<h1>课题A：确定高级密码学概念<a class="headerlink" href="#a" title="永久链接至标题">¶</a></h1>
+<p>确定课程的开始部分会向你展示主要密码学概念的概述。在本章课程中，你将学习密码学背后的一些更复杂的理念。</p>
+<div class="section" id="id1">
+<h2>密码学元素<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>密码学的学科包含几个子概念。下表描述了这些子概念。</p>
+<table class="colwidths-given docutils align-default" id="id12">
+<caption><span class="caption-text">密码学</span><a class="headerlink" href="#id12" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>密码学元素</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>混淆（Confiusion）</p></td>
+<td><p>使加密密钥和密文之间的关系变得尽可能复杂和隐蔽的技术。混淆可以防止攻击者选择性地生成明文消息的加密版本并寻找它们关系中的某些模式。</p></td>
+</tr>
+<tr class="row-odd"><td><p>扩散（Diffusion）</p></td>
+<td><p>即使在明文输入中发生轻微变化也能使密文发生剧烈变化的一种技术。扩散能防止攻击者选择性地确定由相同密钥加密地部分消息。</p></td>
+</tr>
+<tr class="row-even"><td><p>冲突（Collision）</p></td>
+<td><p>两个不同的明文输入产生完全相同的密文输出。如果加密算法易受冲突影响，其完整性就会减弱，并且攻击者可以用另一个能产生相同密文的消息替换这个消息。</p></td>
+</tr>
+<tr class="row-odd"><td><p>模糊（Obfuscation）</p></td>
+<td><p>正如你所见，模糊处理使得源代码变得更加难以阅读。因此，模糊处理与加密类似。但是，模糊处理中不涉及密钥的使用——任何知道模糊算法的人都能将代码转换回可读模式。因此模糊代码的安全性比加密数据更低。</p></td>
+</tr>
+<tr class="row-even"><td><p>伪随机生成数（PRNG）</p></td>
+<td><p>这是一种由算法产生的随机数的过程，伪随机数是指有着近似随机性的数字，但不是真正的随机。伪随机数是基于初始种子状态生成的，这是定义数字生成第一阶段的一个数字。然后种子状态通过一个数学公式输出伪随机数。加密密钥的生成倾向于使用伪随机数。</p></td>
+</tr>
+<tr class="row-odd"><td><p>完全正向保密[Perfect forward secrecy（PFS）]</p></td>
+<td><p>当某个会话期间使用的一个密钥收到损害时，这种会话加密特性能确保之前由该密钥加密的数据不会受到影响。如果攻击者恰好窃取到私钥，PFS可以防止攻击者破坏以往的会话。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id2">
+<h2>散列概念<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>正如您所知，散列一个明文输入会产生一个固定长度的密文输出，被称为消息摘要，反之则不然。但是，如果攻击者再彩虹表中计算大量消息摘要，则明文输入可能时可预测的。密码盐（cryptofraphic salt）通过为每个明文输入添加一个随机值来缓解彩虹表攻击的影响。它能对摘要造成重大改变。同样，如果盐本身发生变化，那么使用不同盐的相同明文属兔将生成两个独特的摘要。</p>
+<p>盐值通常与散列数据存储再一起，因此盐本身不会被隐藏。但即使攻击者知道特定会话的盐值，它们也需要结合这个盐值来计算新的唯一彩虹表，这是不可行的。在任何包含密码散列的安全系统中，为散列添加盐值都是必须的。</p>
+<p>与密码盐有关的时一个临时数（nonce）。术语“临时数”是指仅使用一次的数字。盐可以在会话之间改变，但也可以保持不变——正如其名称所暗示的，临时数永远不会重复。鉴于盐通常用于散列密码的情况下，认证协议中更常使用临时数来防止重放攻击。</p>
+<div class="section" id="id3">
+<h3>初始化向量<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+<p>盐与临时数都可以被认为是初始化向量（IV），这是一种通用术语，描述了用于初始化加密任务的任何值，以确保每个输出都是唯一的。虽然IV通常用于双向加密方法而非单向散列的环境下，但这些术语经常被混合使用。</p>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>数据状态<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>有三种主要的数据状态，每种状态都有各自的密码相关性。</p>
+<p>静止数据（Data at rest）主要是指被存储在各种介质上的任何数据，不会从一种介质移动到另一种介质。可能静止的数据类型的示例包含存储在数据库中的财务信息，归档视听媒体，操作策略和其他管理文档、系统配置数据等等。根据其敏感程度的级别，静止数据可以由管理数据的软件或存储数据的硬件进行加密。在发生违规事件是，加密的静止数据通过防止攻击者向公众或其他未授权方传播私人数据支持了数据的机密性。</p>
+<p>传输中的数据（Data in transit）主要是指在媒介之间移动的任何数据，例如通过专用网络和互联网传输。可能正在传输的数据类型的示例包括网站流量、远程访问流量、云存储库之间的数据同步等等。在数据可以被认为是静止之前，它通常会在计算机之间传输。加密这些数据能防止中间人攻击者危及传输通道和流经它的任何数据。</p>
+<p>正在使用的数据（Data in use）是指当前正在被创建、删除、读取或写入的任何数据。可能正在使用的数据类型的示例包括在文字处理应用程序中打开的文档，当前正在被修改的数据库数据，操作系统运行时生成的事件日志等等。当用户使用数据时，这些数据通常需要先进行解密，因为它从静止状态变为使用状态。数据在整个工作会话中可能会保持未加密状态，使其处于危险之中。但是，有些机制能够加密存储在内存中的数据，使第三方无法解码信息。</p>
+</div>
+<div class="section" id="id5">
+<h2>密钥交换<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p>密钥交换（Key exchange）是指加密密钥在实体之间传输时使用的任何方法，以便能够使用加密算法。</p>
+<p>为了使发送者和接收者能交换加密消息，每一方都必须准备好加密被发送的消息并解密被接收的消息。他们需要准备的内容取决于所使用的加密技术。如果他们使用代码（code），则两者都需要相同的代码薄副本。如果他们使用密码（cipher），他们将需要适当的密钥：</p>
+<ul class="simple">
+<li><p>如果密码使对称密钥密码，则两者都需要相同密钥副本。</p></li>
+<li><p>如果密码使具有公钥/私钥属性的非对称密钥密码，则任何需要加密消息的实体都需要收件人的公钥。</p></li>
+</ul>
+<p>密钥交换有两种基本类型：带内（in-band）和带外（out-of-band）。带内密钥交换使用与共享数据相同的路径，而带外交换则使用不同的路径，例如电话呼叫或实际会议。对称密钥加密需要带外密钥交换以避免密钥被拦截。</p>
+</div>
+<div class="section" id="id6">
+<h2>数字证书<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<p>数字证书（digital signature）是以用户私钥加密的消息摘要。非对称加密算法可以与散列算法一起使用来创建数字签名。发送方创建消息文本的散列版本，然后使用发送方私钥加密散列本身。加密的散列作为数字签名附加到消息上。</p>
+<p>发送方向接收方提供签名消息和相应的公钥。接收方使用公钥来解密签名以显示发送方的散列版本。这种方式可以证明发送方的身份，因为如果公钥和私钥不匹配，接收方就将无法解密签名。然后接收方用公钥创建文档的新散列版本并比较两个散列值。如果它们匹配，就证明数据没有被修改。因此数字签名能同时支持身份验证和完整性。由于特定的加密散列值对发送方来说是唯一的，因此数字签名也支持不可否认行。</p>
+<div class="section" id="id7">
+<h3>散列的加密<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
+<p>重要的是要记住，数字签名是一种散列，随后才是被加密的概念。如果没有加密，对方就能轻易地：</p>
+<ol class="arabic simple">
+<li><p>拦截文件和散列值</p></li>
+<li><p>修改文件</p></li>
+<li><p>重新创建散列</p></li>
+<li><p>将修改后地文件和散列发送给接收方</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="id8">
+<h2>密码套件<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
+<p>密码套件（cipher suite）是用于在主机之间建立安全连接的对称和非对称加密算法集合。通常与安全套接字层（SSL）/传输层安全性（TLS）网络协议有关，已有200多种已知密码套件可用，每种都提供不同级别的保护。使用弱密码的密码套件应当避免；这种套件对于现代使用而言密钥长度通常太短（例如40位或56位）。具有强密码的密码套件使用128位和/或256位密码长度，并且算法本身中没有已知的重大漏洞。</p>
+<p>密码套件定义了密钥交换算法，批量加密算法、消息认证码算法和伪随机函数。</p>
+<table class="colwidths-given docutils align-default" id="id13">
+<caption><span class="caption-text">密码套件</span><a class="headerlink" href="#id13" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>密码套件的组成</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>密钥交换算法</p></td>
+<td><p>确定客户端和服务器在SSL/TLS连接握手过程中是否以及如何进行身份认证。</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bulk加密算法</p></td>
+<td><p>加密实际的消息流，并包含密钥大小。</p></td>
+</tr>
+<tr class="row-even"><td><p>消息认证码算法</p></td>
+<td><p>创建消息摘要</p></td>
+</tr>
+<tr class="row-odd"><td><p>伪随机函数</p></td>
+<td><p>创建主密钥，主密钥是指在两个保持连接的系统之间共享的48节密钥。</p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="tls-1-3">
+<h3>TLS 1.3中的密码套件更改<a class="headerlink" href="#tls-1-3" title="永久链接至标题">¶</a></h3>
+<p>截至2017年8月，TLS 1.3仍处于工作草案阶段。TLS的这个草案版本以不同方案定义了密码套件，它们只包含了对称密码和消息认证代码。因此TLS 1.3密码套件与先前的密码套件不兼容。</p>
+</div>
+</div>
+<div class="section" id="id9">
+<h2>会话密钥<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
+<p>会话密钥（session key）是一次性使用的对称密钥，用于加密单个相关通讯系列中的所有消息。使用会话密钥有两个主要原因：</p>
+<ul class="simple">
+<li><p>随着越来也多使用特定密钥加密的素材变得可用，使得一些密码分析攻击变得更容易或更成功。通过将密钥的使用限制在唯一的通信会话中，就能限制用该密钥加密的数据量。</p></li>
+<li><p>使用会话密钥比单独使用非对称加密更快，更高效。你仍可以使用非对称算法加密另一个更快对称算法的对称密钥。这确保了密钥被安全地进行分配，并且还能提高整体性能。还有时被称为混合密码术。</p></li>
+</ul>
+</div>
+<div class="section" id="id10">
+<h2>密钥延展<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h2>
+<p>密码延展（Key streching）是一种可能可以加强弱密码密钥（如人们创建的密码或通行码）的技术，防止暴力破解。在密码延展中，原始密码通过在密码延展算法中运行来得到增强。增强型密钥通常大于128位，这使得它们难以通过暴力攻击被破解。</p>
+<p>密码延展技术包括：</p>
+<ul class="simple">
+<li><p>重复循环加密散列函数</p></li>
+<li><p>重复循环块密码</p></li>
+<li><p>密钥用于密码的情况下，配置密码的密钥的调度以增加密钥设置所需的时间。</p></li>
+</ul>
+</div>
+<div class="section" id="id11">
+<h2>密码学方面的特殊考虑<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h2>
+<p>除了迄今为止所研究的密码学概念和技术之外，还有一些你需要考虑的密码学特性。这些特性仅适用于一些常见用例，不适用于其他情况。</p>
+<table class="colwidths-given docutils align-default" id="id14">
+<caption><span class="caption-text">密码学方面</span><a class="headerlink" href="#id14" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>考虑</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>低延迟</p></td>
+<td><p>在许多业务场景中，处理数据时花费的每一秒都不能忽略。加密操作最终可能在某种状态下的数据上花费了相当的处理时间。因此，密码算法的一个目标是实现低延迟，这里的延迟一般被定义为将输入添加到用于处理的算法中与获得输出之间的时间。</p></td>
+</tr>
+<tr class="row-odd"><td><p>低功耗设备</p></td>
+<td><p>低延迟算法或轻量算法的一种特定应用是针对那些耗能非常少且处理能力最低的设备。例如，物联网（IoT）和智能设备在可用资源方面的一定的限制。同时，有必要在这些资源与设备的安全要求之间取得平衡。因此，轻量级算法旨在提供足够的安全性，同时消耗最少的资源。</p></td>
+</tr>
+<tr class="row-even"><td><p>泄露回弹</p></td>
+<td><p>加密算法和技术可能会容易受到旁路攻击（side-channel attack）的影响，这种攻击方式会收集加密实施过程中的物理信息，如系统消耗了多少能源，在执行加密技术时处理器处于何种状态等。此类消息可以帮助执行特殊的分析，使攻击者得以破解加密实施。为了防御这种攻击，一些算法针对信息泄露提供了高度的恢复能力。泄露回弹技术致力于消除全部与部分泄露来源；或者致力于切断被泄露信息与保密材料之间的联系。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
 
           </div>
           
@@ -58,6 +220,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../Chapter_5/index.html">第五章：实现主机和软件的安全性</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Chapter_6/index.html">第六章：实现网络的安全性</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Chapter_7/index.html">第七章：管理身份识别和访问</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">第八章：实施密码技术</a></li>
 </ul>
 
 <div class="relations">

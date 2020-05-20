@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh_CN">
   <head>
     <meta charset="utf-8" />
-    <title>&lt;no title&gt; &#8212; 《Security+ 学习手册》 alpha 文档</title>
+    <title>课题B：选择加密算法 &#8212; 《Security+ 学习手册》 alpha 文档</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
@@ -29,7 +29,192 @@
 
           <div class="body" role="main">
             
-  
+  <div class="section" id="b">
+<h1>课题B：选择加密算法<a class="headerlink" href="#b" title="永久链接至标题">¶</a></h1>
+<p>你已经确定了密码学的许多概念，现在可以开始将这些概念应用于现实世界的一些特定算法。</p>
+<div class="section" id="id1">
+<h2>密码的类型<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>加密密码有两种主要的类型：流密码和块密码。</p>
+<table class="colwidths-given docutils align-default" id="id11">
+<caption><span class="caption-text">密码的类型</span><a class="headerlink" href="#id11" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>密码类型</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>流密码（Stream cipher）</p></td>
+<td><p>一种一次加密一个位元的数据加密类型。每个明文位元被转换成加密密文。这些密码的执行速度相对较快，并且不需要太多的性能开销。密文的大小于原文相同。这种方法比其他方法产生的错误更少，并且发生错误时，它们只会影响一个位元。</p></td>
+</tr>
+<tr class="row-odd"><td><p>块密码（Block cipher）</p></td>
+<td><p>这种密码一次性加密一个数据块，通常以64位的数据块形式进行加密。这种密码通常更强大，更安全，但它的性能也比流加密更低。块密码通过多种可能运行模式中的一种来实现，这些模式定义了块密码将如何重复地将数据转换为多个块。</p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="id2">
+<h3>运算模式<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
+<p>常见地运行模式包括：</p>
+<ul class="simple">
+<li><p>电子代码薄[Electronic Code Book（ECB）]，其中每个明文块都是用相同地密钥加密。</p></li>
+<li><p>密码块链接[Cipher Block Chaining（CBC）]，其中使用初始向量（IV）加密第一个明文块，然后，对于每个后续操作，明文块和前一个密文块通过异或（XOR）进行运算。</p></li>
+<li><p>密码反馈[Cipher Feedback（CFB）]，其中先对IV进行加密，然后用它地结果与前一个明文块进行异或运算。</p></li>
+<li><p>输出反馈[Output Feedback（OFB）]，其中加密IV的结果会被反馈到后续运算中。</p></li>
+<li><p>计数器[Counter（CTR）]或计数器模式[Counter Mode（CTM）]，其中使用数字计数器的值创建不断变化的IV。</p></li>
+<li><p>填充/明文密码块链接[Propagating/Plaintext Cipher Block Chaining（PCBC）]，其中每个明文块都与前面的明文块和密文块进行异或运算。</p></li>
+<li><p>伽罗瓦/计数器模式[Galois/Counter Mode（GCM）]，在密码模式的标准加密服务中加入了认证功能。</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>散列算法的类型<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>以下是用于散列加密的一些常用算法。</p>
+<table class="colwidths-given docutils align-default" id="id12">
+<caption><span class="caption-text">散列算法的类型</span><a class="headerlink" href="#id12" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>散列算法</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>消息摘要5（MD5）</p></td>
+<td><p>该算法产生一个128位的消息摘要。它由Ronald Rivest创建，现在处于公有领域。MD5已经不再被认为是一种强大的散列函数，因此应当避免使用；但是，它在一些有限的情况下仍然有用，例如计算机取证。</p></td>
+</tr>
+<tr class="row-odd"><td><p>安全散列算法</p></td>
+<td><p>这种算法在MD5之后进行建模，被认为是两者中较强的一个。SHA的常用版本包括产生160位散列值的SHA-1，而SHA-256，SHA-384和SHA-512分别产生256位、384位和512位的摘要。SHA-1因其对冲突攻击的弱点而被弃用。</p></td>
+</tr>
+<tr class="row-even"><td><p>RACE原始完整性校验消息摘要（RIPEMD）</p></td>
+<td><p>RIPEMD是基于现在已经过时MD4算法中使用的设计原则进行设计的。128位、160位、256位和320位版本分别被称为RIPEMD-128、RIPEMD-160、RIPEMD-256和RIPEMD-320。256位和320位版本降低了产生重复输出散列的概率，但在高级安全性方面表现不佳。IPEMD-160由开放学术社区设计，并且它的使用频率低于SHA-1。</p></td>
+</tr>
+<tr class="row-odd"><td><p>基于散列的消息认证码（HMAC）</p></td>
+<td><p>这是一种通常将密码散列函数（例如MD5或SHA-256）与密钥组合在一起来验证消息完整性和真实性的方法。最终的计算是基于使用底层散列函数来进行命名的。例如，如果SHA-256是散列函数，那么HMAC算法就被命名位HMAC-SHA256。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id4">
+<h2>对称加密算法的类型<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>以下是用于对称加密的一些常用算法，也称为密钥算法。</p>
+<table class="colwidths-given docutils align-default" id="id13">
+<caption><span class="caption-text">对称加密算法的类型</span><a class="headerlink" href="#id13" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>对称算法</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>数据加密标准（DES）</p></td>
+<td><p>一种块密码对称加密算法，它使用一个56位的密钥对64位的数据块进行加密，其中，密钥中有8位奇偶校验。短密钥长度使DES成为一种相对较弱的算法，尽管它需要较少的性能开销。</p></td>
+</tr>
+<tr class="row-odd"><td><p>三次DES（3DES）</p></td>
+<td><p>这总对称加密算法对每个数据块进行三次处理，每次使用不同的密钥，以此进行数据的加密。它首先使用一个密钥将明文加密成密文，然后再用另一个密钥加密该密文，最后用第三种密钥加密第二次形成的密文。3DES比DES更强大，但也将性能影响提高了三倍。</p></td>
+</tr>
+<tr class="row-even"><td><p>高级加密标准（AES）</p></td>
+<td><p>由比利时密码学家Joan Daemen和Vincent Rijmen开发的对称128位、192位或256位块密码，被美国政府采纳作为加密标准以取代DES。这种AES算法以其创建者的名字被命令位Rijndael（发音为“Rhine-dale”）。Rijndael是NIST举办的AES竞赛中被认为可采纳的五种算法之一。AES被认为是目前最强大的加密算法之一，其性能优于3DES。</p></td>
+</tr>
+<tr class="row-odd"><td><p>Blowfish</p></td>
+<td><p>一种免费可用的64位块密码算法，使用可变的密钥长度。它由Bruce Schneier开发。Blowfish已经不再被认为是强大的，虽然它提供比DES更好的性能。</p></td>
+</tr>
+<tr class="row-even"><td><p>Twofish</p></td>
+<td><p>一种对称密钥块密码，与Blowfish类似，包含一个128位的块和256位的密钥。虽然未被选作一种标准，但它在AES竞赛中挺进了前五。Twofish加密使用一个预计算的加密算法。这个加密算法是一个依赖密钥的S盒（S-box），当给定密钥时，这个相对较为复杂的密钥算法就会在其位置上提供一个置换密钥。被称为“n”，有128，192和256位大小。“n”的一半由加密密钥组成，另一半包含了在加密算法中使用的一个修饰符。Twoflish比Blowfish更加强大，并且提供了相对较高的性能。</p></td>
+</tr>
+<tr class="row-odd"><td><p>Rivest Cipher（RC）</p></td>
+<td><p>由Ronald Rivest开发的一系列算法。所有算法都有着可变的密钥长度。RC4是一种流密码。RC5和RC6是大小可变的块密码。RC6被认为是一种强大的密码，并提供良好的性能。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id5">
+<h2>非对称加密算法的类型<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p>以下是用于非对称加密的一些常用算法和技术。</p>
+<table class="colwidths-given docutils align-default" id="id14">
+<caption><span class="caption-text">非对称加密算法的类型</span><a class="headerlink" href="#id14" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>非对称技术</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Rivest Shamir Adelman（RSA）</p></td>
+<td><p>以它的设计者Ronald Rivest，Adi Shamir和Len Adelman命名，RSA是第一个用于公钥加密的成功算法。它有一个可变的密钥长度和块大小。这种算法仍在广泛使用中，并且如果它使用了足够长的密钥，就能被认为具有高度安全。</p></td>
+</tr>
+<tr class="row-odd"><td><p>Diffie-Hellman（DH）</p></td>
+<td><p>提供安全密钥交换的密码技术。在1976年的描述中，它奠定了大多数公钥加密实现的基础，包括RSA、DHE和ECDHE。DH交换中使用的密钥强度由组决定。组的数量越高，密钥的安全性越高，并且添加到计算中的处理开销也越多。</p></td>
+</tr>
+<tr class="row-even"><td><p>Diffie-Hellman 临时（DHE）</p></td>
+<td><p>DH的一种变形，使用临时密钥来提供安全的密钥交换。</p></td>
+</tr>
+<tr class="row-odd"><td><p>椭圆曲线加密（ECC）</p></td>
+<td><p>一种利用有限域上椭圆曲线的代数结构的公钥加密技术。ECC通常与无线和移动设备一起使用。</p></td>
+</tr>
+<tr class="row-even"><td><p>数字签名算法（DSA）</p></td>
+<td><p>用于数字签名的公钥加密标准，为消息提供了身份验证和完整性验证。</p></td>
+</tr>
+<tr class="row-odd"><td><p>良好隐私（PGP）和GNU隐私卫士（GPG）</p></td>
+<td><p>PGP是专有的电子邮件安全和身份验证软件，使用公钥加密技术的一种变形来对电子邮件进行加密。GPG和PGP的开源版本，提供了等效加密和认证服务。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id6">
+<h2>密钥延展算法的类型<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<p>一种流行的密钥延展方法就是使用密钥衍生函数：</p>
+<ul>
+<li><p>基于密码的密钥衍生函数2[Password-Based Key Derivation Function 2(PBKDF2)]是来自RSA实验室的公开密钥密码标准中的一部分。这个密钥衍生函数使用五个输入参数来创建衍生密钥：</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>伪随机函数，例如散列、密码或HMAC</p></li>
+<li><p>用于生成衍生密钥的主密码</p></li>
+<li><p>密码盐值</p></li>
+<li><p>进行循环的函数的指定迭代次数</p></li>
+<li><p>衍生循环的函数的指定迭代次数</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>bcrypt是基于Blowfish密码的密钥衍生函数。想PBKDF2一样，它使用密码盐，但也会通过增加迭代次数随时间的推移而进行调节。有针对Ruby、Python、C、C#、Perl、PHP、Java和其他语言的bcypt实现。</p></li>
+</ul>
+</div>
+<div class="section" id="id7">
+<h2>替换密码<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<p>用于支持混淆的最基本技术之一是替换密码（substitution cipher）。在替换密码中，每个明文单位在转换为密文时保持相同的顺序，但单元的实际值发生了变化。为了解除密文的混淆，则只要应用反向替代。</p>
+<p>例如，ROT13就是一个简单的替换密码，用字母表上位于该字母后面的第13个字母替换它。换句话说，字母”A”变成字母“N”。例如，词语”substitution cipher”变成“fhofgvghgvba pvcure”。这种替代密码提供了一种非常基本的混淆形式，且相比严肃的技术更像时一种教学工具。与此同时，替代概念还被用于某些安全环境中（例如，S盒的替换密钥）。</p>
+</div>
+<div class="section" id="id8">
+<h2>异或<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
+<p>用于混淆的另一种技术时异或[exclusive or(XOR)]运算。从最基本的意义上看，只有当一个输入为真，另一个输入为假时，XOR运算才会输出为真。该运算本身被称为“XORing”，在运算计算时称两个输入为“取其中不相同的部分（XORed）”。XORing是逐位进行的，这意味着该操作对每一位都有效。例如，大写字母“E”的二进制值是01000101，小写字母“s”的二进制值是01110011。0代表加，而1代表真。</p>
+<p>正如你从该示例所看到的，异或运算的结果是00110110，在ASCⅡ中对应的字符是6。在密码学领域，异或运算通常用于混淆恶意代码。</p>
+<p>由于异或运算快速，简单只需要很少的处理开销，因此它们常常被有着丰富知识的恶意软件作者用来隐藏他们的恶意软件以便被检测到。代码通过混淆器运行，混淆器会对代码进行异或运算，使代码的基本分析变得困难。</p>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>XOR还在AES等块密码中起到支持作用。</p>
+</div>
+<div class="section" id="id9">
+<h3>隐匿式安全<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
+<p>混淆和隐匿式安全（security through obscurity）理念密切相关，这是一种试图向他人掩盖脆弱存在的做法。虽然隐匿式安全可以有效地为你的安全操作添砖加瓦，但不应仅仅依靠它来实现安全性。大多数情况下，攻击者是否会发现你试图隐藏的漏洞并不是一个问题，问题是何时发现的。</p>
+</div>
+</div>
+<div class="section" id="id10">
+<h2>加密模块<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h2>
+<p>加密模块（cryptogtaphic module）是指实现一个或多个加密概念的任何软硬件解决方案，如前面提到的不同加解密算法。一旦你选择了一个足够强大的算法在你的环境中使用，就需要通过一些方法将该算法应用到需要保护的资产中；加密模块促进了实施过程。</p>
+<p>一种模块类型是加密服务提供程序[Cryptographic Service Provider(CSP)]，这是实现Microsoft CryptoAPI的Windows软件库。Microsoft为软件开发人员提供了其中几种CSP。开发人员可以设计他们的应用程序来调用CSP，使之可以为应用程序执行一个或多个加密服务。例如，应用程序可以使用Microsoft增强型密码提供程序来生成具有可定义盐长度的128位RC4密钥。除了加密算法本身之外，每个CSP还指定其他加密项目，如密钥长度，使用的密钥交换算法，使用的数字签名算法、数字签名的格式等。</p>
+</div>
+</div>
+
 
           </div>
           
@@ -58,6 +243,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../Chapter_5/index.html">第五章：实现主机和软件的安全性</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Chapter_6/index.html">第六章：实现网络的安全性</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Chapter_7/index.html">第七章：管理身份识别和访问</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">第八章：实施密码技术</a></li>
 </ul>
 
 <div class="relations">
