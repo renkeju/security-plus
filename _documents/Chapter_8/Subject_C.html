@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh_CN">
   <head>
     <meta charset="utf-8" />
-    <title>&lt;no title&gt; &#8212; 《Security+ 学习手册》 alpha 文档</title>
+    <title>课题C：配置公钥基础架构 &#8212; 《Security+ 学习手册》 alpha 文档</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
@@ -29,7 +29,220 @@
 
           <div class="body" role="main">
             
-  
+  <div class="section" id="c">
+<h1>课题C：配置公钥基础架构<a class="headerlink" href="#c" title="永久链接至标题">¶</a></h1>
+<p>在双方之间交换密钥传输的过程建立在提供加密服务套件的互联服务器的明确接收上。从公司私有网络内的加密通讯到全球互联网的加密通讯，都包含在公共密钥基础设施中。</p>
+<div class="section" id="id1">
+<h2>公钥基础架构<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>公钥基础架构[public key infrastructure（PKI）]是一个由证书颁发机构、证书、软件、服务和其他密码组件组成的系统，用于实现数据和实体的真实性和有效性。PKI可以以各种分层结构实施，可以面向公众开放也可以由组织进行私有维护。顾名思义，PKI实施了非对称加密过程，实现了网络数据的加解密，包括通过互联网进行的交易。</p>
+</div>
+<div class="section" id="pki">
+<h2>PKI组件<a class="headerlink" href="#pki" title="永久链接至标题">¶</a></h2>
+<p>PKI中包含了许多密码组件。下表列出了这些组件中最重要的一些。</p>
+<table class="colwidths-given docutils align-default" id="id12">
+<caption><span class="caption-text">PKI组件</span><a class="headerlink" href="#id12" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>PKI组件</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>数字证书（digtial certificate）</p></td>
+<td><p>数字证书是PKI最基本的组成部分，PKI的首要任务是以各种方式管理数字证书。数字证书是一种将证书与公钥关联起来的电子文档。用户和设备都可以持有证书。证书通过数字签名验证证书持有者的身份，证书也是分发持有者公钥的一种方式。此外，证书还包含与持有人身份有关的信息。</p></td>
+</tr>
+<tr class="row-odd"><td><p>对象识别符[Object identifier（OID）]</p></td>
+<td><p>包含在证书中的身份信息是通过OID提供的。由许多OID与常用证书类型相关联，每种OID都定义了证书所有者身份的某个维度。OID被格式化位一系列由句点分割的数字；例如，OID 2.5.4.10 表示了拥有证书的组织的名称，在证书上也简称位“Organization”或“O”</p></td>
+</tr>
+<tr class="row-even"><td><p>证书颁发机构[certificate authority（CA）]</p></td>
+<td><p>CA是指发布数字证书并维护关联私钥/公钥对的服务器。</p></td>
+</tr>
+<tr class="row-odd"><td><p>注册机构[registration authority（RA）]</p></td>
+<td><p>RA服务器负责验证用户和设备的身份以及批准或拒绝数字证书的请求。</p></td>
+</tr>
+<tr class="row-even"><td><p>数字签名请求[Certificate signing request（CRS）]</p></td>
+<td><p>CSR是指发送到CA的消息，其中的资源会申请证书。通常包含被纳入到资源证书中的信息，如公钥、数字签名和其他识别信息。</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>一些大型的CA可能还有本地的注册机构（LRA）。</p>
+</div>
+</div>
+<div class="section" id="ca">
+<h2>CA层次结构<a class="headerlink" href="#ca" title="永久链接至标题">¶</a></h2>
+<p>CA层次结构（CA hierarchy）或信任模型（trust model）是指一个或一组共同协作用于发布数字证书的CA。层次结构中的每个CA与它正上方的CA具有父子关系。CA层次结构提供了一种在多个CA之间分配证书工作的方式，并提高了证书服务供应的效率。如果一个CA受损，只有由这个特定CA发布的证书及其子证书无效。层次结构中的其余CA仍将保持有效。</p>
+<p>当用户，设备或其他实体获得证书时，会通过信任链（chain of trust）（也称为证书链）验证此证书。信任链从底部开始并沿着CA层次结构向上进行。直接呈现给实体的证书可能由另一个CA签署，而这个CA又是由其上方的CA依次签署，依此类推。如果要信任某个证书，实体就必须信任链中的每一个链，因为它们的工作方式正是如此。</p>
+<div class="section" id="id2">
+<h3>证书锁定<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
+<p>相比典型CA层次结构，证书锁定（Certificate pinning）是一种更直接的信任证书的方式。以下面的步骤为例：</p>
+<ol class="arabic simple">
+<li><p>你的浏览器信任位于CA层次结构顶部的根CA</p></li>
+<li><p>你导航至 develetech.com，该网站会显示其证书。</p></li>
+<li><p>develetech.com 证书由 DevetechCA 签署，这个证书经过了多个中间CA的签署，最终通向根CA。</p></li>
+</ol>
+<p>因此，在普通CA信任方案中，你的浏览器将信任 develetech.com。但在证书锁定中：</p>
+<ol class="arabic simple">
+<li><p>你的浏览器直接信任 develetech.com 证书，或直接信任 DevtehCA。</p></li>
+<li><p>当 develetech.com 展示其证书时，你的浏览器信任该站点，甚至不验证根CA。</p></li>
+</ol>
+<p>证书锁定有效地绕过了CA层次结构和信任链，以便能最大限度地减少中间人攻击。如果其中地一个中间CA受到了危害，则CA层次结构中地信任关系也会受到影响。但是，由于被锁定地证书不依赖于这个完整的信任链，因此，客户端和锁定证书之间的信任关系保持不变。</p>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>根CA<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>根CA（root CA）是层次结构中最高的CA，因此也是最可信的权威机构。根CA发布并自签署链中的第一个证书。根CA必须是安全的，因为如果它受到损害，所有其他证书都将失效。</p>
+<div class="section" id="id4">
+<h3>公有根和私有根<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<p>根CA可以被指定为公有或私有：</p>
+<ul class="simple">
+<li><p>私有根CA（private root CA）由公司创建，主要在公司内部使用。这种根CA可以由内部进行设置和配置，也可以外包给第三方供应商。</p></li>
+<li><p>公有根CA（public root CA）由第三方或商业供应商创建，供公众进行一般访问。</p></li>
+</ul>
+<p>赛门铁克、Comodo、GoDaddy和IdenTrust都是公共证书服务和知名供应商。</p>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>从属CA<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p>从属CA（Subordinate CA）是指层次结构中根目录下的任何CA。从属CA颁发证书并提供证书的日常管理、包括续订、暂停和撤销。</p>
+</div>
+<div class="section" id="id6">
+<h2>离线根CA<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<p>为了为根CA提供尽可能最安全的环境，组织通常会设置根CA并使其离线，从而允许从属CA颁发所有其余的证书。从这种意义上看，使根CA离线意味着将其于网络断开连接，并（可选的）将其置于断电状态。这种策略确保网络中的任何人都无法访问根CA，因此受攻击的可能性大大降低。需要记住的是如果根CA收到危害，则层次结构中的所有证书都会受到影响。因此，使根CA保持联机状态时非常危险的和不明智的。</p>
+</div>
+<div class="section" id="id7">
+<h2>证书的类型<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<p>证书可以颁发给许多不同类型的实体，也可以为组织中各种不同目的而颁发证书。</p>
+<table class="colwidths-given docutils align-default" id="id13">
+<caption><span class="caption-text">证书的类型</span><a class="headerlink" href="#id13" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>证书类型</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>自签名（Self-signed）</p></td>
+<td><p>自签名证书是指由签署给证书的同一个实体拥有的证书。换句话说，这种证书不承认信任链上的任何更高层权威机构——实体本质上是在证明自己。自签名证书要求客户端直接信任实体。</p></td>
+</tr>
+<tr class="row-odd"><td><p>根</p></td>
+<td><p>根证书由根CA颁发，证明信任链中其下所有其他证书的有效性。由于链中没有比根证书更高的权威机构，所以它必须是自签名的。</p></td>
+</tr>
+<tr class="row-even"><td><p>用户</p></td>
+<td><p>在不鼓励记住和管理密码的情况下，会向用户颁发用户证书。例如，在SSH的许多实现中，当用户想在系统上打开一个远程shell时，就会向SSH服务器出示他们自己的证书。</p></td>
+</tr>
+<tr class="row-odd"><td><p>计算机</p></td>
+<td><p>也可以向IAM系统中具有个人或组身份的计算机颁发证书。如果计算机需要安全地连接到网络中地另一台服务器，就可能需要使用证书来进行身份验证，而不是使用更人性化的密码。</p></td>
+</tr>
+<tr class="row-even"><td><p>电子邮件</p></td>
+<td><p>这种证书用于对安全/多用途Internet邮件扩展（S/MIME）协议中的电子邮件消息进行认证和加密。S/MIME的用途与PGP类似，但需要依赖PKI的集中管理。</p></td>
+</tr>
+<tr class="row-odd"><td><p>代码签名</p></td>
+<td><p>在开发者将应用程序发布给他们之前，他们通常会对源代码进行数据签名，以便客户可以验证该应用是否合法。在许多情况下，代码时使用开发人员自签名证书部署的，但开发人员也可以利用CA颁发证书。</p></td>
+</tr>
+<tr class="row-even"><td><p>主体备用名称[Subject Alternative Name（SAN）]</p></td>
+<td><p>在某些情况下，拥有多个域的组织可能想要将这些域组合到一个SSL/TLS证书中。SAN是X.509证书标准的一种扩展，为组织提供了配置证书范围以涵盖多个域的能力。例如，develetech.com和develetech.org可以都使用相同的证书。</p></td>
+</tr>
+<tr class="row-odd"><td><p>通配符（Wildcard）</p></td>
+<td><p>通配符证书域SAN证书相似，但并非实现了多个域的同时使用，而是使证书可以使用域多个子域。例如，通配符证书不仅可以验证develetech.com，还能验证products.develetech.com、sales.develetech.com和news.develetech.com。这种证书应该被格式化为 <a href="#id8"><span class="problematic" id="id9">*</span></a>.develetech.com 以包含任何可能的子域。</p></td>
+</tr>
+<tr class="row-even"><td><p>域验证[Domain validation（DV）]</p></td>
+<td><p>域验证证书表明某些实体可以通过不同的方法来控制特定域名，例如，向域的Whois记录中的联系人发送电子邮件并等待响应。这些证书提供的验证相对较弱，因为实际上他们无法证明这个域是由声称拥有该域控制权的实体合法拥有。</p></td>
+</tr>
+<tr class="row-odd"><td><p>扩展验证[Extended validation(EV)]</p></td>
+<td><p>为了应对域验证证书的弱点，扩展验证证书提供了一种强大得多的证据，即一个合法实体拥有特定域的所有权。对大多数公共CA而言，颁发EV需要执行彻底的检查以验证实体，例如通过公共目录中列出的电话号码验证联系人，并要求通过验证的联系人有一位为其提供担保的监督人员。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="x-509">
+<h2>X.509<a class="headerlink" href="#x-509" title="永久链接至标题">¶</a></h2>
+<p>PKI和CA层次结构遵循一种用于格式化证书的标准，称为X.509，X.509使用CSR中提供的信息定义了证书的结构。除公钥之外，X.509证书通常还包含以下信息：</p>
+<ul class="simple">
+<li><p>X.509版本</p></li>
+<li><p>证书的序列号</p></li>
+<li><p>用于签署证书的算法</p></li>
+<li><p>发行实体的名称</p></li>
+<li><p>证书有效的时间段</p></li>
+<li><p>由证书验证的主体的名称</p></li>
+<li><p>可选属性，如组织名称、组织单位、地区、城市、州、联系电子邮件地址等。</p></li>
+</ul>
+</div>
+<div class="section" id="id10">
+<h2>证书文件格式<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h2>
+<p>X.509证书可以以几种不同的文件格式存在，每种格式都以不同方式配置X.509信息。</p>
+<table class="colwidths-given docutils align-default" id="id14">
+<caption><span class="caption-text">证书文件格式</span><a class="headerlink" href="#id14" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>X.509文件格式</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>.der</p></td>
+<td><p>这种格式以二进制可辨别编码规则（DER）格式对证书进行编码。</p></td>
+</tr>
+<tr class="row-odd"><td><p>.pem</p></td>
+<td><p>隐私增强型电子邮件（PEM）格式使用Base64（用文本形式编码二进制数据的方法）编码DER证书。使用这种格式的文件始终以“—–BEGIN CERTIFICATE—–”行开始，并以“—–END CERTIFICATE—–”行结束。</p></td>
+</tr>
+<tr class="row-even"><td><p>.cer</p></td>
+<td><p>这种格式以二进制DER格式编码证书，但在Windows系统中可能包含以PEM编码的数据。类Unix系统上的等效格式使用.crt扩展名。</p></td>
+</tr>
+<tr class="row-odd"><td><p>.p7b</p></td>
+<td><p>这种格式使用公钥加密标准#7(PKCS#7)以Base64格式编码证书数据。PKSC#7编码证书不能包含私钥数据。</p></td>
+</tr>
+<tr class="row-even"><td><p>.p12</p></td>
+<td><p>这种格式书用公钥加密标准#12（PKCS#12）以Base64格式编码证书数据。PKCS#12编码的证书可以包含私钥数据并且可能受密码保护。</p></td>
+</tr>
+<tr class="row-odd"><td><p>.pfx</p></td>
+<td><p>这种格式由Microsoft开发，使PKCS#12的前身。这两种格式经常互换使用。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id11">
+<h2>CA层次结构的设计选项<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h2>
+<p>你的CA层次结构的设计将取决于组织的业务和安全要求。下表介绍了如何在不同公司配置中部署CA层次结构。</p>
+<table class="colwidths-given docutils align-default" id="id15">
+<caption><span class="caption-text">CA层次结构的设计选项</span><a class="headerlink" href="#id15" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>公司配置</p></th>
+<th class="head"><p>CA层次结构的实施</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>几十名本地员工</p></td>
+<td><p>使用没有从属的单个根CA，这个CA为办公地点上的所有员工提供服务。</p></td>
+</tr>
+<tr class="row-odd"><td><p>分布全世界的数千名员工</p></td>
+<td><p>从属CA根据地理位置进行指定，以平衡各个CA中颁发的证书数量。</p></td>
+</tr>
+<tr class="row-even"><td><p>只需要访问特定应用程序的个人</p></td>
+<td><p>从属CA根据功能或由部门指定，使独立CA能为具有特定资源需求的人群提供服务。</p></td>
+</tr>
+<tr class="row-odd"><td><p>严格的安全性允许个人对同一资源拥有不同的访问级别</p></td>
+<td><p>从属CA根据获得证书所需的安全性进行指定。有些CA可能会被设置为颁发使用网络ID和密码的证书；其他一些CA可能会要求个人出示有效的驾驶执照。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
 
           </div>
           
