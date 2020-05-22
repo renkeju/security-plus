@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh_CN">
   <head>
     <meta charset="utf-8" />
-    <title>&lt;no title&gt; &#8212; 《Security+ 学习手册》 alpha 文档</title>
+    <title>课题D：注册证书 &#8212; 《Security+ 学习手册》 alpha 文档</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
@@ -29,7 +29,214 @@
 
           <div class="body" role="main">
             
-  
+  <div class="section" id="d">
+<h1>课题D：注册证书<a class="headerlink" href="#d" title="永久链接至标题">¶</a></h1>
+<p>使用证书的过程包含了几个阶段。第一阶段是为需要证书的实体（如用户、设备和服务）注册和安装证书。在本章课题中，你将为需要他们的各种实体注册证书。</p>
+<div class="section" id="id1">
+<h2>证书注册过程<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>用户和其他实体通过证书注册过程从CA中获取证书。</p>
+<p>下表介绍了每个注册步骤。</p>
+<table class="colwidths-given docutils align-default" id="id5">
+<caption><span class="caption-text">注册步骤</span><a class="headerlink" href="#id5" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>注册步骤</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><ol class="arabic simple">
+<li><p>实体请求证书</p></li>
+</ol>
+</td>
+<td><p>实体按照程序（例如，填写在线表单）获得证书。</p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="2">
+<li><p>RA认证实体</p></li>
+</ol>
+</td>
+<td><p>认证根据证书策略的要求（例如，网络用户ID和密码，驾驶执照或其他唯一标识符）进行确定。</p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="3">
+<li><p>将策略应用到请求中</p></li>
+</ol>
+</td>
+<td><p>RA应用与颁发证书的特定CA相关的证书策略。</p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="4">
+<li><p>请求被发送给CA</p></li>
+</ol>
+</td>
+<td><p>如果实体的身份成功通过认证并满足策略要求，则RA将证书请求发送到CA。</p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="5">
+<li><p>CA颁发证书</p></li>
+</ol>
+</td>
+<td><p>CA创建证书并将其放入存储库。</p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="6">
+<li><p>通知实体</p></li>
+</ol>
+</td>
+<td><p>CA通知实体证书可用并交付证书。</p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="7">
+<li><p>证书安装</p></li>
+</ol>
+</td>
+<td><p>获得证书后，可以使用合适的工具进行安装。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id2">
+<h2>证书生命周期<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>证书生命周期中有几个主要阶段。</p>
+<table class="colwidths-given docutils align-default" id="id6">
+<caption><span class="caption-text">生命周期的每个阶段</span><a class="headerlink" href="#id6" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>证书生命周期的阶段</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><ol class="arabic simple">
+<li><p>颁发</p></li>
+</ol>
+</td>
+<td><p>生命周期从根CA发布其自签名密钥对开始。然后根CA开始向其他CA和最终用户颁发证书。</p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="2">
+<li><p>注册</p></li>
+</ol>
+</td>
+<td><p>用户和其他实体通过证书注册过程从CA获取证书。</p></td>
+</tr>
+<tr class="row-even"><td><p>3a. 续订</p></td>
+<td><p>根据证书策略参数，证书可以多次续订。</p></td>
+</tr>
+<tr class="row-odd"><td><p>3b. 撤销</p></td>
+<td><p>证书可再其到期日期之前撤销，从而使其永久失效。证书可能会因为各种原因被撤销，包括误用、遗失或损坏。</p></td>
+</tr>
+<tr class="row-even"><td><p>3c. 到期</p></td>
+<td><p>证书在一定的时间长度后会到期，这种特征被建立在证书策略中并在颁发CA的过程中进行配置。到期参数是证书数据的一部分。如果根CA的证书过期，那么整个CA链就会变得无效。</p></td>
+</tr>
+<tr class="row-odd"><td><p>3d. 暂停</p></td>
+<td><p>除永久性撤销外，一些CA还支持证书的临时暂停。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id3">
+<h2>证书生命周期的管理<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>从一般规律上看，生命周期越长，涉及的管理开销越小。然而这也可能会带来更高的安全风险，因为更长的生命周期也会给攻击者更多的时间来破坏密钥对的密码或以其他方式危害系统。而且，随着生命周期的缩短，密码学领域中的新发展使你能够为你的实体颁发和续签更安全的证书。证书的实际生命周期取决于业务要求和安全需求。</p>
+<div class="section" id="id4">
+<h3>证书生命周期的因素<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<p>下表显示了影响证书生命周期的最常见因素，虽然该列表并未进行详尽的列举。</p>
+<table class="colwidths-given docutils align-default" id="id7">
+<caption><span class="caption-text">证书生命周期的因素</span><a class="headerlink" href="#id7" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 29%" />
+<col style="width: 57%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>因素</p></th>
+<th class="head"><p>变量</p></th>
+<th class="head"><p>意义</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>私钥长度</p></td>
+<td><p>什么样的密钥长度比较合适？128位，256位，1024位，2048位等？</p></td>
+<td><p>密钥越长，需要处理的数据位越多。长密钥需要更多的资源（更多的中央处理单元[CPU]周期或内存，更多的计算机，更多的时间等等）才能被破解。攻击者可能会认为这不值得一试。</p></td>
+</tr>
+<tr class="row-odd"><td><p>使用的密码技术的强度</p></td>
+<td><p>算法有多复杂？</p></td>
+<td><p>算法中使用的数学函数越复杂，攻击者解密的难度就越大。但这意味着生成密钥所需的时间也会更长。</p></td>
+</tr>
+<tr class="row-even"><td><p>CA和私钥的物理安全性</p></td>
+<td><p>CA保存在哪里？它在一个锁定区域内还是仅由密码保护？谁有权限访问它？</p></td>
+<td><p>更高的物理安全性在较长的生命周期中至关重要。如果CA及其私钥在物理上的安全性得不到保障，那么世界上所有的虚拟控制方法都无法保护它们。需要记住的是物理安全的实现成本可能很高昂。</p></td>
+</tr>
+<tr class="row-odd"><td><p>已颁发的证书及其私钥的安全性</p></td>
+<td><p>私钥被存储在什么地方？在智能卡上？在桌面上？是否需要密码？</p></td>
+<td><p>用户私钥越安全，它们对整体系统的安全性就越好。相反，用户可能会忘记密码或丢失智能卡，这意味着管理员工作的增加。</p></td>
+</tr>
+<tr class="row-even"><td><p>攻击风险</p></td>
+<td><p>你的CA是脱机还是联机？你的根CA是在公司内部还是由第三方公司处理？你处理的是什么类型的业务？</p></td>
+<td><p>你的CA可能是安全的，但攻击者可能会使用你网络上的另一个不那么安全的访问点获得CA的访问权限。</p></td>
+</tr>
+<tr class="row-odd"><td><p>用户信任</p></td>
+<td><p>谁正在使用已颁发的证书？外部用户还是内部用户？</p></td>
+<td><p>相比外部用户（通过互联网进行访问的个人），你一般可以信任内部用户（企业网络中的员工）。</p></td>
+</tr>
+<tr class="row-even"><td><p>管理参与</p></td>
+<td><p>长生命周期需要较少的管理工作。短生命周期需要更多的管理工作。</p></td>
+<td><p>虽然长生命周期需要较少的管理工作（续订、撤销等），但也给了攻击者更多时间来获得访问权限。这使得管理员跟踪证书问题成为一项重要任务。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="ssl-tls">
+<h2>SSL/TLS连接过程<a class="headerlink" href="#ssl-tls" title="永久链接至标题">¶</a></h2>
+<p>你可以使用证书来实现SSL/TLS连接。这个过程中有几个步骤。</p>
+<table class="colwidths-given docutils align-default" id="id8">
+<caption><span class="caption-text">SSL/TLS连接过程</span><a class="headerlink" href="#id8" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>SSL/TLS连接步骤</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><ol class="arabic simple">
+<li><p>请求</p></li>
+</ol>
+</td>
+<td><p>客户端请求于服务器的会话</p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="2">
+<li><p>响应</p></li>
+</ol>
+</td>
+<td><p>服务器通过向客户端发送数字证书和公钥进行响应</p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="3">
+<li><p>协商</p></li>
+</ol>
+</td>
+<td><p>然后服务器和客户端协议一个加密级别。</p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="4">
+<li><p>加密</p></li>
+</ol>
+</td>
+<td><p>一旦在加密级别上达成一致，客户端就会生成一个会话密钥，使用服务器的公钥对其进行加密，并将它发送给服务器。</p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="5">
+<li><p>通讯</p></li>
+</ol>
+</td>
+<td><p>随后会话密钥就成为了通讯过程中用于加解密的密钥。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
 
           </div>
           

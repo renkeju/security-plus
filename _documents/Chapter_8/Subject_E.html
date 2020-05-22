@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <title>课题E：备份和恢复证书和私钥 &#8212; 《Security+ 学习手册》 alpha 文档</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../_static/translations.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+<link rel="stylesheet" type="text/css" href="../../_static/handsontable.full.min.css">
+<script src="../../_static/handsontable.full.min.js"></script>
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="e">
+<h1>课题E：备份和恢复证书和私钥<a class="headerlink" href="#e" title="永久链接至标题">¶</a></h1>
+<p>在之前，你已经在CA基础架构中位需要证书的实体进行了注册。但是，证书及其相关私钥可能会丢失或被破坏，因此你需要通过一些方法来恢复它们。在本章课题中，你将备份证书和密钥，以便在丢失或受到威胁时恢复它们。</p>
+<div class="section" id="id1">
+<h2>私钥保护方式<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>私钥对于CA层次结构的安全性至关重要，并且加以保护，以防止丢失、被盗或破坏。
+为了保护私钥，需要：</p>
+<ul class="simple">
+<li><p>将私钥备份到可移动媒体并安全地保存该媒体。</p></li>
+<li><p>从不安全地媒体中删除私钥。</p></li>
+<li><p>恢复私钥时需要使用密码。</p></li>
+<li><p>永远不要共享密钥。</p></li>
+<li><p>密码发布后，切勿通过网络或互联网传输密钥。</p></li>
+<li><p>考虑使用密钥托管将私钥存储到受信任地第三方。</p></li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2>密钥托管<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>作为密钥备份的替代方案，密钥托管（Key escrow）可以被用来安全地存储私钥，同时允许一个或多个受信任地第三方预定义条件下访问密钥。这个第三方被称为密钥托管代理（key escrow agent）。例如，在某些情况下，政府机构可能会要求私钥被放置在代理机构中进行托管。商业CA还可以为不想备份和管理自己的私钥的组织提供基于合同的托管服务。</p>
+</div>
+<div class="section" id="m-of-n">
+<h2>M of N 控制<a class="headerlink" href="#m-of-n" title="永久链接至标题">¶</a></h2>
+<p>在密钥托管方案中，只有特定数量的代理或受托人有权恢复密钥。为了防止单个授权代理恢复密钥，通常使用M of N方案（M of N scheme）。M of N方案是一种数学控制，考虑了密钥恢复代理的总数（N）以及执行密钥恢复所需的代理数量（M）。如果尝试恢复密钥的代理数量不满足或超过M，那么密钥将不会被恢复。M和N的确切值在不同的实施方案中各不相同。</p>
+</div>
+<div class="section" id="id3">
+<h2>私钥恢复方式<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>如果私钥丢失或损坏，你就必须从备份或托管中恢复密钥，然后才能恢复任何加密数据。</p>
+<ul class="simple">
+<li><p>如果你使用密钥托管，这个密钥就会被分割给多个托管代理。代理可以使用这些部分来重建丢失的密钥或直接解密信息。</p></li>
+<li><p>如果密钥已备份到可移动介质，就可以从备份位置进行恢复。</p></li>
+</ul>
+</div>
+<div class="section" id="efs">
+<h2>EFS恢复代理<a class="headerlink" href="#efs" title="永久链接至标题">¶</a></h2>
+<p>加密文件系统[Encrypting File System（EFS）]使用Microsoft Windows基于NTFS的公钥加密。Windows Server 2016会根据用户证书自动创建加密证书和公钥；或者，你可以使用Windows Server 2016的Active Directory证书服务（AD CS）发布证书和密钥。</p>
+<p>加密中可能会遇到一个问题是如何在加密文件的用户账户不存在的情况下恢复加密文件。例如，如果用户离开组织后删除这位用户的账户，就可能会出现此问题。Windows server 2016使你能够定义一个EFS恢复代理（recovery agent）。恢复代理是指有着能恢复被其他用户加密的文件所需证书的个人。默认情况下，Windows Server 2016将域管理员定义为EFS恢复代理。</p>
+<div class="section" id="id4">
+<h3>密钥存档和恢复<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<p>你还可以使用AD CS在受保护的CA数据库中的归档私钥，从而使私钥得以恢复。密钥恢复不会恢复加密的数据或消息，但它确实能帮助用户或管理员恢复密钥并在这之后用它来恢复数据（或解密数据）。</p>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>私钥替换<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p>如果私钥丢失，你可能会像在恢复任何加密数据后将密钥全部都替换掉：</p>
+<ol class="arabic simple">
+<li><p>首先，恢复私钥。</p></li>
+<li><p>解密任何被加密的数据。</p></li>
+<li><p>销毁原始密钥。</p></li>
+<li><p>获取一个新的密钥对。</p></li>
+<li><p>最后，使用新的私钥重新加密数据。</p></li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="../../_static/logosecurityplus.svg" alt="Logo"/>
+            </a></p>
+<h1 class="logo"><a href="../../index.html">《Security+ 学习手册》</a></h1>
+
+
+
+
+
+
+
+
+<h3>导航</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Chapter_1/index.html">第一章： 确定安全基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chapter_2/index.html">第二章：分析风险</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chapter_3/index.html">第三章：确定安全威胁</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chapter_4/index.html">第四章：执行安全评估</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chapter_5/index.html">第五章：实现主机和软件的安全性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chapter_6/index.html">第六章：实现网络的安全性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chapter_7/index.html">第七章：管理身份识别和访问</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">第八章：实施密码技术</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="转向" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, renkeju.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
